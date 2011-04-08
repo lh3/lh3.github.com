@@ -1,0 +1,148 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+ol, ul { margin: 0.5em; }
+li { margin: 0; }
+</style>
+<title>Eigenvectors for General Matrices</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html', 'inc/sb-main.html');">
+<div id="wrap">
+<div id="header"><h1>Eigenvectors for General Matrices</h1></div>
+<span id="top"></span>
+<div id="main">
+<!-- BEGIN OF THE BODY -->
+<h2>Background</h2>
+<p>
+  It is not so hard to implement routines to find the eigenvalues and
+  eigenvectors for real symmetric matrices, or to only calculate the
+  eigenvalues for real non-symmetric matrices. You can find the solution
+  in most of textbooks such as <a href="http://www.nr.com/">Numerical
+  Recipes</a> (NR). However, it is much harder to calculate eigenvectors for
+  real dense non-symmetric matrices. C and Fortran programmers usually
+  reply on <a href="http://math-atlas.sourceforge.net/">ATLAS</a>,
+  <a href="http://www.netlib.org/lapack/">LAPACK</a>
+  or <a href="http://www.gnu.org/software/gsl/">GSL</a>. The problem is
+  frequently we just need a convenient routine to solve a small
+  eigensystem, while we have to depend on a large library which is not
+  always easy to compile and install. This is especially troublesome
+  when we want others to use our source codes. I always prefer
+  standalone single/double-file C libraries if they are efficient enough
+  in a particular application.
+</p>
+<br>
+<h2>A Failure</h2>
+<p>
+  After quite some google searches, I
+  found <a href="http://www.google.com/codesearch/p?hl=en#lOUYwvJiCmQ/PDL-2.4.3/Basic/MatrixOps/eigen.c">eigen.c</a>
+  in the <a href="http://pdl.perl.org/">PDL Perl
+  module</a>. Unfortunately, this piece of code does not work. On a
+  small example, it segfaults and I do not know how to fix that. In case
+  I was doing something stupid, I put my testing code at the end of this
+  page.
+</p>
+<br>
+<h2>A Success</h2>
+<p>
+  Another google search directed me
+  to <a href="http://www.google.com/codesearch/p?hl=en#JC4RawIU7d4/07/feigen.c">feigen.c</a>
+  which is contained in the CD coming with the
+  book <a href="http://books.google.com/books?id=HurESoDQljcC">Numerical
+  Algorithms with C</a> (NAC)
+  by <a href="http://www.auburn.edu/~uhligfd/">Frank Uhlig</a> and his
+  colleagues. This routine does work. Like always, I merged several
+  source code files into one and redifined the API. My modified source
+  code can be downloaded
+  as <a href="download/eigeng.c">eigeng.c</a>. The example in the end of
+  the file largely describes how to use the routine.
+</p>
+<br>
+<h2>A Good Book</h2>
+<p>
+  NAC is a truely amazing book. Although it is less descriptive and
+  covers less topics than NR (no minimization for example), it provides
+  some more advanced methods and the coding quality is also better in my
+  view. NAC is a good complement to NR. Do not forget to read this book
+  when NR does not meet your goal.
+</p>
+<p>
+  By the way, NAC gives an implementation of the order-4 Gear method for
+  solving stiff ODEs. This method potentially outperforms other one-step
+  methods for stiff equations (see also <a href="solveode.html">this
+  page</a>). I may test its performance when I have time. Currently
+  LSODA looks quite satisfying to me.
+</p>
+<br>
+<h2>Appendix: Testing Codes for PDL</h2>
+<textarea name="code" class="c" cols="60" rows="10">
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "eigen.h"
+#include "complex.h"
+#include "matrix.h"
+
+/* testing codes for the Eigen() routine in PDL-2.4.4 */
+/* it does NOT work. To compile (named test.c):
+  gcc -g eigen.c test.c matrix.c complex.c sslib.c */
+
+int main()
+{
+	static double a[5][5] =
+		{{1.0, 6., -3., -1., 7.},
+		{8., -15., 18., 5., 4.},
+		{-2., 11., 9., 15., 20.},
+		{-13., 2., 21., 30., -6.},
+		{17., 22., -5., 3., 6.}};
+	SSL_Complex *mem, *eval, *evec, **_evec;
+	double **_a;
+	int i;
+	_a = (double**)calloc(5, sizeof(void*));
+	for (i = 0; i < 5; ++i) {
+		_a[i] = (double*)calloc(5, sizeof(double));
+		memcpy(_a[i], a[i], 5 * sizeof(double));
+	}
+	mem = (SSL_Complex*)calloc(30, sizeof(SSL_Complex));
+	evec = mem;
+	eval = evec + 25;
+	Eigen(5, 0, _a, 50, 1e-13, 0, eval, _evec);
+	for (i = 0; i < 5; ++i) {
+		printf("%le + %le J\n", eval[i].re, eval[i].im);
+	}
+	free(mem);
+	return 0;
+}
+</textarea>
+<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+<script language="javascript" src="shCore.js"></script>
+<script language="javascript" src="shBrushCpp.js"></script>
+<script language="javascript">
+  dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2009-05-22</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>

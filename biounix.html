@@ -1,0 +1,277 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+ol, ul { margin: 0.5em; }
+li { margin: 0; }
+</style>
+<title>A Bioinformatician's UNIX Toolbox</title>
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html');">
+<div id="wrap">
+<div id="header"><h1>A Bioinformatician's UNIX Toolbox</h1></div>
+<span id="top"></span>
+<div id="widemain">
+<!-- BEGIN OF THE BODY -->
+<ul class="floatright">
+  <li><a href="#xargs">Xargs</a>
+  <li><a href="#find">Find</a>
+  <li><a href="#awk">Awk</a>
+  <li><a href="#cut">Cut</a>
+  <li><a href="#sort">Sort</a>
+  <li><a href="#others">Other tips</a>
+</ul>
+<p>
+  Most of bioinformaticians know how to analyze data with Perl or Python
+  programming. However, not all of them realize that it is not always
+  necessary to write programs. Sometimes, using UNIX commands is much
+  more convenient and can save a lot of time spent on some trivial, yet
+  tedious, routines.
+</p>
+<p>
+  Here are some UNIX commands I frequently use in data analyses. I do
+  not mean to give a complete reference to these commands, but aim to
+  introduce their most useful bits with examples.
+</p>
+<h2><a name="xargs">Xargs</a></h2>
+<p>
+  Xargs is one of my most frequently used UNIX commands. Unfortunately,
+  many UNIX users overlook how powerful it is.
+</p>
+<ol>
+  <li>delete all *.txt files in a directory:</li>
+  <ul>
+	<li>find . -name &quot;*.txt&quot; | xargs rm</li>
+  </ul>
+  <li>package all *.pl files in a directory:</li>
+  <ul>
+	<li>find . -name &quot;*.pl&quot; | xargs tar -zcf pl.tar.gz</li>
+  </ul>
+  <li>kill all processes that match &quot;something&quot;:</li>
+  <ul>
+	<li>ps -u `whoami` | awk &#39;/something/{print $1}&#39; | xargs
+	  kill</li></ul><li>rename all *.txt as *.bak:</li>
+  <ul>
+	<li>find . -name &quot;*.txt&quot; | sed &quot;s/\.txt$//&quot; |
+	  xargs -i echo mv {}.txt {}.bak | sh</li>
+  </ul>
+  <li>run the same command for 100 times (in case of bootstraing, for
+	example):</li>
+  <ul>
+	<li>perl -e &#39;print &quot;$_\n&quot;for(1..100)&#39; | xargs -i
+	  bsub echo bsub -o {}.out -e {}.err some_cmd | sh</li>
+  </ul>
+  <li>submit all commands in a command file (one command per line):</li>
+  <ul>
+	<li>cat my_cmds.sh | xargs -i echo bsub {} | sh</li>
+</ul>
+</ol>
+<p>
+  The last three examples only work with GNU xargs. BSD xargs does not
+  accept &#39;-i&#39;.
+</p>
+<br>
+<h2><a name="find">Find</a></h2>
+<p>In a directory, find command finds all the files that meet certain
+  criteria. You can write very complex rules at the command line, but I
+  think the following examples are most useful:
+</p>
+<ol>
+  <li>find all files with extension as &quot;*.txt&quot; (files can
+	exist in subdirectory):</li>
+  <ul>
+	<li>find . -name &quot;*.txt&quot;</li>
+  </ul>
+  <li>find all directories:</li><ul><li>find . -type d</li>
+</ul>
+</ol>
+<br>
+<h2><a name="awk">Awk</a></h2>
+<p>
+  Awk is a programming language that is specifically designed for
+  quickly manipulating space delimited data. Although you can achieve
+  all its functionality with Perl, awk is simpler in many practical
+  cases. You can find a lot of online tutorials, but here I will only
+  show a few examples which cover most of my daily uses of
+  awk.</p>
+<ol>
+  <li>choose rows where column 3 is larger than column 5:</li>
+  <ul>
+	<li>awk &#39;$3&gt;$5&#39; input.txt &gt; output.txt</li>
+  </ul>
+  <li>extract column 2,4,5:</li>
+  <ul>
+	<li>awk &#39;{print $2,$4,$5}&#39; input.txt &gt; output.txt</li>
+	<li>awk &#39;BEGIN{OFS=&quot;\t&quot;}{print $2,$4,$5}&#39;
+	  input.txt</li>
+  </ul>
+  <li>show rows between 20th and 80th:</li>
+  <ul>
+	<li>awk &#39;NR&gt;=20&amp;&amp;NR&lt;=80&#39; input.txt &gt;
+	  output.txt</li>
+  </ul>
+  <li>calculate the average of column 2:</li>
+  <ul>
+	<li>awk &#39;{x+=$2}END{print x/NR}&#39; input.txt</li>
+  </ul><li>regex (egrep):</li>
+  <ul>
+	<li>awk &#39;/^test[0-9]+/&#39; input.txt</li>
+  </ul>
+  <li>calculate the sum of column 2 and 3 and put it at the end of a row
+	or replace the first column:</li>
+  <ul>
+	<li>awk &#39;{print $0,$2+$3}&#39; input.txt</li>
+	<li>awk &#39;{$1=$2+$3;print}&#39; input.txt</li>
+  </ul>
+  <li>join two files on column 1:</li>
+  <ul>
+	<li>awk
+	  &#39;BEGIN{while((getline&lt;&quot;file1.txt&quot;)&gt;0)l[$1]=$0}$1
+	  in l{print $0&quot;\t&quot;l[$1]}&#39; file2.txt &gt;
+	  output.txt</li>
+  </ul>
+  <li>count number of occurrence of column 2 (uniq -c):</li>
+  <ul>
+	<li>awk &#39;{l[$2]++}END{for (x in l) print x,l[x]}&#39;
+	  input.txt</li>
+  </ul>
+  <li>apply &quot;uniq&quot; on column 2, only printing the first
+	occurrence (uniq):</li>
+  <ul>
+	<li>awk &#39;!($2 in l){print;l[$2]=1}&#39; input.txt</li>
+  </ul>
+  <li>count different words (wc):</li>
+  <ul>
+	<li>awk &#39;{for(i=1;i!=NF;++i)c[$i]++}END{for (x in c) print
+	  x,c[x]}&#39; input.txt</li>
+  </ul>
+  <li>deal with simple CSV:</li>
+  <ul>
+	<li>awk -F, &#39;{print $1,$2}&#39;</li>
+  </ul>
+  <li>substitution (sed is simpler in this case):</li>
+  <ul>
+	<li>awk &#39;{sub(/test/, &quot;no&quot;, $0);print}&#39;
+	  input.txt</li>
+</ul>
+</ol>
+<br>
+<h2><a name="cut">Cut</a></h2>
+<p>
+  Cut cuts specified columns. The default delimiter is a <i>single</i>
+  TAB.
+</p>
+<ol>
+  <li>cut the 1st, 2nd, 3rd, 5th, 7th and following
+	columns:</li>
+  <ul>
+	<li>cut -f1-3,5,7- input.txt</li>
+  </ul>
+  <li>cut the 3rd column with columns separated by a <i>single</i>
+	space:</li>
+  <ul>
+	<li>cut -d&quot; &quot; -f 3 input.txt</li>
+</ul>
+</ol>
+<p>
+  Note that awk, like Perl&#39;s split, takes continuous blank
+  characters as the delimiter, but cut only takes a single character as
+  the delimiter.
+</p>
+<br>
+<h2><a name="sort">Sort</a></h2>
+<p>
+  Almost all the scripting languages have built-in sort, but none of
+  them are so flexible as sort command. In addition, GNU sort is also
+  space efficient. I used to sort a 20Gb file with less than 2Gb
+  memory. It is not trivial to implement so powerful a sort by
+  yourself.
+</p>
+<ol>
+  <li>sort a space-delimited file based on its first column, then the
+	second if the first is the same, and so on:</li>
+  <ul>
+	<li>sort input.txt</li>
+  </ul>
+  <li>sort a huge file (GNU sort ONLY):</li>
+  <ul>
+	<li>sort -S 1500M -t $HOME/tmp input.txt &gt; sorted.txt</li>
+  </ul>
+  <li>sort starting from the third column, skipping the first two
+	columns:</li>
+  <ul>
+	<li>sort +2 input.txt</li>
+  </ul>
+  <li>sort the second column as numbers, descending order; if identical,
+	sort the 3rd as strings, ascending order:</li>
+  <ul>
+	<li>sort -k2,2nr -k3,3 input.txt</li>
+  </ul>
+  <li>sort starting from the 4th character at column 2, as
+	numbers:</li>
+  <ul>
+	<li>sort -k2.4n input.txt</li>
+</ul>
+</ol>
+<br>
+<h2><a name="others">Other Tips</a></h2>
+<ol>
+  <li>use brackets:</li>
+  <ul>
+	<li>(echo hello; echo world; cat foo.txt) &gt; output.txt</li>
+	<li>(cd foo; ls bar.txt)</li>
+  </ul>
+  <li>save stderr output to a file:</li>
+  <ul>
+	<li>some_cmd 2&gt; output.err</li>
+  </ul>
+  <li>direct stderr output to stdout:</li>
+  <ul>
+	<li>some_cmd 2&gt;&amp;1 | more</li>
+	<li>some_cmd &gt;output.outerr 2&gt;&amp;1</li>
+  </ul>
+  <li>view a text file using 4 as a TAB size and without line
+	wrapping:</li>
+  <ul>
+	<li>less -S -x4 text.txt</li>
+  </ul>
+  <li>[sed] substitute &#39;foo(\d+)&#39; as &quot;(\d+)bar&quot;:</li>
+  <ul>
+	<li>sed &quot;s/foo\([0-9]*\)/\1bar/g&quot;</li>
+	<li>perl -pe &#39;s/foo(\d+)/$1bar/g&quot;</li>
+  </ul>
+  <li>[uniq] count the occurrence of different strings at column 2:</li>
+  <ul>
+	<li>cut -f2 input.txt | uniq -c</li>
+  </ul>
+  <li>grep &quot;--enable&quot; in a file (use &quot;--&quot; to prevent
+	grep from parsing command options):</li>
+  <ul>
+	<li>grep -- &quot;--enable&quot; input.txt</li>
+</ul>
+</ol>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2009-02-27</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>

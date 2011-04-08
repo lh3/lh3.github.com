@@ -1,0 +1,280 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Solving Stiff ODEs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html');">
+<div id="wrap">
+<div id="header"><h1>Solving Stiff ODEs</h1></div>
+<span id="top"></span>
+<div id="sidebar">
+  <h3><a href="#bg">Background</a></h3>
+  <br>
+  <h3><a href="#ns">Non-stiff Solvers</a></h3>
+  <ul>
+	<li><a href="#ns-ov">Overview</a>
+	<li><a href="#ns-im">Implementations</a>
+  </ul>
+  <h3><a href="#st">Stiff Solvers</h3>
+  <ul>
+	<li><a href="#st-rm">Rosenbrock</a>
+	<li><a href="#st-BSBD">BSBD semi-implicit</a>
+	<li><a href="#st-rk">Implicity RK</a>
+	<li><a href="#st-BDF">BDF methods</a>
+  </ul>
+  <h3><a href="#lv">LSODE and VODE</a></h3>
+  <ul>
+	<li><a href="#lv-lo">LSODE and ODEPACK</a>
+	<li><a href="#lv-vc">VODE and CVODE</a>
+	<li><a href="#lv-lv">LSODA vs. CVODE</a>
+  </ul>
+  <h3><a href="#cp">Comparisons</a></h3>
+  <br>
+  <h3><a href="#cl">Conclusion</a></h3>
+  <br>
+  <h3><a href="download/lsoda.c">Download lsoda.c</a></h3>
+</div>
+<div id="main">
+<!-- BEGIN OF THE BODY -->
+<h2><a name="bg">Background</a></h2>
+<p>
+  <a href="http://en.wikipedia.org/wiki/Stiff_equation">Stiff ODEs</a>
+  are evil. Most of numerical methods for solving ordinary differential
+  equations will become unbearably slow when the ODEs are
+  stiff. Unfortunately, a large set of ODEs are frequently stiff in
+  practice. It is very important to use an ODE solver that solves stiff
+  equations efficiently.
+</p>
+<br>
+<h2><a name="ns">Solvers for non-stiff equations</a></h2>
+<h3><a name="ns-ov">An overview of methods</a></h3>
+<p>
+  Most of the classical numerical methods for solving ODEs are for
+  non-stiff equations only. These methods include the
+  simplest <a href="http://en.wikipedia.org/wiki/Euler_method">Euler
+  method</a>, the most widely used
+  <a href="http://en.wikipedia.org/wiki/Runge-Kutta">fourth-order
+  Runge-Kutta method</a> (RK4), the
+  adaptive <a href="http://en.wikipedia.org/wiki/Runge–Kutta–Fehlberg_method">Runge–Kutta–Fehlberg
+  method</a> (RKF), the
+  adaptive <a href="http://en.wikipedia.org/wiki/Cash–Karp_method">Runge-Kutta-Cash–Karp
+  method</a> (RKCK), the
+  adaptive <a href="http://en.wikipedia.org/wiki/Dormand–Prince_method">Runge-Kutta-Dormand–Prince
+  method</a> and the
+  multi-step <a href="http://en.wikipedia.org/wiki/Multistep_method">Adams'
+  method</a> (predictor-corrector method). You can find the detailed
+  description of RK4 and RKCK methods
+  in <a href="http://www.nr.com/">Numerical Recipes</a> or other similar
+  textbooks. Euler and Runge-Kutta methods are one-step methods in that
+  they refer only to one previous value to determine the current
+  value. Adams' method, which refers to several previous function
+  values, is quite different and is probably less known to people, but
+  this method may potentially incur few function calls
+  [<a href="http://math.fullerton.edu/mathews/n2003/AdamsBashforthMod.html">reference</a>].
+</p>
+<h3><a name="ns-im">Implmentations</a></h3>
+<p>
+  It is fairly easy to implement the 4th order Runge-Kutta
+  method. Adaptive methods are not hard, either. You can largely read
+  the textbook and write your own
+  version. The <a href="http://www.gnu.org/software/gsl/">GNU Scientific
+  Library</a> (GSL) has implemented all the one-step methods above. The
+  interface is also very convenient.
+</p>
+<br>
+<h2><a name="st">Solvers for stiff equations</a></h2>
+<p>
+  Solvers for stiff equations usually require to evaluate
+  the <a href="http://en.wikipedia.org/wiki/Jacobian_matrix">Jacobian</a>,
+  which can be very expensive. Sophisticated solvers usually
+  automatically switch between stiff and non-stiff methods to achieve
+  good performance in both cases. Please read the next section for the
+  well known implementations.
+</p>
+<h3><a name="st-rm">Rosenbrock Methods</a></h3>
+<p>
+  This method is described in Numerical Recipe. It is relatively simple
+  to implement, but its performance is quickly degraded when we require
+  higher precision (beyond ~1e-5), which is confirmed by my
+  experience. This is not a good general-purpose method.
+</p>
+<p>
+  Apparently, for stiff equations, <a href="">XPP</a> uses the
+  Rosenbrock method.
+</p>
+<h3><a name="st-BSBD">Bulirsch-Stoer-Bader-Deuflhard semi-implicit methods</a></h3>
+<p>
+  Numerical Recipe (2nd edition) describes this method as "an excellent
+  routine for all stiff problems", although "very occasionally" it "will
+  encounter a singular matrix". Unfortunately, given my ODEs, this case
+  frequently occurs to the implementation in the book.
+</p>
+<p>
+  GSL comes with an alternative implementation (namely bsimp) of this
+  method. This implementation does not complain about singular matrix,
+  but incurs much more function calls than RKCK on one of my
+  examples. Apparently, this is not a good general-purpose method,
+  either.
+</p>
+<h3><a name="st-rk">Implicit Runge-Kutta methods</a></h3>
+<p>
+  GSL also provides the implicit 2nd/4th order Runge-Kutta
+  methods. These methods, however, do not seem to outperform the
+  explicit methods (see below).
+</p>
+<h3><a name="st-BDF">Backward Differentiation Formulae (BDF or Gear methods)</a></h3>
+<p>
+  Different from the above methods, BDF is a multi-step method. It is
+  probably the most widely used method for stiff
+  equations. <a href="http://books.google.com/books?id=HurESoDQljcC">Numerical
+  Algorithms with C</a>
+  gives <a href="http://www.google.com/codesearch/p?hl=en#JC4RawIU7d4/17/gear.c">a
+  good implementation</a> apparently.
+</p>
+<br>
+<h2><a name="lv">LSODE and VODE</a></h2>
+<p>
+  LSODE and VODE are probably the best known ODE solvers, both in
+  Fortran and developed by the <a href="https://www.llnl.gov/">Lawrence
+  Livermore National Laboratory</a>. LSODE eventually evolves into
+  <a href="https://computation.llnl.gov/casc/odepack/odepack_home.html">ODEPACK</a>,
+  while VODE into CVODE as part of
+  the <a href="https://computation.llnl.gov/casc/sundials/main.html">Sundials
+  package</a>. Older versions of ODEPACK and CVODE can also be found
+  at the <a href="http://www.netlib.org/">netlib</a> repository.
+</p>
+<h3><a name="lv-lo">LSODE and ODEPACK</a></h3>
+<p>
+  According to <a href="http://www.netlib.org/odepack/opkd-sum">this
+	page</a>, ODEPACK consists of LSODE and its eight variants. LSODA is
+  one of them, which automatically switches between the Adams' method
+  and the BDF method. A C version of LSODA is available
+  <a href="http://www.ccl.net/cca/software/SOURCES/C/kinetics2/lsoda-dir/index.shtml">here</a>,
+  but few people are using that to my knowledge.  I further combined the
+  source codes, fixed a few minor bugs and added a more convenient (but
+  less versatile) interface. You can download my
+  version <a href="download/lsoda.c">here</a>. The complete
+  documentation for the Fortran version are available
+  <a href="http://www.netlib.org/alliant/ode/prog/lsoda.f">at netlib</a>,
+  <a href="http://www.netlib.org/odepack/opkdmain.f">from odepack</a> or
+  <a href="http://www.ccl.net/cca/software/SOURCES/C/kinetics2/lsoda-dir/lsoda.doc">from
+  CCL.NET</a>. According to the tiny benchmark below, LSODA greatly
+  outperforms other simple stiff or non-stiff methods.
+</p>
+<p>
+  By the way, Mathematica also combine the Adams method and the BDF
+  method to solve ODEs
+  [<a href="http://controls.engin.umich.edu/wiki/index.php/Solving_ODEs_with_Mathematica#Gear_Method">reference</a>].
+</p>
+<h3><a name="lv-vc">VODE and CVODE</a></h3>
+<p>
+  VODE was developed after LSODE. Its C version, CVODE which is included
+  in the Sundials package, is believed to be the best ODE solver for C
+  programs. An older version of CVODE can be
+  found <a href="http://www.netlib.org/ode/cvode.tar.gz">here</a>. I do
+  not know how much it differs from the latest version. Apparently,
+  CVODE does not automatically choose between stiff and non-stiff
+  methods
+  [<a href="http://odetoolkit.hmc.edu/docs/solvers.html">reference</a>].
+</p>
+<h3><a name="lv-lv">LSODA vs. CVODE</a></h3>
+<p>
+  VODE was developed later and in its paper, the author claimed that
+  VODE outperformed LSODE. That paper was published over 20 years ago
+  and a lot have happened to the two packages. I do not know how the two
+  programs are compared now and am not aware of any systematic
+  benchmark. An implicit comparison is actually done by
+  the <a href="http://www.tbi.univie.ac.at/~raim/odeSolver/">SOSlib</a>
+  developers. In
+  a <a href="http://www.ebi.ac.uk/biomodels/meetings/2ndTrainingCamp/biomodels07.pdf">presentation</a>,
+  they showed SOSlib, which uses CVODE, achieves similar performance to
+  <a href="http://www.copasi.org/tiki-index.php">Copasi</a> which uses
+  LSODA.
+</p>
+<br>
+<h2><a name="cp">A (very rough) comparison on ONE set of ODEs</a></h2>
+<p>
+  I have a set of ODEs describing 41 genes/proteins and 63 reactions
+  between them. The system approaches to a fixed point at t=100.0
+  approximately. I run several ODE solvers on these ODEs and checked how
+  many iterations and function evaluations are required to integrate to
+  t=100.0. The following table shows the results. Methods with a star
+  require a user-provided function to calculate the Jacobian. I did not
+  count the function calls on calculating the Jacobian.
+</p>
+<table>
+<tr><th>Method<th align="right">#iterations<th>#evaluations</tr>
+<tr><th>nr-rkck<td align="right">1,272<td align="right">8,772</tr>
+<tr><th>nr-stifbs*<td align="right">failed<td align="right">failed</tr>
+<tr><th>nr-stiff*<td align="right">18,272<td align="right">54,960</tr>
+<tr><th>lsoda<td align="right">381<td align="right">1,754<tr>
+<tr><th>gsl-rkck<td align="right">1,275<td align="right">11,664</tr>
+<tr><th>gsl-rkf45<td align="right">1,315<td align="right">11,852</tr>
+<tr><th>gsl-rk2<td align="right">2,559<td align="right">13,677</tr>
+<tr><th>gsl-rk4<td align="right">961<td align="right">15,034</tr>
+<tr><th>gsl-rk8pd<td align="right">902<td align="right">16,884</tr>
+<tr><th>gsl-rk2imp<td align="right">2,765<td align="right">56,262</tr>
+<tr><th>gsl-rk4imp<td align="right">1,129<td align="right">33,038</tr>
+<tr><th>gsl-gear1<td align="right">&gt;9,999<td align="right">110,060</tr>
+<tr><th>gsl-gear2<td align="right">1,267<td align="right">36,784</tr>
+<tr><th>gsl-bsimp*<td align="right">458<td align="right">79,914</tr>
+</table>
+<p>
+  Lsoda is clearly the best on these ODEs. It requires far fewer
+  function evaluations than the rest. Nr-rkck outperforms gsl-rkck/rkf45
+  probably due to the details in implementation. RKCK and RKF45 are also
+  good candidates given their simplicity. Gsl-rk8pd uses the 8-9th order
+  RKPD method. It approaches the fixed point with fewer iterations than
+  RKCK, but requires more function evaluations and thus is less
+  efficient. I am not sure if gsl-gear1/2 and gsl-rk2/4imp are suitable
+  for stiff equations. Apparently they do not seem to be. Gsl-bsimp and
+  nr-stiff are both designed for stiff ODEs and both require user-provided
+  routines to calcuate the Jacobian. However, they are not comparable to
+  the others on this example.
+</p>
+<p>
+  Please note that the performance of a solver highly depends on the
+  characteristics, in particular the stiffness, of the input ODEs. You
+  will probably come to a different conclusion given another set of
+  ODEs.
+</p>
+<br>
+<h2><a name="cl">Conclusion</a></h2>
+<p>
+  LSODA is a good ODE solver especially when you do not know whether
+  your ODEs are stiff or not. One potential concern comes from its
+  implementation. The C version of LSODA have many global variables,
+  which makes it unsuitable for solving more than one set of ODEs. A
+  better implementation should pack all the global variables into a
+  struct.
+</p>
+<p>
+  My version of LSODA can be
+  downloaded <a href="download/lsoda.c">here</a>.
+</p>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2009-05-22</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>

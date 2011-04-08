@@ -1,0 +1,270 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+ol, ul { margin: 0.5em; }
+li { margin: 0.5em; }
+</style>
+<title>Benchmark of Regex Libraries</title>
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html');">
+<div id="wrap">
+<div id="header"><h1>Benchmark of Regex Libraries</h1></div>
+<span id="top"></span>
+<div id="widemain">
+<!-- BEGIN OF THE BODY -->
+<h2><a name="intro">Introduction</a></h2>
+<p><a href="http://en.wikipedia.org/wiki/Regular_expression">Regular
+expressions</a> (regex) is often the most convinient approach for
+parsing text files. The performance of regex matching may be critical
+when the input files are huge, which is quite common in analyzing
+biological data. Most scripting languages support regex and there are
+various C/C++ libraries, too, but surprisingly few have evaluated their
+performance. This page aims to provide a preliminary benchmark on the
+performance of several regex libraries as well as scripting
+languages.</p>
+<h2><a name="design">Design</a></h2>
+<h3>Input text</h3>
+<p>The text file for this benchmark is a version of concatenated
+Linux <a href="http://people.unipmn.it/manzini/lightweight/corpus/howto.bz2">howto</a>
+document. This file has 39,422,105 bytes, 5,330,321 words and 1,086,077
+lines (according to <tt>wc</tt>). The maximum line length is 533 and the
+median is 33.</p>
+<h3>Patterns</h3>
+<ol>
+  <li>URI (protocol://server/path): <tt>([a-zA-Z][a-zA-Z0-9]*)://([^ /]+)(/[^ ]*)?</tt>
+  <li>Email (name@server): <tt>([^ @]+)@([^ @]+)</tt>
+  <li>Date (month/day/year): <tt>([0-9][0-9]?)/([0-9][0-9]?)/([0-9][0-9]([0-9][0-9])?)</tt>
+  <li>URI|Email: <tt>([a-zA-Z][a-zA-Z0-9]*)://([^ /]+)(/[^ ]*)?|([^ @]+)@([^ @]+)</tt>
+</ol>
+<p>It should be note that the above regular expressions may not be
+  strictly correct or the optimal. We just need something to test the
+  performance.</p>
+<p>It is also worth noting that matching word boundaries is not required
+  by POSIX regex. For the patterns above, we may simply check the
+  character before and after the matching region to test if the entire
+  match is a word.</p>
+<h3>Matching</h3>
+<p>
+  The benchmarking program reads the file and tests matching line by
+  line. The tailing new line character is trimmed as different libraries
+  may treat it differently.
+</p>
+<br>
+<h2>Results</h2>
+<p>All the benchmark programs or scripts are available at
+<a href="http://klib.svn.sourceforge.net/viewvc/klib/trunk/reb/">this
+page</a>. The following table shows the performance on a 64-bit Macbook
+Pro clocked at 2.53GHz with Mac OS X 10.6.4 and gcc-4.2.1 installed.
+</p>
+<table>
+  <tr><th>Library/program<th>Algo<th>UTF-8<th>Perl<th>Light<th>POSIX<th>URI<th>Email<th>Date<th>Sum3<th>URI|Email</tr>
+<tr><th><a href="http://www.boost.org/doc/libs/1_43_0/libs/regex/doc/html/index.html">boost::regex</a> (1.42)<td>BT<td id="tbun">?<td id="tbyes">Yes<td id="tbno">No<td id="tbno">No<td>5.44<td>1.82<td>1.15<td>8.41<td>9.84</tr>
+<tr><th><a href="http://www.boost.org/doc/libs/1_38_0/doc/html/xpressive.html">boost::xpressive</a>
+(1.42)<td>?<td id="tbun">?<td id="tbyes">Yes<td id="tbno">No<td id="tbno">No<td>3.72<td>1.51<td>1.22<td>6.45<td>7.80</tr>
+<tr><th><a href="http://library.gnome.org/devel/glib/stable/glib-Perl-compatible-regular-expressions.html">Glib</a> (2.24.1)<td>?<td id="tbun">?<td id="tbyes">Yes<td id="tbno">No<td id="tbno">No<td>1.08<td>0.84<td>0.79<td>2.35<td>18.02</tr>
+<tr><th><a href="http://www.geocities.jp/kosako3/oniguruma/">onig-posix</a> (5.9.2)<td>BT<td id="tbyes">Yes<td id="tbyes">Yes<td id="tbno">No<td id="tbyes">Yes<td><b>0.34</b><td>0.44<td><b>0.41</b><td><b>1.19</b><td>10.89</tr>
+<tr><th><a href="http://www.pcre.org/">PCRE-posix</a> (8.10)<td>BT<td id="tbyes">Yes<td id="tbyes">Yes<td id="tbno">No<td id="tbyes">Yes<td>0.67<td><b>0.39</b><td>0.54<td>1.60<td>13.48</tr>
+<tr><th><a href="http://code.google.com/p/re2/">RE2</a> (2010-07-19)<td>FSA<td id="tbyes">Yes<td id="tbyes">Yes<td id="tbno">No<td id="tbno">No<td>0.57<td>0.56<td>0.55<td>1.68<td><b>0.58</b></tr>
+<tr><th>Regex (Mac, 10.6.4)<td>?<td id="tbun">?<td id="tbno">No<td id="tbno">No<td id="tbyes">Yes<td>1.18<td>0.54<td>1.28<td>3.00<td>19.66</tr>
+<tr><th>Regex (NCBI,
+?)<td>BT<td id="tbno">No<td id="tbno">No<td id="tbyes">Yes<td id="tbyes">Yes<td>7.21<td>9.83<td>3.45<td>20.49<td>22.35</tr>
+<tr><th><a href="http://swtch.com/plan9port/unix/">regexp9</a> (20100715)<td>FSA<td id="tbyes">Yes<td id="tbno">No<td id="tbyes">Yes<td id="tbpar">Similar<td>1.90<td>2.12<td>0.95<td>4.97<td>4.55</tr>
+<tr><th><a href="http://www.tcl.tk/">Tcl</a> (8.5)<td>?<td id="tbyes">Yes<td id="tbno">No<td id="tbno">No<td id="tbpar">Similar<td>2.17<td>1.73<td>1.52<td>5.42<td>3.66</tr>
+<tr><th><a href="http://laurikari.net/tre/">TRE</a> (0.8.0)<td>FSA<td id="tbun">?<td id="tbno">No<td id="tbno">No<td id="tbpar">Similar<td>4.34<td>2.42<td>1.73<td>8.49<td>8.57</tr>
+<tr><th><a href="http://tiny-rex.sourceforge.net/">T-Rex</a> (1.0)<td>?<td id="tbno">No<td id="tbno">No<td id="tbyes">Yes<td id="tbno">No<td>4.39<td>6.45<td>2.45<td>13.29<td>9.35</tr>
+<tr><th><a href="http://www.opensource.apple.com/source/grep/grep-28/">egrep</a> (GNU, 2.5.1)<td>?<td id="tbyes">Yes<td id="tbno">No<td id="tbun">NA<td id="tbun">NA<td>0.07<td>0.08<td>0.10<td>0.25<td>0.16</tr>
+<tr><th>gawk (3.1.8)<td>?<td id="tbyes">Yes<td id="tbno">No<td id="tbun">NA<td id="tbun">NA<td>1.43<td>1.40<td>1.38<td>4.21<td>1.43</tr>
+<tr><th>Javascript V8 (2.3.1)<td>?<td id="tbun">?<td id="tbun">?<td id="tbun">NA<td id="tbun">NA<td>2.30<td>2.57<td>1.17<td>6.04<td>3.70</tr>
+<tr><th><a href="http://www.opensource.apple.com/source/awk/awk-15/">nawk</a>
+(20070501)<td>FSA<td id="tbno">No<td id="tbno">No<td id="tbun">NA<td id="tbun">NA<td>1.40<td>1.40<td>1.40<td>4.20<td>1.40</tr>
+<tr><th>Perl (5.8.9)<td>BT<td id="tbyes">Yes<td id="tbyes">Yes<td id="tbun">NA<td id="tbun">NA<td>0.63<td>0.59<td>0.52<td>1.74<td>10.61</tr>
+<tr><th>Python (2.6.1)<td>?<td id="tbyes">Yes<td id="tbno">No<td id="tbun">NA<td id="tbun">NA<td>6.37<td>10.19<td>2.18<td>18.74<td>16.03</tr>
+</table>
+
+<ul>
+  <li>Column `Algo' indicates the algorithm for
+  regex. `BT'=backtracking, and `FSA'=finite state machine.
+  <li>Column `UTF-8' indicates if the library explicitly supports UTF-8
+	encoding. See also the
+	<a href="http://en.wikipedia.org/wiki/Regular_expression#Unicode">Unicode</a>
+	section on wiki.
+  <li>Column `Perl' denotes if the library supports
+	advanced perl-compatible syntax, such as word boundaries and back
+	reference.
+  <li>Column `Light' shows whether the library is implemented in two
+	files: a header and a source file. Such two-file libraries can be
+	easily included in a 3rd-party program at the source-code level,
+	which makes the 3rd-party program less dependent on external APIs.
+  <li>Column `URI', `Email' and `Date' give the CPU seconds for finding
+	all matching lines given the three regular expressions above,
+	respectively. Column `Sum3' gives the sum of CPU seconds for `URI',
+	`Email' and `Date'.
+  <li>T-Rex gives additional matching lines for `URI', which is
+  incorrect.
+</ul>
+<br>
+<h2>Discussions</h2>
+<p>
+  <b>Note</b>: boost::xpressive, Glib, Tcl and V8 were added later. The
+  discussions below did not consider these implementations.
+</p>
+<h3>Backtracking vs. state machines</h3>
+<p>
+  Regex libraries are typically implemented with backtracking (BT) or
+  finite state machine (FSA). The former approach is more flexible but
+  can be exponential in time given some regex. The latter guarantees
+  polynomial time in searching, but usually less flexible. RE2 is
+  believed to be the only library that uses FSA and supports Perl-like
+  syntax at the same time.
+</p>
+<p>
+  In practice, implementations based on BT and FSA seem to have similar
+  performance on short regex. However, FSA may greatly outperform BT
+  given the `|' operator in regex. This means for BT-based
+  implementations, matching with multiple regex is preferred.
+</p>
+<h3>Speed of C/C++ regex libraries</h3>
+<p>
+  For `|'-free regex, onig is the winner. PCRE and RE2 are similar in
+  performance. The regex library from Mac OS X is comes in the next
+  place. Of the three light-weight library, only regexp9 is close to the
+  performance of matured libraries. TRE and boost::regex are nearly 8X
+  slower than onig on `|'-free regex.. The T-Rex and NCBI port of regex
+  are the slowest implementations.
+</p>
+<p>
+  For `|'-contained regex, the results are changed a lot. RE2 clearly
+  beats all the rest. Regexp9 and TRE, the other two FSA based libraries
+  come in the second and the third places, respectively. Several
+  BT-based algorithms such as onig and PCRE are 10X slower than using
+  two regex separately, although this is not true for all BT-based
+  algorithms.
+</p>
+<h3>Speed of standalone programs and scripting languages</h3>
+<p>
+  GNU's egrep is fast mainly because it hybridizes regex matching with
+  Boyer-Moore search. I do not know how exactly this is done, but I do
+  hope other regex may adopt this heuristics. On all the regex I have
+  tried, egrep is the fastest. Another possible reason that egrep is
+  fast may be because it does not keep track of grouping.
+</p>
+<p>
+  Perl is surprisingly fast as a scripting language. Python, on the
+  contrary, is surprisingly slow. I heavily rely on regex for parsing
+  huge text files. This benchmark tells me that python, although faster
+  than perl in other applications, is not the right language for me.
+</p>
+<h3>C vs. C++</h3>
+<p>
+  I used PCRE's POSIX APIs in the table above. If I use its C++ APIs,
+  PCRE becomes 10% slower. C++ interfaces incur minor overheads.
+</p>
+<p>
+  For boost::regex, I implemented two versions: one uses the fgets()
+  libc API and the other uses std::getline() to read into a C++
+  string. The already-slow boost::regex becomes 50% slower, which means
+  50% CPU time goes to a function as simple as getline()! Why not
+  implement getline() by calling fgets()?
+</p>
+<h3>Alternative benchmarks</h3>
+<p><a href="http://swtch.com/~rsc/">Russ Cox</a>, the developer of the
+RE2
+library, <a href="http://swtch.com/~rsc/regexp/regexp3.html">evaluated</a>
+the performance of RE2 and PCRE. He seems to be using long texts, while
+my programs match line by line. The results may not be comparable.
+</p>
+<p>
+  Google search will bring us
+  to <a href="http://softwareramblings.com/2008/08/c-regular-expression-performance.html">this
+  page</a>. The conclusion broadly agrees with mine: PCRE is
+  significantly faster than boost::regex. Nonetheless, that benchmark is
+  not performed in a realistic context.
+</p>
+<p>
+  <a href="http://snowplow.org/martin/rebench/">This page</a> evaluates
+  the performance of regex matching of several scripting languages. It
+  also points out that python is slower in regex matching. Another
+  interesting conclusion from that page is perl is efficient given
+  `/FOO/ || /BAR/' but very inefficient given `/FOO|BAR/'. So I also
+  added this type of regex to my benchmark.
+</p>
+<p>
+  The <a href="http://shootout.alioth.debian.org/u32/benchmark.php?test=regexdna&lang=all">regex-dna</a>
+  benchmark from <a href="http://shootout.alioth.debian.org/">The
+  Computer Language Benchmarks Game</a> shows that Python is faster than
+  Perl. This may be related to Perl's inefficiency given `/FOO|BAR/'. I
+  have not tested this, though.
+</p>
+<br>
+<h2>Conclusions</h2>
+<p>
+  Before I did this benchmark, I thought all regex implementations are
+  similar in performance, like what happens to the hash table
+  libraries. To my big surprise, the fact is the contrary. The
+  performance varies a lot between implementations and between
+  regex. Most widely used implementations such as boost::regex, Python,
+  Perl and gawk all have striking weakness.
+</p>
+<p>
+  In this benchmark, RE2 seems to be the overall winner. It is
+  feature-rich and among the fastest for all 4 regex. More importantly,
+  it does not suffer from the worst-case problem. RE2 is implemented in
+  C++. For C programmers, onig or PCRE is a good choice. However, to use
+  these two libraries, we should be aware that regex containing the `|'
+  operator may greatly degrade the performance. If this is a concern,
+  one may consider regexp9. Regexp9 is featured as its small code size
+  (&lt;1300 lines of code) which makes it the ideal library when we want
+  to include the source code in a project to avoid an extra library
+  dependency.
+</p>
+<br>
+<h2>Appendix: Performance on x64-linux</h2>
+<p>Compiled on Debian etch with gcc-4.1.2 (CPU: Xeon E5450 @3GHz). This
+is a server. Timing may have large variance due to other active
+processes running on the same machine.</p>
+</p>
+<table>
+<tr><th>Library/Program<th>URI<th>Email<th>Date<th>URI|Email</tr>
+<tr><th>re2 (20100719)<td>0.54<td>0.56<td>0.50<td>0.64</tr>
+<tr><th>regex (glibc 2.3.6)<td>3.12<td>3.96<td>0.39<td>3.91</tr>
+<tr><th>regexp9 (20100715)<td>1.74<td>2.09<td>0.97<td>4.25</tr>
+<tr><th>tcl (8.4)<td>1.56<td>1.26<td>1.09<td>2.72</tr>
+<tr><th>gawk (3.1.5)<td>0.47<td>0.43<td>0.30<td>0.36</tr>
+<tr><th>egrep (GNU 2.5.1)<td>0.09<td>0.05<td>0.10<td>0.16</tr>
+<tr><th>nawk (20070501)<td>0.94<td>0.92<td>0.92<td>0.92</tr>
+<tr><th>perl (5.8.8)<td>0.62<td>0.56<td>0.62<td>9.93</tr>
+<tr><th>python (2.5)<td>4.26<td>7.00<td>1.58<td>10.66</tr>
+</table>
+<link type="text/css" rel="stylesheet"
+href="SyntaxHighlighter.css"></link>
+<script language="javascript" src="shCore.js"></script>
+<script language="javascript" src="shBrushCpp.js"></script>
+<script language="javascript">
+  dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2010-07-21</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>

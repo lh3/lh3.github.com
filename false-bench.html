@@ -1,0 +1,131 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Flawed Benchmark</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html', 'inc/sb-main.html');">
+<div id="wrap">
+<div id="header"><h1>Flawed Benchmarks on Aligners</h1></div>
+<span id="top"></span>
+<div id="main">
+<!-- BEGIN OF THE BODY -->
+<p>
+  Many short-read aligners have been published and nearly each of them
+  is evaluated against some of the others. However, few of these
+  benchmarks please me. Even my own benchmark is flawed in some
+  aspects. This page points out my view of these benchmarks, about why
+  they are flawed and how to improve them. In all, benchmarking is
+  really a difficult task. To give a reasonable benchmark, one must
+  thouroughly understand all the involved programs. Most of benchmarks
+  are flawed due to failing this fundamental requirement.
+</p>
+<h3>Not measuring alignment errors</h3>
+<p>
+  This is the most common and most severe flaw in aligner
+  benchmarks. Frequently the developers say their own aligner is good
+  because it aligns more reads. This metrics alone is simply
+  wrong. Mapping more reads only means the aligner is sensitive. The
+  specificity or accuracy of an aligner is far more important in
+  practice. An aligner that maps more reads but produces far more errors
+  is practically useless.
+</p>
+<p>
+  The simplest way to evaluate accuracy is to simulate reads. Because
+  you know the exact coordinates, you can calculate the error rate. A
+  better aligner should give few errors among, say, 80% of most reliable
+  alignments.
+</p>
+<p>
+  Measuring specificity/accuracy on real data is more complicated. One
+  way is to fabricate a hybridized reference, combining genomes from two
+  species (see BWA-short paper). Another way is to do pairwise
+  comparison between the resultant alignments in the principle that a
+  more accurate aligner tends to place reads to better locations.
+</p>
+<h3>Improper input</h3>
+<p>
+  The performance of an aligner may be greatly hampered given improper
+  input. To use an aligner properly, one must understand how the
+  aligners are working. Eland, maq, zoom, rmap and seqmap are highly
+  inefficient if only a few thousand reads are aligned against a large
+  genome. Aligning 1,000 reads with these aligners is nearly of the same
+  speed in comparison to aligning 10,000 reads to the human genome.
+</p>
+<p>
+  Furthermore, BWT-based aligners are relatively more efficient on very
+  long reference sequences such as the human genome, because their
+  complexity is better than being linear to the reference length, while
+  most other algorithms are linear in the length. BWT-based aligners can
+  be 10X faster than some hash table based aligners if we align reads
+  against the human genome, but may be slower than those aligners if we
+  align against a bacterial genome.
+</p>
+<h3>Non-typical usage</h3>
+<p>
+  This is a minor flaw which I also used to commit. Different aligners
+  have different performance profiles given data of different
+  characteristics. For example, bwa is fast on perfect hits, but slower
+  on hits with many mismatches, while maq is less affected by sequencing
+  error rates. As a result, using high-quality reads favours bwa but not
+  maq. To make a fair comparison, we should use data typical to most
+  genome centers and labs but not pick a data set that favour our own
+  aligners.
+</p>
+<p>
+  Another example of non-typical use is to output multiple hits. Several
+  benchmarks ask bowtie to output all hits. However, bowtie is not
+  designed for this task. It will take a lot of time to get the
+  chromosomal coordinates of the hits. What is more important, we seldom
+  use all hits. Only very few downstream analyses take the advantages of
+  mutliple hits, while most others simply discard multiple hits in the
+  first place. It is not right to evaluate the multi-hit mode just
+  because our own aligner is good at that. Benchmarks should always be
+  set in a practical scenario.
+</p>
+<h3>Overweighing speed</h3>
+<p>
+  Many developers pay excessive attention to speed but forget other
+  metrics such as memory and features. They may claim their aligner is
+  faster regardless of the fact that it uses far more memory or lacks
+  features in other aligners (e.g. longer reads, gapped alignment and
+  suboptimal hits). However, if they reduce the memory or implement
+  these features, they will find their aligner is no faster than
+  others. For example, many people claim that bowtie is faster than bwa,
+  but by default bwa outputs much more information than bowtie. When we
+  ask bowtie to retain enough suboptimal hits, it is similar to bwa in
+  speed. In addition, bwa does gapped alignment which has additional
+  overhead.
+</p>
+<h3>Not understanding the output</h3>
+<p>
+  This flaw occurs occasionally, but once occurs it is a severe
+  problem. I remember to read a paper saying that maq and bowtie are bad
+  because they randomly place repetitive reads. However, both maq and
+  bowtie give a way to discard these hits.
+</p>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2009-10-16</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>

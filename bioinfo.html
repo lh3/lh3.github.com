@@ -1,0 +1,84 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Bioinformatics</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html', 'inc/sb-main.html');">
+<div id="wrap">
+<div id="header"><h1>Articles About Bioinformatics</h1></div>
+<span id="top"></span>
+<div id="main">
+<!-- BEGIN OF THE BODY -->
+<h3>Sequencing related</h3>
+<ul>
+  <li><a href="NGSalign.html">Reads alignment for the NextGen sequencing
+	  data</a>. Briefly review several some aligners for new-sequencing
+	reads, indicating their advantages, features and potential
+	limitations.
+  <li><a href="NGSalnview.html">Read alignment/assembly
+	  viewer</a>. Briefly review the features of alignment/assembly viewers
+	that are capable of large (over 10GB) alignments.
+  <li><a href="practical.html">Being practical aligners</a>. Discuss how
+	a bioinformatic tool can become practical and popular.
+  <li><a href="false-bench.html">Flawed benchmarks</a>. Why are they
+	flawed and how to improve them.
+  <li><a href="download/PCR-dup.pdf">Theoretical PCR duplicate rate</a>
+	(PDF). Derive the formula of the theoretical PCR duplicate rate and
+	the probability of two ends in a read pair having the same
+	coordinates.
+  <li><a href="snpable.html">Find unique regions</a>. Present a set of
+	programs on calculating the uniqueness of a region and show the
+	fraction of human genome is unique under different threshold.
+  <li><a href="mapuniq.html">Mapping uniqueness</a>. Discuss the
+	definition of unique alignment and point out its weakness.
+  <li><a href="download/samtools.pdf">Theory on multi-sample SNP
+	  calling and allele frequency estimate</a> (PDF). A simplified
+	  version has been implemented
+	  in <a href="http://samtools.sourceforge.net">SAMtools</a>.
+</ul>
+<h3>Sequence analysis</h3>
+<ul>
+  <li><a href="parsefastq.html">FASTA/FASTQ parser in C</a>. Present a
+	small and versatile FASTA/FASTQ parser contained in a single C
+	header file. This parser works with all known FASTA/FASTQ variants
+	and seamlessly adapt to gzipped file and to FASTA/FASTQ.
+  <li><a href="multialign.html">Multiple alignment programs</a>. Give a
+	brief overview of several multiple alignment programs, comparing
+	their advantages and performance, summarized from publications.
+</ul>
+<h3>Data processing and data retrieval</h3>
+<ul>
+  <li><a href="biounix.html">Unix commands for
+	  Bioinformaticians</a>. Explain several convenient but
+	unfortuantely not well-known Unix commands which may greatly speed
+	up your analyses on biological data.
+  <li><a href="ucsc-mysql.html">Connect UCSC MySQL with Perl</a>. Show a
+	Perl script that quickly retrieves various UCSC data in a specified
+	genomic region by connecting to the public UCSC MySQL server.
+</ul>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2009-06-14</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>

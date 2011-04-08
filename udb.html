@@ -1,0 +1,234 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+ol, ul { margin: 0.5em; }
+li { margin: 0.5em; }
+</style>
+<title>Benchmark of Dictionary Structures</title>
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html');">
+<div id="wrap">
+<div id="header"><h1>Benchmark of Dictionary Structures</h1></div>
+<span id="top"></span>
+<div id="sidebar">
+  <h3><a href="#intro">Introduction</a></h3>
+  <br>
+  <h3><a href="#design">Design</a></h3>
+  <ul>
+    <li><a href="#data">Data generation</a>
+	<li><a href="#compile">Compilation</a>
+	<li><a href="#src">Source code</a>
+	<li><a href="#lib">Included libraries</a>
+  </ul>
+  <h3><a href="#rst">Results</a></h3>
+  <br>
+  <h3><a href="#discuss">Discussions</a></h3>
+</div>
+<div id="main">
+<!-- BEGIN OF THE BODY -->
+<h2><a name="intro">Introduction</a></h2>
+<p>
+  Dictionary is a type of data structure that supports fast retrieval of
+  key-value pairs. Hashtable, B-tree and binary search trees are among
+  the most frequently used dictionary data structures.
+</p>
+<p>
+  This page benchmarks various C/C++ dictionary libraries. You may see a
+  similar page elsewhere, but I can assure you that this page is the
+  origin and the latest.
+</p>
+<br>
+<h2><a name="design">Design of the Benchmark</a></h2>
+<h3>Data generation</h3>
+<p>
+  To benchmark dictionary with integer keys, a random integer array of 5
+  million elements is generated with about 1.25 million distinct
+  keys. Each element is then tested whether it is present in the
+  dictionary. If the element is in the dictionary, it will be removed;
+  otherwise, it will be inserted. 625,792 distinct keys will be left in
+  the dictionary after this process. To benchmark dictionary with string
+  keys, the same integer array is converted to char* array using
+  sprintf().
+</p>
+<h3><a name="compile">Configuration and compilation</a></h3>
+<p>
+  All programs are compiled on Intel-Mac (OS X 10.5, 32-bit gcc-4.2) and
+  Intel-Linux (Debian etch, 64-bit gcc-4.1) with the command-line
+  option: `<tt>-g -Wall -O2 -fomit-frame-pointer</tt>'.
+</p>
+<h3><a name="src">Source code</a></h3>
+<p>
+  Benchmark programs are available
+  as <a href="download/udb-latest.tar.bz2">udb-latest.tar.bz2</a>. This
+  tar-ball also includes a small program that checks the peak memory
+  usage and a table in Numbers from which the plots below were
+  generated. When you extract the tar-ball, directories with name
+  beginning with underscore contain programs which require
+  pre-installation of libraries; other directories can be compiled
+  straight out of box.
+</p>
+<h3><a name="lib">Included libraries</a></h3>
+<h4>Hash table</h4>
+<ul>
+  <li><b>boost_hash</b>: <a href="http://www.boost.org/">Boost</a>
+	unordered_map C++ template hash table (chaining). Require the Boost
+	library. No data for Intel-Mac.
+  <li><b>gcc_tr1_hash</b>:
+	g++-4 <a href="http://en.wikipedia.org/wiki/C%2B%2B_Technical_Report_1">TR1</a>
+	unordered_map C++ template hash table (chaining).
+  <li><b>glib_hash</b>: <a href="http://www.gtk.org/">Glib</a> C hash
+	table (chaining). Require glib.
+  <li><b>google_dense</b>: <a href="http://code.google.com/p/google-sparsehash/">google
+	  dense hash table</a> (C++, quadratic probing). Library source codes are
+	  included.
+  <li><b>google_sparse</b>: <a href="http://code.google.com/p/google-sparsehash/">google
+	  sparse hash table</a> (C++, quadratic probing). Library source codes
+	  are included. This library use 1 bit to represent an unused bucket
+	  and therefore is highly memory efficient.
+  <li><b>htable</b>: C hash table (chaining). Someone sent me this
+	library with email, which I have lost unfortunately. I cannot find
+	who is the author. Sorry.
+  <li><b>khash</b>: my C macro hash table (double hashing). This library
+	has been used in bwa, samtools and several of my other projects. It
+	features a good balance between speed and memory.
+  <li><b>qt_QHash</b>: <a href="http://www.qtsoftware.com/">QT</a> C++
+	hash table (in fact a skipped list). Require QT.
+  <li><b>rde::hash_map</b>: <a href="http://code.google.com/p/rdestl/">RDE</a>
+	C++ template hash table (linear probing). Library source codes are
+	included. This library caches hashes of keys, which helps speed at
+	the cost of more memory usage.
+  <li><b>sgi_hash_map</b>: <a href="http://www.sgi.com/tech/stl/">SGI
+	  STL</a> C++ template hash table (chaining). Although this library
+	  is not part of any standard, it is probably most widely used.
+  <li><b>stb_hash</b>: STB (<a href="http://nothings.org/">Sean's Tool
+	  Box</a>) C marco hash table (double hashing?).
+  <li><b>uthash</b>: <a href="http://nothings.org/">a hash table for C
+	  structures</a> (chaining).
+</ul>
+<br>
+<h4>B-tree</h4>
+<ul>
+  <li><b>JG_btree</b>: <a href="http://resnet.uoregon.edu/~gurney_j/jmpc/btree.html">John-Mark
+	  Gurney's B-tree library</a> in C.
+  <li><b>kbtree</b>: my C macro B-tree modified from JG_btree. Kbtree
+	does not allocate null pointers at leaf nodes and achieves smaller
+	memory footprint. I have also optimized JG_btree a bit, as you can
+	see from the benchmark.
+  <li><b>stx_btree</b>: <a href="http://idlebox.net/2007/stx-btree/">STX
+	  B+-tree template class</a>. A high-performance library with STL
+	interface, slightly outperforming my kbtree. Highly recommended!
+</ul>
+<br>
+<h4>Red-black tree</h4>
+<ul>
+  <li><b>gdsl_rb</b>: red-black tree implementation from
+	the <a href="http://home.gna.org/gdsl/">GDSL</a> C library. Standard
+	red-black tree implementation with three pointers in each node.
+  <li><b>glib_tree</b>: red-black tree from
+	the <a href="http://www.gtk.org/">glib</a> C library. Three pointers
+	in each node.
+  <li><b>JE_rb_new</b> and <b>JE_rb_old</b>:
+	from <a href="http://www.canonware.com/~ttt/2008/07/treaps-versus-red-black-trees.html">Jason
+	Evans' C macro tree library</a>. JE_rb_new implements
+	a <a href="http://www.cs.princeton.edu/~rs/">left-leaning red-black
+	tree</a> with each node having two pointers. The color bit is folded
+	into the lowest bit of a pointer. JE_rb_old has three pointers in
+	each node.
+  <li><b>libavl_prb</b> and <b>libavl_rb</b>:
+	from <a href="http://www.stanford.edu/~blp/avl/">libavl</a> in C. Libavl_prb
+	has three pointers in each node and libavl_rb has two.
+  <li><b>libavl_rb_cpp</b> and <b>libavl_rb_cpp2</b>: my C++ port of
+	libavl_rb. Libavl_rb_cpp2 also folds the color bit into the lowest
+	bt of a pointer, similar to JE_rb_new.
+  <li><b>NP_rbtree</b>: <a href="http://www.freebsd.org/cgi/cvsweb.cgi/src/sys/sys/tree.h">Niels
+	  Provos' tree library</a> for FreeBSD using C macros. Standard
+	  3-pointer implementation.
+  <li><b>qt_QMap</b>: from
+	the <a href="http://www.qtsoftware.com/">QT</a> C++ library. Algorithm
+	unknown.
+  <li><b>sgi_map</b>: red-black tree implementation
+	from <a href="http://www.sgi.com/tech/stl/">SGL STL</a>.
+  <li><b>sglib_rbtree</b>: from
+	the <a href="http://sglib.sourceforge.net/">SGLIB</a> C macro
+	library. This is the only red-black tree implementation using
+	recursion.
+  <li><b>TN_rbtree</b>: <a href="http://www.darkridge.com/~jpr5/archive/alg/node21.html">Thomas
+	  Niemann's red-black tree</a>. I ported it to C++ quite some time ago.
+</ul>
+<br>
+<h4>AVL tree</h4>
+<ul>
+  <li><b>libavl_avl</b>: also from libavl (in C).
+  <li><b>libavl_avl_cpp</b>: C++ port of libavl_avl by me.
+</ul>
+<br>
+<h4>Other binary search tree</h4>
+<ul>
+  <li><b>JE_trp_hash</b> and <b>JE_trp_random</b>: also from Jason
+	Evans' tree library.
+  <li><b>libavl_bst</b>: unbalanced binary search tree from libavl.
+  <li><b>NP_splaytree</b>: splay tree implemented by Niels Provos.
+</ul>
+<br>
+<h2><a name="rst">Results</a></h2>
+<p>
+  The following figures show the results which are also available
+  as <a href="download/udb.pdf">this PDF file</a> where the data table
+  is also included.
+</p>
+<img src="download/udb-ic.png"/> <img src="download/udb-im.png"/>
+<img src="download/udb-sc.png"/> <img src="download/udb-sm.png"/>
+<h2><a name="discuss">Discussions</a></h2>
+<h3>C pointers vs. C macros vs. C++ templates</h3>
+<p>
+  For generic programming in C, people usually use `<tt>void*</tt>'
+  pointers to work with type-independent data. However, this always
+  comes with the cost of a pointer for each key. For small keys like
+  integers, the cost is considerable. In C, a better way is to use
+  macros. This way also avoids the overhead on retrieving the data
+  pointed by `<tt>void*</tt>' pointers. In most cases, implementations
+  with macros achieve the same speed as fully optimized type-specific
+  implementations. To some extend, C++ templates extend the ability of C
+  macros. They are usually more convenient, but on efficiency they do
+  not do better than C macros.
+</p>
+<p>
+  In this benchmark, <b>libavl_rb_cpp</b> is a literal translation
+  of <b>libavl_rb</b> by replacing `<tt>void*</tt>' pointers to keys
+  with actual keys. This simple change makes <b>libavl_rb_cpp</b> both
+  faster and more light-weight.
+</p>
+<br>
+
+<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+<script language="javascript" src="shCore.js"></script>
+<script language="javascript" src="shBrushCpp.js"></script>
+<script language="javascript">
+  dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2009-06-19</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>

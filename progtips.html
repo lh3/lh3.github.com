@@ -1,0 +1,127 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Misc Programming Tips</title>
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html');">
+<div id="wrap">
+<div id="header"><h1>Miscellaneous Programming Tips</h1></div>
+<span id="top"></span>
+<div id="widemain">
+<!-- BEGIN OF THE BODY -->
+<h2>C/C++ Programming</h2>
+<h3>GCC predefined macros</h3>
+<p>
+  To see all the system defined macros, use &quot;<b>cpp -dM
+  /dev/null</b>&quot;.</p>
+<h3>Compile/link OpenGL in Mac OS X</h3>
+<p>
+  In Mac OS X, the GLUT header file is &quot;&lt;GLUT/glut.h&gt;&quot;
+  instead of &quot;&lt;GL/glut.h&gt;&quot;. You can use the following
+  lines in your source codes:</p>
+<textarea name="code" class="c" cols="60" rows="10">
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+</textarea>
+<p>To link a OpenGL program, you should: &quot;<b>gcc -framwork openGL
+  -framework glut opengl.c -o opengl</b>&quot;.</p>
+<h3>Statically and dynamically linking</h3>
+<p>Sometimes we intend to statically link to one library and dynamically
+  link to another one. To achieve this (on my Linux virtual machine),
+  you can, for example, &quot;<b>gcc a.o b.o -Wl,-Bstatic -lglut
+  -Wl,-Bdynamic -lGL -lGLU</b>&quot;. Basically, &quot;<b>-Wl</b>&quot;
+  make s gcc transfer &quot;<b>-Bstatic</b>&quot; and
+  &quot;<b>-Bdynamics</b>&quot; to the linker
+  &quot;<b>ld</b>&quot;. This tip comes
+  from <a href="http://gcc.gnu.org/ml/gcc/2001-07/msg01449.html">this
+  page</a>.</p>
+<h3>Writing to a memory mapped file</h3>
+<p>To write to a memory mapped file, we need to
+  first <a href="http://opengroup.org/onlinepubs/007908799/xsh/ftruncate.html">ftruncate()</a>
+  the file to the right size and then put the data; otherwise a seek()
+  error will occur. On some operating systems, ftruncate() does not
+  create a file of actual size when it is called. We may see a large
+  file, but du only reports a very small
+  size.</p>
+<h3>Accelerate malloc() under Linux</h3>
+<p>We should set the following environmental variables if we want to
+  accelerate malloc() calls:
+<textarea name="code" class="c" cols="60" rows="10">
+export MALLOC_MMAP_MAX_=0
+export MALLOC_TRIM_THRESHOLD_=-1
+</textarea>
+  If the program in use frequently malloc()/free() a chunk of memory
+  larger than 128k, this tweak may bring much better performance. The
+  trade-off is some memory will be wasted.<br></p>
+<p>See also <a href="http://zeroc.com/faq/largeRequests.html">this
+  page</a>. <br></p>
+<h2>Perl Programming</h2>
+<h3>Profiling Perl</h3>
+<p>Profiling a Perl program can be achieved by providing an alternative
+  Perl debugger. The most popular one is DProf, the Perl profiler. It is
+  implemented in the Devel::DProf module. I am not sure whether this
+  module has become part of the standard, but at least on my laptop, it
+  is installed by default.<br><br>With DProf, a perl program can be
+  profiled by:
+<textarea name="code" class="c:nocontrols:nogutter" cols="60" rows="10">
+perl -d:DProf myprog.pl
+</textarea>
+  File <b>tmon.out</b> will be dumped which records all the
+  statistics. You can then run <b>dprofpp</b> to view the
+  results.<br></p>
+<h2>Unix/Linux</h2>
+<h3>Sorting huge files with GNU sort</h3>
+<p>
+  GNU sort, which is one
+  of <a href="http://www.gnu.org/software/coreutils/">GNU Core
+  Utilities</a>, can sort huge files as long as there is enough disk
+  space. It works by spliting the file into several trunks, sorting each
+  trunk separately and then merging the sorted trunk together. Sorted
+  trunks are dumped to disk as temporary files. Each temporary file is
+  actually a part of the original file. And therefore the required disk
+  space is always smaller than the original file.</p>
+<p>In sorting huge files, the most useful options for GNU sort are
+  &quot;-S size&quot; and &quot;-T tmp_dir&quot;. The first option
+  specify the largest memory sort should use. Sort is more efficient
+  with larger memory. The second option indicates the temporary
+  directory used by sort. It is helpful if there is not enough disk
+  space in the &quot;/tmp&quot; partition.</p><p>An
+  example:
+<textarea name="code" class="c:nocontrols:nogutter" cols="60" rows="10">
+sort -S 1500M -t $HOME/tmp input.txt &gt; sorted.txt
+</textarea>
+
+<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+<script language="javascript" src="shCore.js"></script>
+<script language="javascript" src="shBrushCpp.js"></script>
+<script language="javascript">
+  dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2009-02-27</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>
