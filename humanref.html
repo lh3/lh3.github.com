@@ -1,0 +1,98 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<meta name="verify-v1" content="CNVhgyOmkAEMEGS0FXzWs+t/85iDh7zUoggvg6NrHMQ="/>
+<title>A practical guide to the human reference genome sequence</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+ol, ul { margin: 0.5em; }
+li { margin: 0.2em; }
+</style>
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html', 'inc/sb-main.html');">
+<div id="wrap">
+<div id="header"><h1>The human reference genome</h1></div>
+<span id="top"></span>
+<div id="main">
+<!-- BEGIN OF THE BODY -->
+<h2>Introduction</h2>
+<p>When studying human genetics, we all use the human reference genome. However,
+not everyone understands what this genome contains and how to use it effectively for
+different purposes. This article aims to provide a practical guide to the human reference genome.
+</p>
+<br>
+<h2>Understanding GRCh37</h2>
+<p>The human reference genome sequence is maintained by the 
+<a href="http://www.ncbi.nlm.nih.gov/projects/genome/assembly/grc/index.shtml">Genome Reference Consortium</a> (GRC).
+As of now, the latest major release is <a href="http://www.ncbi.nlm.nih.gov/projects/genome/assembly/grc/human/index.shtml">GRCh37</a>.
+We may also frequently talk about <a href="http://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/">hg19</a>,
+but it is derived from GRCh37, not the official release.
+</p>
+<p>The following nested list gives the composition of GRCh37. I am explaining
+in a simple but imprecise manner. Please refer to the <a href="http://www.ncbi.nlm.nih.gov/projects/genome/assembly/grc/info/definitions.shtml">GRC assembly termonology</a>
+page for precise definitions. Below, quoted sentences are from that web page.
+</p>
+<ul>
+<li><a href="http://www.ncbi.nlm.nih.gov/projects/genome/assembly/grc/info/definitions.shtml#PRIMARY">Primary assembly</a>: the best known
+assembly of a haploid genome.
+<ul><li><b>Chromosome assembly</b>: A sequence with known physical location (e.g. according to a physical map).
+<li><b>Unlocalized sequence</b>: "A sequence found in an assembly that is associated with a specific chromosome but cannot be ordered or oriented on that chromosome".
+<li><b>Unplaced sequence</b>: "A sequence found in an assembly that is not associated with any chromosome".
+</ul>
+<li><a href="http://www.ncbi.nlm.nih.gov/projects/genome/assembly/grc/info/definitions.shtml#ALTERNATE">Alternate loci</a>: "A sequence that provides an alternate
+representation of a locus found in a largely haploid assembly". Alternate loci are mostly sequences in regions known to
+be highly polymorphic. GRCh37 contains 9 alternate sequences from the following 3 regions:
+<ul><li>6:28,477,796-33,448,353 -- the MHC region
+<li>17:43,384,863-44,913,631 -- long inversion
+<li>4:69,170,076-69,878,206
+</ul>
+<li><a href="http://www.ncbi.nlm.nih.gov/projects/genome/assembly/grc/info/patches.shtml">Patches</a>: "A contig sequence that is released outside of the full
+assembly release cycle". Patches consist of FIX and NOVEL.
+<ul><li>"<b>FIX</b> patches are released to correct an error in the assembly and will be removed when the new full assembly is released".
+<li>"<b>NOVEL</b> sequences are sequences that were not in the last full assembly release and will be retained with the next full assembly release".
+</ul>
+</ul>
+<p>
+It is worth noting that both alternate loci and patches contain long flanking sequences
+nearly identical to the primary assembly. They are not non-redundant with respect to the primary assembly.
+</p>
+<br>
+<h2>Constructing the reference genome for read mapping</h2>
+<p>For screening human contaminations, for example for a metagenomics project, using the entire
+GRCh37, including the primary assembly, alternate loci and patches, is preferred.
+</p>
+<p>For variant discovery, RNA-seq and ChIP-seq, it is recommended to
+use the entire primary assembly, including assembled chromosomes AND unlocalized/unplaced
+contigs, for the purpose of read mapping. Not including unlocalized and unplaced contigs
+potentially leads to more mapping errors. To avoid naming and chromosome ordering issues,
+I <b>HIGHLY</b> recommend to use the <a href="ftp://ftp.ncbi.nih.gov/1000genomes/ftp/technical/reference/">version of the reference sequence</a>
+used by the 1000 Genomes Project (here is the <a href="ftp://ftp.ncbi.nih.gov/1000genomes/ftp/technical/reference/README.human_g1k_v37.fasta.txt">README</a>).
+This version replace the mitochondrial sequence with the revised Cambridge Reference Sequences
+(<a href="http://en.wikipedia.org/wiki/Cambridge_Reference_Sequence">rCRS</a>; AC:<a href="http://www.ncbi.nlm.nih.gov/nuccore/NC_012920">NC_012920</a>),
+the mostly widely used version among mitochondria specialists.
+</p>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2011-06-02</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>
