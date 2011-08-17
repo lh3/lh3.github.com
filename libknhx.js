@@ -44,15 +44,6 @@
 	int n_tips;   // number of tips/leaves in the tree
   };
 
-  The minimal code for plotting/editing a tree in the Newick format is:
-
-<head><!--[if IE]><script src="excanvas.js"></script><![endif]-->
-<script language="JavaScript" src="knhx.js"></script></head>
-<body onLoad="knhx_init('canvas', 'nhx');">
-<textarea id="nhx" rows="20" cols="120" style="font:11px monospace"></textarea>
-<canvas id="canvas" width="800" height="100" style="border:1px solid"></canvas>
-</body>
-
 */
 
 /********************************************
