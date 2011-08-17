@@ -336,7 +336,7 @@ function kn_reroot(root, node, dist)
 		q.child[i] = r; /* link r to q */
 	} else { /* remove one child in p */
 		for (j = k = 0; j < p.child.length; ++j) {
-			p.node[k] = p.node[j];
+			p.child[k] = p.child[j];
 			if (j != i) ++k;
 		}
 		--p.child.length;
