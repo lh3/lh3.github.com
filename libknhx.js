@@ -165,7 +165,7 @@ function kn_write_nh(tree)
  ****** Functions for manipulating a tree *****
  **********************************************/
 
-/* Expand the tree into an array in the finishing order */
+/* Expand the tree into an array in the finishing order. IMPORTANT: run this whenever the topology is changed. */
 function kn_expand_node(root)
 {
 	var node, stack;
