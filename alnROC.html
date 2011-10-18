@@ -53,13 +53,13 @@ stampy.py -g hs37m -h hs37m -o r0.stampy.sam -M r0.fq
 
 Paired-end reads are mapped with the following command lines:
 <textarea name="code" class="cpp" cols="60" rows="10">
-bowtie2 -x hs37m  -q -1 r1.fq -2 r2.fq -S r12.bowtie2.sam
+bowtie2 -x hs37m -q -1 r1.fq -2 r2.fq -S r12.bowtie2.sam
 bwa aln hs37m.fa r1.fq > r1.sai && bwa aln hs37m.fa r2.fq > r2.sai \
     && bwa sampe hs37m r1.sai r2.sai r1.fq r2.fq > r12.bwa.sam
 bwa bwasw ../index/bwa/hs37m.fa r12.fq > r12.bwasw.sam
 gsnap -A sam -d hs37m r1.fq r2.fq > r12.gsnap.sam
 novoalign -r Random -o SAM -f r1.fq r2.fq -i 500 50 -d hs37m-k14s3.novo > r12.novo.sam
-smalt map -f samsoft -o r12.smalt-k20s13.sam hs37m-k20s13 r1.fq r2.fq
+smalt map -f samsoft -i 650 -o r12.smalt-k20s13.sam hs37m-k20s13 r1.fq r2.fq
 stampy.py -g hs37m -h hs37m -o r12.stampy.sam -M r1.fq,r2.fq
 soap -D hs37m.fa.index -a r1.fq -b r2.fq -l 32 -g 3 -u dummy -2 dummy -o r12.soap
 </textarea>
