@@ -18,6 +18,16 @@ li { margin: 0.2em; }
 <table width=100%>
 <tr><td width=50%><img width=100% src="images/100se-10.png"/><td><img width=100% src="images/100pe-10.png"/></tr>
 </table>
+<table>
+<tr><th>Program<th>Version<th>Options<th>100k 100bp SE<th>100k 2x100bp PE (CPU sec)</tr>
+<tr><th>bowtie2<td>2.0.0-beta2<td>(default)<td>85.7<td>197.3</tr>
+<tr><th>bwa<td>0.5.9-r26-dev<td>(default)<td>106.5<td>230.1</tr>
+<tr><th>bwa-sw<td>0.5.9-r26-dev<td>(default)<td>237.4<td>502.0</tr>
+<tr><th>bwa-sw64<td>0.6.0-r69-dev<td>(default)<td>139.4<td>286.5</tr>
+<tr><th>gsnap<td>2011-10-16<td>(default)<td>98.9<td>538.9</tr>
+<tr><th>novoalign<td>2.05.33<td>-k14 -s3<td>359.7<td>349.5</tr>
+<tr><th>smalt<td>~2011-10-17<td>-k20 -s13<td>468.8<td>640.2</tr>
+</table>
 
 <h3>Simulated data</h3>
 100,000 reads (read pairs) are simulated the human genome with <a
