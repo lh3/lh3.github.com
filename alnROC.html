@@ -20,13 +20,13 @@ li { margin: 0.2em; }
 </table>
 <table>
 <tr><th>Program<th>Version<th>Options<th>100k 100bp SE<th>100k 2x100bp PE (CPU sec)</tr>
-<tr><th>bowtie2<td>2.0.0-beta3<td>(default)<td>78.1<td>154.0</tr>
+<tr><th>bowtie2<td>2.0.0-beta3<td>-X 650<td>78.1<td>154.0</tr>
 <tr><th>bwa<td>0.5.9-r26-dev<td>(default)<td>106.5<td>230.1</tr>
 <tr><th>bwa-sw<td>0.5.9-r26-dev<td>(default)<td>237.4<td>502.0</tr>
 <tr><th>bwa-sw64<td>0.6.0-r69-dev<td>(default)<td>139.4<td>286.5</tr>
 <tr><th>gsnap<td>2011-10-16<td>(default)<td>98.9<td>538.9</tr>
-<tr><th>novoalign<td>2.05.33<td>-k14 -s3<td>359.7<td>349.5</tr>
-<tr><th>smalt<td>~2011-10-17<td>-k20 -s13<td>468.8<td>640.2</tr>
+<tr><th>novoalign<td>2.05.33<td>-k14 -s3 -i 500 50<td>359.7<td>349.5</tr>
+<tr><th>smalt<td>~2011-10-17<td>-k20 -s13 -i 650<td>468.8<td>640.2</tr>
 </table>
 
 <h3>Simulated data</h3>
@@ -63,7 +63,7 @@ stampy.py -g hs37m -h hs37m -o r0.stampy.sam -M r0.fq
 
 Paired-end reads are mapped with the following command lines:
 <textarea name="code" class="cpp" cols="60" rows="10">
-bowtie2 -x hs37m -q -1 r1.fq -2 r2.fq -S r12.bowtie2.sam
+bowtie2 -x hs37m -X 650 -q -1 r1.fq -2 r2.fq -S r12.bowtie2.sam
 bwa aln hs37m.fa r1.fq > r1.sai && bwa aln hs37m.fa r2.fq > r2.sai \
     && bwa sampe hs37m r1.sai r2.sai r1.fq r2.fq > r12.bwa.sam
 bwa bwasw ../index/bwa/hs37m.fa r12.fq > r12.bwasw.sam
@@ -73,6 +73,9 @@ smalt map -f samsoft -i 650 -o r12.smalt-k20s13.sam hs37m-k20s13 r1.fq r2.fq
 stampy.py -g hs37m -h hs37m -o r12.stampy.sam -M r1.fq,r2.fq
 soap -D hs37m.fa.index -a r1.fq -b r2.fq -l 32 -g 3 -u dummy -2 dummy -o r12.soap
 </textarea>
+BWA-SW does not make use of the paired-end information. Script <a href="https://github.com/lh3/bwa/blob/0.6/pairsam.pl">pairsam.pl</a>
+is used to reconcile the two ends. This script basically increases the mapping quality
+when two ends are consistent and descreases mapping quality if not.
 <br>
 <h3>Evaluation</h3>
 The accuracy of each mapper is evaluated by the wgsim_eval.pl script which
