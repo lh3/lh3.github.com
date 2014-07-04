@@ -567,7 +567,7 @@ function kn_plot_core(canvas, tree, conf)
 			ctx.strokeStyle = conf.c_regex;
 			for (i = 0; i < tree.node.length; ++i) {
 				var p = tree.node[i];
-				if (p.child.length && p.meta) {
+				if (p.meta) {
 					var m = re.exec(p.meta);
 					if (m.length > 1) {
 						var l = ctx.measureText(conf.font, conf.fontsize, m[1]);
