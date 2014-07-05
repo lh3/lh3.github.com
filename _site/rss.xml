@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
-        <title>Jekyll Bootstrap</title>
-        <description>Jekyll Bootstrap - Heng Li</description>
+        <title>Heng Li's blog</title>
+        <description>Heng Li's blog - Heng Li</description>
         <link>http://lh3.github.io/blog</link>
         <link>http://lh3.github.io/blog</link>
-        <lastBuildDate>2014-07-05T00:31:27-04:00</lastBuildDate>
-        <pubDate>2014-07-05T00:31:27-04:00</pubDate>
+        <lastBuildDate>2014-07-05T01:29:25-04:00</lastBuildDate>
+        <pubDate>2014-07-05T01:29:25-04:00</pubDate>
         <ttl>1800</ttl>
 
 
         <item>
-                <title>My Blog</title>
+                <title>My blog</title>
                 <description>
+&lt;p&gt;I have a &lt;a href=&quot;http://lh3lh3.users.sourceforge.net&quot;&gt;homepage&lt;/a&gt;. It is using a CSS template heavily modified from a
+theme from &lt;a href=&quot;http://en.wikipedia.org/wiki/Google_Page_Creator&quot;&gt;Google Pages&lt;/a&gt;, which has long been discontinued. This
+template has been used for the &lt;a href=&quot;http://samtools.sourceforge.net&quot;&gt;SAMtools website&lt;/a&gt; among a few others.
+I still like the general look-and-feel of the template, but I do have a few
+concerns with my homepage. Firstly, I do not like to write raw HTML, as is
+opposed to MarkDown. Secondly, as a novice web developer, I still have troubles
+with fine tuning the CSS template. Thirdly and most importantly, I am unable to
+get feedbacks from readers. While there are services like &lt;a href=&quot;https://disqus.com&quot;&gt;Disqus&lt;/a&gt;, I
+am too lazy to learn how to integrate them. After all, I am a scietific
+researcher. Due to these concerns, I have not updated my homepage often in the
+past few years.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, I sometimes feel it is necessary to describe my preliminary
+works and express my immature thoughts in short articles. Maybe some of them
+could be useful to others as well. Blog posts seem a good way to achieve the
+goal. This is why I started this blog. I do not know if I will update it often,
+but a little bit more text is better than nothing, I believe.&lt;/p&gt;
+
 </description>
                 <link>http://lh3.github.io/blog/2014/07/05/my-blog</link>
                 <guid>http://lh3.github.io/blog/2014/07/05/my-blog</guid>
