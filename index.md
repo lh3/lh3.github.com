@@ -4,7 +4,7 @@ title: Homepage
 ---
 {% include JB/setup %}
 
-### Posts
+### Posts [![](images/feed-icon-14x14.png)](rss.xml)
 
 <ul class="posts">
   {% for post in site.posts %}
