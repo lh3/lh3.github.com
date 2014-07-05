@@ -1,0 +1,56 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<meta name="verify-v1" content="CNVhgyOmkAEMEGS0FXzWs+t/85iDh7zUoggvg6NrHMQ="/>
+<title>Parsing VCF files</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html', 'inc/sb-main.html');">
+<div id="wrap">
+<div id="header"><h1>Parsing VCF files</h1></div>
+<span id="top"></span>
+<div id="main">
+<!-- BEGIN OF THE BODY -->
+<p>
+In biology data analyses, <a href="http://vcftools.sourceforge.net/specs.html">VCF</a> is a text file format
+for storing SNPs, INDELs and structural variations.
+</p>
+<table>
+<tr><th>CPU (user+sys)<th>Command line</tr>
+<tr><td>0.191+0.181<td><tt>bcftools view -G 20k.plain.bcf</tt></tr>
+<tr><td>1.376+0.295<td><tt>bcftools view -G 20k.bcf</tt></tr>
+<tr><td>11.23+0.295<td><tt>bcftools view -GS 20k.vcf</tt></tr>
+<tr><td>12.98+0.029<td><tt>bcftools view -GS 20k.vcf.gz</tt></tr>
+<tr><td>14.21+0.322<td><tt>vcf2afs.lua 20100804.ALL.panel 20k.vcf</tt></tr>
+<tr><td>22.81+0.337<td><tt>vcf2afs.pl 20100804.ALL.panel 20k.vcf</tt></tr>
+<tr><td>23.13+0.843<td><tt>vcftools --vcf 20k.vcf --freq</tt></tr>
+<tr><td>83.74+0.340<td><tt>vcfaltcount 20k.vcf</tt></tr>
+<tr><td>86.53+0.115<td><tt>vcftools --gzvcf 20k.vcf.gz --freq</tt></tr>
+<tr><td>17.24+0.041<td><tt>vcf-stats 1k.vcf</tt></tr>
+<tr><td>46.89+0.036<td><tt>vcf-validator 1k.vcf</tt></tr>
+</table>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2010-03-18</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>

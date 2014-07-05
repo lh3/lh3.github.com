@@ -1,0 +1,167 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Being Practical Aligners</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html', 'inc/sb-main.html');">
+<div id="wrap">
+<div id="header"><h1>Being Practical Aligners</h1></div>
+<span id="top"></span>
+<div id="main">
+<!-- BEGIN OF THE BODY -->
+<h2>Introduction</h2>
+<p>
+  <a href="NGSalign.html">Many short read aligners</a> have been
+  developed in the last two years, but few are widely used nowadays.
+  For most people who are not familiar with algorithms, the adoption of
+  an aligner is largely determined by its popularity. Heavily used
+  aligners almost certainly have fewer bugs and deliver better practical
+  performance. If you have questions, you are more likely to get answers
+  from others. How can an aligner gain its popularity? There are many
+  reasons, but to me, the key is its practibility which is a combination
+  of several factors including speed, features and memory. Although
+  practical aligners may not be always popular due to timing, licensing
+  or other subtle and complicated issues, popular aligners are always
+  practical. No exceptions.
+</p>
+<p>
+  This article largely reflects the philosophy behind my own aligners,
+  maq and bwa. It focuses on short-read aligners but many claims are
+  also applicable to other high-performance tools in bioinformatics.
+</p>
+<br>
+<h2>Popular Short-read Aligners</h2>
+<p>
+  Before going into details on how practibility is achieved, I give a
+  list of aligners that are widely used to the best of my knowledge. The
+  list may be biased due to my own limitations, but it is a reasonable
+  start, anyway.
+</p>
+<p>
+  Probably the most frequently cited short read aligner
+  is <a href="http://maq.sourceforge.net">MAQ</a>, my first short read
+  aligner. It has been used in several high-profile papers and
+  large-scale projects. However, the development of maq is very slow in
+  the last year as my focus is shifted
+  to <a href="http://bio-bwa.sourceforge.net">BWA</a> which has several
+  advantages over maq. Nonetheless, maq may still occassionally
+  outperform bwa in a few aspects and that is why maq is not retired yet.
+</p>
+<p>
+  <a href="http://soap.genomics.org.cn/">SOAP</a> is the first published
+  short read aligner. It used to be widely used given its capability of
+  finding short indels on single-end reads, but not at present due to
+  the development of other new aligners as well as its
+  successor <a href="http://soap.genomics.org.cn/">SOAP2</a>.
+</p>
+<p>
+  <a href="http://bowtie-bio.sourceforge.net">Bowtie</a> is popular due
+  to its efficiency, flexibility and active maintainance, although I am
+  always a little concerned about its default behaviour (I believe
+  "--best -k 2" is better).
+</p>
+<p>
+  <a href="http://www.novocraft.com">NovoAlign</a> is a commercial
+  software, but you are allowed to use its binary freely as long as you
+  aim to publish your results. Novoalign is the most accurate in my
+  benchmark done half a year ago. It is actively maintained and highly
+  feature rich. A potential concern to me is its free version does not
+  support multithreading which may cause some difficulties in running it
+  in large scale.
+</p>
+<p>
+  Aligners such
+  as <a href="https://secure.genome.ucla.edu/index.php/BFAST">Bfast</a>,
+  <a href="http://bioinformatics.bc.edu/marthlab/Mosaik">Mosaik</a>,
+  <a href="http://mrfast.sourceforge.net/">mrFast</a>
+  and <a href="http://biogibbs.stanford.edu/~jiangh/SeqMap/">SeqMap</a>
+  are also mentioned in some publications and/or forums, but my
+  impression is they have not reached the popularity of maq, bowtie, bwa
+  and soap/soap2 due to timing and various other reasons.
+</p>
+<br>
+<h2>Being Practical</h2>
+<h3>Speed</h3>
+<p>
+  For an aligner, speed is always the first thing that comes to our
+  sight and the first thing developers care about. It is largely
+  determined by the algorithm. People all have paid enough attention to
+  this factor, although sometimes too much.
+</p>
+<h3>Feature set</h3>
+<p>
+  To me, the completeness of feature sets outweighs the speed in
+  evaluating an aligner. A practical short-read aligner must be able to
+  work with &gt;100bp reads, perform paired-end mapping, tolerate
+  moderately high error rate and support the standard formats
+  (e.g. FASTQ and SAM). Doing gapped alignment becomes more and more
+  important with the increasing read lengths. Other features like
+  capability of non-standard alignment (e.g. bisulfite alignment),
+  adapter trimming, low-quality trimming and more are not mandatory but
+  also likely to increase the popularity.
+</p>
+<p>
+  Unfortunately, not many developers have paid enough attention to the
+  feature set of their aligners and some even trade features for speed
+  (e.g. only allowing very short reads), which makes a lot of aligners
+  less useful in practice, even when they are published.
+</p>
+<h3>Memory</h3>
+<p>
+  The importance of the memory usage of an aligner is frequently
+  overlooked at the beginning but quickly rediscovered when the aligner
+  is put into use in large scale.
+</p>
+<p>
+  Nowadays, 8-core computers with 16GB memory are pretty affordable and
+  widely used. In most large sequencing centers (at least the ones I
+  have been to), 32GB and 64GB machines are rare due to their relatively
+  high cost. This means a reasonable aligner should not use more than
+  ~12GB memory to leave some memory for other jobs running on the 16GB
+  machine. And for aligners using more than 4GB memory, multithreading
+  becomes necessary; otherwise we could hardly use the computing
+  resources effectively given the memory limit. Nonetheless, even with
+  multithreading, memory below 7GB in total is still preferred when the
+  aligner is used in a large compute farm because the average load of a
+  farm is descreased given many multithreading jobs which increase the
+  idle time in waiting enough CPU slots.
+</p>
+<p>
+  Running jobs on a large compute farm involes more practical concerns
+  than on a single computer, and attracting users on such farms is
+  really the short-cut to popularize an aligner. Even for users working
+  on a single computer, small memory usage is frequently much more
+  friendly and affordable.
+</p>
+<p>
+  To be practical, an aligner should even trade speed for memory,
+  although some developers do the reverse to show good results in their
+  speed benchmark. But ultimately, memory hungry aligners will be faced
+  with problems even if they get published.
+</p>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2009-10-16</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>

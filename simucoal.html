@@ -1,0 +1,212 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+ol, ul { margin: 0.5em; }
+li { margin: 0; }
+</style>
+<title>Coalescent Simulation</title>
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html');">
+<div id="wrap">
+<div id="header"><h1>Coalescent Simulation</h1></div>
+<span id="top"></span>
+<div id="widemain">
+<!-- BEGIN OF THE BODY -->
+<p>For general use, I would like to recommend Hudson&#39;s ms, which is
+  definitely the most popular one of all. This masterpiece is also very
+  efficient, qualified for most practical uses. MaCS seems also a
+  competent candidate, but maybe more publications are needed to justify
+  its practical performance.</p>
+<br>
+<p>I have used the following softwares or carefully read their
+  publications and documentations:</p>
+<br>
+<ol>
+  <li>ms, by Hudson.</li>
+  <ul>
+	<li>Type: standard coalescent-with-recombination; backward in time;
+	  continuous time</li>
+	<li>Features: allows for simulating various events such as variable
+	  population size, recombination, gene conversion, migration and
+	  admixture.</li>
+	<li>Limitations: no selection; no hotspots.</li>
+	<li>Website: <a href="http://home.uchicago.edu/%7Erhudson1/">Hudson&#39;s homepage</a>.</li>
+	<li>Example (from PMID: <a href="http://www.ncbi.nlm.nih.gov/pubmed/16895447">16895447</a>):
+<textarea name="code" class="c:nocontrols:nogutter" cols="60" rows="10">
+ms 68 1 -t 1882. -r 3764 50000 -I 2 24 44 160 -g 1 4303.9 -g 2 41228 \
+   -eg 0.00107 1 0. -eg 0.0001117 2 0. -en 0.000775 2 9.1e-05 \
+   -en 0.000785 2 0.01 -ej 0.0016 2 1
+</textarea>
+  </ul>
+  <li>msHOT, by Hellenthal and Stephens.</li>
+  <ul>
+	<li>Type: the same as ms</li>
+	<li>Features: hotspots. msHOT is a modified version of ms.</li>
+	<li>Website: <a href="http://home.uchicago.edu/%7Erhudson1/">Hudson&#39;s homepage</a>.</li>
+  </ul>
+  <li>MaCS, by Chen, Marjoram and Wall</li>
+  <ul>
+	<li>Type: Improved SMC</li>
+	<li>Features: much faster than ms while getting similar results
+	  to <i>ms</i>. Support complex demographic models including
+	  variable population sizes, admixtures and recombination
+	  hotspots.</li>
+	<li>Notes: I have briefly tried MaCS. It is lightening fast. For the
+	  moment, I do not know whether MaCS delivers similar results to ms
+	  on structured populations.</li>
+	<li>Website: <a href="http://www-hsc.usc.edu/%7Egarykche/">Chen&#39;s
+	  homepage</a>.<br></li>
+	<li>Example (equivalent to the ms example above):
+<textarea name="code" class="c:nocontrols:nogutter" cols="60" rows="10">
+macs 68 50000 -t 0.03764 -r 0.07528 -I 2 24 44 160 -g 1 4303.9 \
+  -g 2 41228 -eg 0.00107 1 0. -eg 0.0001117 2 0. -en 0.000775 2 9.1e-05 \
+  -en 0.000785 2 0.01 -ej 0.0016 2 1
+</textarea>
+  </ul>
+  <li>FastCoal, by Marjoram and Wall.</li>
+  <ul>
+	<li>Type: SMC and SMC&#39;, approximation to the standard
+	  coalescent; move along the sequence; continuous time</li>
+	<li>Features: much faster than ms for large-scale simulation</li>
+	<li>Limitations: constant population size or exponential growth
+	  only. To some extent, MaCS is an updated version of FastCoal. If
+	  you want to simulate large data set, try MaCS.<br></li>
+	<li>Website: <a href="http://chp220mac.hsc.usc.edu/Marjoram/Software.html">Marjoram&#39;s
+		homepage</a>. (offline since 20080212)</li>
+  </ul>
+  <li>cosi, by Schaffner et al. at the Broad Institute</li>
+  <ul>
+	<li>Type: the same as ms</li>
+	<li>Features: variable recombination rate to fit observed data (LD, allele frequency and so on).</li>
+	<li>Website: <a href="http://www.broad.mit.edu/%7Esfs/cosi/">Schaffner&#39;s homepage</a></li>
+  </ul>
+</ol>
+<br>
+<p>I know the following software from other people or
+  from <a href="http://evol.mcmaster.ca/%7Ebrian/evoldir/Answers/Coalescent.software.answers">this
+	email</a>:</p>
+<br>
+<ol>
+  <li>CoaSim, by Mailund et al. at BIRC, Aarhus University</li>
+  <ul>
+	<li>Type: probably the same as ms</li>
+	<li>Features: finite-site mutation; easy post-processing</li>
+	<li>Website: <a href="http://www.daimi.au.dk/%7Emailund/CoaSim/index.html">Mailund homepage</a>.</li>
+  </ul>
+  <li>SIMCOAL2, by Laval and Excoffier at the University of Bern</li>
+  <ul>
+	<li>Type: Wright-Fisher; discrete-time; backward in time</li>
+	<li>Features: &quot;based on a slower discrete-generation coalescent approach&quot;</li>
+	<li>Website: <a href="http://cmpg.unibe.ch/software/simcoal2/">SIMCOAL2 website</a>.</li>
+</ul>
+  <li>GENOME, by Liang et al.</li>
+  <ul>
+	<li>Type: approximation to the standard coalescent (see below); backward in time; discrete time</li>
+	<li>Approximation: The following sentence indicate the difference
+	  between GENOME and ms: &quot;In the standard approach, each
+	  coalescent event involves exactly two sequences that coalesce to a
+	  common ancestor but, using our approach, multiple sequences can
+	  coalesce to a common ancestor simutaneously&quot;. I am not sure
+	  how this may affect the accuracy of simulation, but the comparison
+	  between ms and GENOME seems to be satisfactory.</li>
+	<li>Features: variable population size, recombination and symmetric
+	  migration. Claim to be fast.</li>
+	<li>Notes: My experience is GENOME is not as fast as MaCS, although
+	  the performance is highly related to the heuristic parameters in
+	  use. In addition, this software requires recombinations to happen
+	  between segments which may affect the accuracy of very ancient
+	  recombinations.</li>
+	<li>Website: <a href="http://www.sph.umich.edu/csg/liang/index.html">Liang&#39;s
+		homepage</a>.</li>
+  </ul>
+  <li>FREGENE, by Hoggart et al.</li>
+  <ul>
+	<li>Type: apparently the standard coalescent-with-recombination, not
+	  sure; forward in time</li>
+	<li>Features: gene conversion and hotspots.</li>
+	<li>Website: <a href="http://www.ebi.ac.uk/projects/BARGEN/download/FREGEN/fregeneweb.html">FREGENE
+		website</a> at BARGEN</li>
+  </ul>
+  <li>SFS_CODE, by Ryan</li>
+  <ul>
+	<li>Type: apparently standard coalescent-with-recombination; forward
+	  in time</li>
+	<li>Features: from its website: &quot;SFS_CODE performs forward
+	  population genetic simulations under a general Wright-Fisher
+	  island model with arbitrary demographic, selective, and mutational
+	  effects&quot;.</li>
+	<li>Website: <a href="http://sfscode.sourceforge.net/">SFS_CODE website</a> at
+	  SourceForge</li>
+  </ul>
+  <li>Molpopgen, by Thornton</li>
+  <ul>
+	<li>Website: <a href="http://molpopgen.org/software/coalescent.html">molpopgen
+		homepage</a>.</li>
+  </ul>
+  <li>FPG, by Hey et al.</li>
+  <ul>
+	<li>Features: forward in time; &quot;useful for assessing the impact
+	  of natural selection on genetic variations&quot;</li>
+	<li>Website: <a href="http://lifesci.rutgers.edu/%7Eheylab/HeylabSoftware.htm#FPG">Hey&#39;s
+		lab page</a>.</li>
+  </ul>
+  <li>SIMCOAL, by Excoffier et al.</li>
+  <ul>
+	<li>Type: apparently the standard theory</li>
+	<li>Website: <a href="http://cmpg.unibe.ch/software/simcoal/">SIMCOAL
+		website</a>.</li>
+  </ul>
+  <li>EasyPop</li>
+  <ul>
+	<li>Website: <a href="http://www.unil.ch/dee/page36926_fr.html">EasyPop website</a>.</li>
+  </ul>
+  <li>simuPOP</li>
+  <ul>
+	<li>Features: forward in time</li>
+	<li>Website: <a href="http://simupop.sourceforge.net/">simuPOP website</a>.</li>
+  </ul>
+  <li>BottleSim, by Kuo</li>
+  <ul>
+	<li>Website: <a href="http://chkuo.name/software/BottleSim.html">BottleSim
+		website</a>.</li>
+  </ul>
+  <li>TREEVOLVE, by Grassly and Rambaut</li>
+  <ul>
+	<li>Website: <a href="http://evolve.zoo.ox.ac.uk/software/Treevolve/main.html">TREEVOLVE website</a>.</li>
+  </ul>
+  <li>Serial SIMCOAL, by Anderson et al.</li>
+  <ul>
+	<li>Features: an improved SIMCOAL</li>
+	<li>Website: <a href="http://iod.ucsd.edu/simplex/ssc/">Hadly Lab</a></li>
+<link type="text/css" rel="stylesheet" href="SyntaxHighlighter.css"></link>
+<script language="javascript" src="shCore.js"></script>
+<script language="javascript" src="shBrushCpp.js"></script>
+<script language="javascript">
+  dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2009-08-14</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>

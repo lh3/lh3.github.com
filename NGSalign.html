@@ -1,0 +1,343 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+ol, ul { margin: 0.5em; }
+li { margin: 0.2em; }
+</style>
+<title>NGS Alignment Programs</title>
+</head>
+<script language="JavaScript" src="jsInclude.js"></script>
+<body onLoad="jsInclude('top', 'inc/menu.html');">
+<div id="wrap">
+<div id="header"><h1>NGS Alignment Programs</h1></div>
+<span id="top"></span>
+<div id="widemain">
+<!-- BEGIN OF THE BODY -->
+<h2>Software</h2>
+<p>
+  Currently, this page only includes software I am familiar with. Most
+  of them aim for aligning next-generation sequencing (NGS) data and
+  were developed since 2007. I may extend the list when I have
+  time. Several notes:
+</p>
+<ul>
+  <li>The programs are listed in the alphabet order in each category.
+  <li>Features shown in brackets are optional and may affect efficiency.
+  <li>The version number shown for each program is the one I have
+	checked, but may not be the latest.
+</ul>
+<br>
+<h3>Indexing Reads with Hash Tables</h3>
+<ul>
+  <li><a href="http://apps.sourceforge.net/mediawiki/cloudburst-bio/index.php?title=CloudBurst">CloudBurst</a>
+	[PMID:<a href="http://www.ncbi.nlm.nih.gov/pubmed/19357099">19357099</a>]. RMAP-like
+	algorithm that works in a cloud.
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: support cloud computation
+	  <li>Availability: open source
+	</ul>
+  <li><a href="http://www.phrap.org/">Cross_match</a> [1.080730]. The
+	latest cross_match has been substantially improved for short read
+	alignment. Its speed is comparable to other aligners and might be
+	the best choice for local alignment.
+	<ul>
+	  <li>Platform: Illumina; 454
+	  <li>Features: gapped alignment (maximum 2 gaps in the fast mode);
+		local alignment
+	  <li>Availability: academic free source codes
+	</ul>
+  <li>Eland [1.0]. Probably the first short read aligner. Eland
+	substantially influences many aligners in this category and still
+	outperforms many followers. Although it is not the fastest any more,
+	it is close to the fastest and has the smallest memory
+	footprint. Eland itself works for 32bp single-end reads
+	only. Additional Perl scripts in GAPipeline extend its ability.
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: PET mapping; mapping quality; SNP caller; counting
+		suboptimal occurrences.
+	  <li>Advantages: fast; light-weighted
+	  <li>Availability: free source codes for machine buyers.
+	</ul></li>
+  <li><a href="http://maq.sourceforge.net">MAQ</a> [0.7.1,
+	PMID: <a href="http://www.ncbi.nlm.nih.gov/pubmed/18714091">18714091</a>]. This
+	is my program to align short reads and to call variants. It has been
+	used in several high-profile papers.
+	<ul>
+	  <li>Platform: Illumina; SOLiD (partial)
+	  <li>Features: PET mapping; quality aware; gapped alignment for
+		PET; mapping quality; adapter trimming; partial occurrences
+		counting; SNP caller
+	  <li>Advantages: feature rich; publication proved
+	  <li>Limitation: up to 128bp reads; no gapped alignment for single-end reads
+	  <li>Availability: GPL
+	</ul>
+  <li><a href="http://mrfast.sourceforge.net/">mrFast/mrsFAST</a>
+	[0.5.1]. An aligner specifically designed for reporting all hits.
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: all hits; up to 3X faster than MAQ (not tested by
+		myself); gapped alignment (mrFAST)
+	  <li>Availability: Free binary
+	</ul>
+  <li><a href="http://www.seqan.de/">RazerS</a> [20081029, PMID:
+	19592482]. q-gram filteration; based on
+	the <a href="http://www.seqan.de/">SeqAn</a> library.
+	<ul>
+	  <li>Availability: free source codes
+	</ul>
+  <li><a href="http://rulai.cshl.edu/rmap/">RMAP</a> [0.41,
+	PMID: <a href="http://www.ncbi.nlm.nih.gov/pubmed/18307793">18307793</a>;19736251]. One
+	of the earliest short read aligners.
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: quality aware; [gapped alignment]; best unique hits
+	  <li>Availability: GPL
+	</ul>
+  <li><a href="http://biogibbs.stanford.edu/~jiangh/SeqMap/">SeqMap</a>
+	[1.0.8,
+	PMID: <a href="http://www.ncbi.nlm.nih.gov/pubmed/18697769">18697769</a>].
+	An Eland-like program.
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: [gapped alignment]
+	  <li>Limitation: not counting suboptimal hits
+	  <li>Availability: GPL
+	</ul>
+  <li><a href="http://compbio.cs.toronto.edu/shrimp/">SHRiMP</a>
+	[1.10, PMID: 19461883]. Q-gram based algorithm.
+	<ul>
+	  <li>Platform: SOLiD; Illumina; 454
+	  <li>Features: SOLiD mapping; gapped alignment; potential support
+		for mapping quality
+	  <li>Limitations: a little slow
+	  <li>Availability: GPL
+	</ul>
+  <li><a href="http://www.bioinformaticssolutions.com/products/zoom/index.php">ZOOM</a>
+	[1.2.5,
+	PMID: <a href="http://www.ncbi.nlm.nih.gov/pubmed/18684737">18684737</a>]. Eland-like
+	algorithm with the improvement of using spaced seed. ZOOM supports
+	longer reads and faster than Eland, although it uses more
+	memory. ZOOM is feature rich, but some features may come at the cost
+	of speed.
+	<ul>
+	  <li>Platform: Illumina; SOLiD
+	  <li>Features: PET mapping; SOLiD mapping; [gapped alignment];
+		[mapping quality]; [quality aware]
+	  <li>Advantage: fast; feature rich
+	  <li>Limitation: up to 224bp reads; gapped alignment comes with cost
+	  <li>Availability: commercial
+	</ul>
+</ul>
+<br>
+<h3>Indexing Genome with Hash Tables</h3>
+<ul>
+  <li><a href="http://bfast.sourceforge.net">BFAST</a> [0.3.1, PMID:
+	19907642].
+	<ul>
+	  <li>Platform: Illumina; SOLiD
+	  <li>Availability: open source
+	  <li>Comment on paper: evaluation for bowtie and bwa may be questionable.
+	</ul>
+  <li><a href="">gnumap</a> [PMID: 19861355].
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: "Assigning a proportion of the read to relevant
+		genomic matches based on the relative likelihood that the read
+		maps to each location". (I do not know how this is compared with
+		randomly distribute repetitive reads)
+	  <li>Comment on paper: It is possible to achieve paired-end mapping
+		by indexing reads only. Maq does in this way.
+	  <li>Availability: open source (?)
+	</ul>
+  <li><a href="http://go.vcu.edu/mom">MOM</a> [0.1,
+	PMID: <a href="http://www.ncbi.nlm.nih.gov/pubmed/19228804">19228804</a>].
+	<ul>
+	  <li>Platform: Illumina; (?)
+	  <li>Features: counting suboptimal occurrences; local alignment
+	  <li>Availability: free
+	</ul>
+  <li><a href="http://code.google.com/p/mosaik-aligner/">Mosaik</a>
+	[1.0]. Mosaik has been used in several high-profile publications and
+	delivers good performance.
+	<ul>
+	  <li>Platform: Illumina; 454; SOLiD
+	  <li>Advantages: long reads
+	  <li>Availability: open source
+	</ul>
+  <li><a href="http://www.novocraft.com">NovoAlign</a> [2.0]. NovoAlign
+	competes with MAQ on speed and feature set, and may be more accurate
+	than MAQ. It also implements several important features missing in
+	MAQ.
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: PET mapping; gapped alignment; mapping quality;
+		quality aware; adapter trimming; MAQ format
+	  <li>Advantages: highly accurate; gapped alignment; feature rich
+	  <li>Requirements: >8GB RAM for paired-end mapping against the
+		human genome.
+	  <li>Availability: proprietary; academic free binary (no
+		multi-threading support)
+	</ul>
+  <li><a href="http://pass.cribi.unipd.it">PASS</a> [0.5,
+	PMID: <a href="http://www.ncbi.nlm.nih.gov/pubmed/19218350">19218350</a>].
+	<ul>
+	  <li>Platform: Illumina; SOLiD; 454
+	  <li>Features: PET mapping
+	  <li>Advantages: long reads
+	  <li>Requirement: >15GB RAM against human genome
+	  <li>Availability: free source codes to academic users
+	</ul>
+  <li><a href="http://code.google.com/p/perm/">PerM</a> [0.1.0, PMID: 19675096]
+	<ul>
+	  <li>Platform: Illumina; SOLiD
+	  <li>Advantages: fast
+	  <li>Availability: GPL
+	  <li>Limitation: no paired-end mapping apparently.
+	  <li>Requirement: 4.5 bytes per reference base
+	  <li>Comment on paper: PerM is very fast. The authors attribute its speed to
+		the use of spaced seeds with higher weight. This is a reason,
+		but to me, not the leading reason. I think PerM is fast mainly
+		because in building index, it aligns the genome against itself
+		under given a specified read length; in alignment, PerM aligns a
+		repetitive read once rather than to each copy. The cost is a
+		user needs to build a huge index for each read length.
+	</ul>
+  <li><a href="http://soap.genomics.org.cn/">SOAPv1</a> [1.11,
+	PMID: <a href="http://www.ncbi.nlm.nih.gov/pubmed/18227114">18227114</a>]. The first published short
+	read aligner.
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: PET mapping; adapter trimming; gapped alignment; SNP
+		caller; counting occurrences
+	  <li>Advantages: feature rich
+	  <li>Requirements: >14GB RAM against human genome
+	  <li>Availability: GPL
+	</ul>
+</ul>
+<br>
+<h3>Merge Sorting</h3>
+<ul>
+  <li><a href="http://www.bcgsc.ca/platform/bioinfo/software/slider">Slider</a>
+	[0.6,
+	PMID: <a href="http://www.ncbi.nlm.nih.gov/pubmed/18974170">18974170</a>]. A
+	very clever short read aligner specifically designed for Illumina
+	reads. It is able to use the second best base call, which
+	potentially improves the accuracy on SNP finding.
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: Using second base
+	  <li>Advantages: fast; potentially more accurate on SNP discovery
+	  <li>Requirements: >160GB disk space
+	  <li>Availability: free source codes
+	</ul>
+  <li><a href="http://www.bcgsc.ca/platform/bioinfo/software/SliderII">Slider II</a> [1.1].
+</ul>
+<br>
+<h3>Indexing Genome with Suffix Array/BWT</h3>
+<ul>
+  <li><a href="http://bowtie-bio.sourceforge.net/index.shtml">Bowtie</a>
+	[0.9.9, PMID: 19261174]. This is probably the fastest short read aligner to
+	date. Although under the default option Bowtie does not guarantee to
+	find the best hit or tell if the hit it finds is unique, it is
+	possible to improve this behaviour at the cost of speed.
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: partial PET mapping; quality aware; [mapping quality]
+	  <li>Advantages: very fast
+	  <li>Availability: GPL
+	</ul>
+  <li><a href="http://maq.sourceforge.net/bwa-man.shtml">BWA</a> [0.5.1,
+	PMID: 19451168]. Another aligner written by me. Given high-quality
+	reads, it is an order of magnitude faster than MAQ while achieving
+	similar alignment accuracy.
+	<ul>
+	  <li>Platform: Illumina; SOLiD; 454; Sanger
+	  <li>Features: PET mapping (short reads only); gapped alignment;
+		mapping quality; counting suboptimal occurrences (short reads
+		only); SAM output
+	  <li>Advantages: fast
+	  <li>Limitations: short read algorithm is slow for long reads and
+		reads with high error rate
+	  <li>Availability: GPL
+	</ul>
+  <li><a href="http://soap.genomics.org.cn/">SOAPv2</a> [2.19, PMID:
+	19497933]. A marvelous program developed by the group who
+	wrote <a href="http://i.cs.hku.hk/~ckwong3/bwtsw/">BWT-SW</a>.
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: PET mapping; mapping quality; counting occurrences
+	  <li>Advantages: fast
+	  <li>Availability: academic free binary
+	</ul>
+  <li><a href="http://www.bioinf.uni-leipzig.de/Software/segemehl/">segemehl</a>
+	[0.0.7, PMID: 19750212].
+	<ul>
+	  <li>Platform: Illumina
+	  <li>Features: accurate
+	  <li>Limitation: large memory requirement; no paired-end mapping
+	  <li>Comment on paper: the authors show maq and bwa are not as
+		accurate probably because they were counting ambiguous alignments.
+	</ul>
+  <li><a href="http://www.vmatch.de/">vmatch</a>
+	[<a href="http://www.springerlink.com/content/mukjttw89bhymuke/">SpringerLink</a>].
+	<ul>
+	  <li>Availability: academic free binary
+	</ul>
+</ul>
+<br>
+<h2>Recommendation</h2>
+<p>
+  First of all, as I am the key developer of two short read aligners
+  (BWA and MAQ), it is really hard for me to give an unbiased
+  evaluation. Please bear this fact in mind when reading through my
+  comments below.
+</p>
+<p>
+  For Illumina reads, I would recommend my program BWA. BWA implements
+  most of the major features of a practical aligner. It is relatively
+  small in memory and highly efficient with little tradeoff on
+  accuracy. BWA outputs alignment in the SAM format. Users may
+  use <a href="http://samtools.sourceforge.net">SAMtools</a> to
+  sort/merge alignments and to make variants calls. One potential
+  concern about BWA is it has not been widely used at the moment. It may
+  be less robust than those publication-proved aligners such as Eland
+  and MAQ.</p>
+<p>[<b>Update:</b> With the help of paired-end reads, MAQ is able to
+  find some SNPs at the edge of highly repetitive regions. However, BWA
+  cannot. Nonetheless, I still prefer BWA given its speed and the fact
+  that SNPs that can be called from repeats are rare and more likely to
+  be false positives.]
+</p>
+<p>
+  Mapping inconsistent read pairs with NovoAlign is recommended for
+  PET-based structural varition detection where alignment accuracy is
+  the leading factor on reducing false positive calls. NovoAlign is the
+  most accurate aligner to date.
+</p>
+<!-- END OF THE BODY-->
+</div>
+<!-- BEGIN OF THE FOOTER -->
+<div style="clear: both;"> </div>
+<div id="footer">
+<hr/>
+<p style="text-align: right;">Last modified: 2009-11-19</p>
+</div>
+<!-- END OF THE FOOTER -->
+</div>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/userapps/piwik/lh3lh3/" : "http://sourceforge.net/userapps/piwik/lh3lh3/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p><img src="http://sourceforge.net/userapps/piwik/lh3lh3/piwik.php?idsite=1" alt="piwik"/></p></noscript></object>
+<!-- End Piwik Tag -->
+</body>
+</html>
