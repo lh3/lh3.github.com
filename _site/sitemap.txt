@@ -8,4 +8,5 @@ http://lh3.github.io/blog/rss.xml
 http://lh3.github.io/blog/sitemap.txt
 http://lh3.github.io/blog/tags.html
 
+http://lh3.github.io/blog/2014/07/05/random-access-to-zlib-compressed-files
 http://lh3.github.io/blog/2014/07/05/my-blog
