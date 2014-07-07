@@ -1,0 +1,17 @@
+<script language="javascript">function draw() {
+	var ctx = document.getElementById('fern').getContext('2d');
+	var w = ctx.canvas.width, h = ctx.canvas.height;
+	var img = ctx.getImageData(0, 0, w, h), pix = img.data;
+	var x = 0.0, y = 0.0;
+	for (var i = 0; i < 300000; ++i) {
+		var t, p = Math.random();
+		if (p < .01) x = 0.0, y *= 0.16;
+		else if (p < .86) t = .85*x + .04*y, y = -.04*x + .85*y + 1.6, x = t;
+		else if (p < .93) t = .2*x - .26*y, y = .23*x + .22*y + 1.6, x = t;
+		else t = -.15*x + .28*y, y = .26*x + .24*y + .44, x = t;
+		var p = (Math.floor(.2*(x + 2.2)*w) + (h - Math.floor(.1*y*h))*w) * 4;
+		pix[p+1]=128, pix[p+3] = 255;
+	}
+	ctx.putImageData(img, 0, 0);
+}</script>
+<body onLoad="draw();"><canvas id="fern" width="600" height="600"></canvas></body>
