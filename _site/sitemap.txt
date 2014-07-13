@@ -1,12 +1,14 @@
 
-http://lh3.github.io/blog/archive.html
-http://lh3.github.io/blog/atom.xml
-http://lh3.github.io/blog/categories.html
-http://lh3.github.io/blog/index.html
-http://lh3.github.io/blog/pages.html
-http://lh3.github.io/blog/rss.xml
-http://lh3.github.io/blog/sitemap.txt
-http://lh3.github.io/blog/tags.html
+http://lh3.github.io/archive.html
+http://lh3.github.io/atom.xml
+http://lh3.github.io/categories.html
+http://lh3.github.io/index.html
+http://lh3.github.io/pages.html
+http://lh3.github.io/rss.xml
+http://lh3.github.io/sitemap.txt
+http://lh3.github.io/tags.html
 
-http://lh3.github.io/blog/2014/07/05/random-access-to-zlib-compressed-files
-http://lh3.github.io/blog/2014/07/05/my-blog
+http://lh3.github.io/2014/07/12/about-static-linking
+http://lh3.github.io/2014/07/07/abreak-evaluating-de-novo-assemblies
+http://lh3.github.io/2014/07/05/random-access-to-zlib-compressed-files
+http://lh3.github.io/2014/07/05/my-blog

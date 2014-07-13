@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>Heng Li's blog</title>
- <link href="http://lh3.github.io/blog/" rel="self"/>
- <link href="http://lh3.github.io/blog"/>
- <updated>2014-07-06T09:29:12-04:00</updated>
- <id>http://lh3.github.io/blog</id>
+ <link href="http://lh3.github.io/" rel="self"/>
+ <link href="http://lh3.github.io"/>
+ <updated>2014-07-12T23:55:33-04:00</updated>
+ <id>http://lh3.github.io</id>
  <author>
    <name>Heng Li</name>
    <email>lh3@me.com</email>
@@ -13,10 +13,89 @@
 
  
  <entry>
+   <title>About static linking</title>
+   <link href="http://lh3.github.io/2014/07/12/about-static-linking"/>
+   <updated>2014-07-12T00:00:00-04:00</updated>
+   <id>http://lh3.github.io/2014/07/12/about-static-linking</id>
+   <content type="html">
+&lt;p&gt;One of the things I hate most about Linux is to compile software. Sometimes it
+is a nightmare: lack of root permission, requirement of new gcc, dependencies
+on huge or weird libraries, etc. Whenever these happens, I ask myself: why not
+just distribute statically linked binaries such that they can run on most Linux
+distributions?  I knew a few reasons, but only today I took the question a
+little more serious and did a google search. The following two links are
+quite useful: &lt;a href=&quot;http://stackoverflow.com/questions/1993390/static-linking-vs-dynamic-linking&quot;&gt;static linking vs. dynamic linking&lt;/a&gt; and &lt;a href=&quot;http://www.akkadia.org/drepper/no_static_linking.html&quot;&gt;static linking
+considered harmful&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In summary, static linking has the following disadvantages: more likely to be
+attacked, not receiving patches in dynamic libraries, more memory hungry, not
+truly static, sometimes not flexible and potentially violating GPL. I buy all
+these arguments. However, for tools in bioinformatics, these are not big
+concerns because most bioinformatics tools:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;are not system utilities and are not security-critical.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;are only linked to small dynamic libraries. Statically linking the tools will
+not cost much memory.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;do not often use glibc features that have to be dynamically linked.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;are distributed under a license compatible with LGPL.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most command-line bioinformatics tools can be statically linked without
+problems. And I think we should create a repository for precompiled
+bioinformatics tools. This will at least make my life much easier. What about
+you?&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Abreak: evaluating de novo assemblies</title>
+   <link href="http://lh3.github.io/2014/07/07/abreak-evaluating-de-novo-assemblies"/>
+   <updated>2014-07-07T00:00:00-04:00</updated>
+   <id>http://lh3.github.io/2014/07/07/abreak-evaluating-de-novo-assemblies</id>
+   <content type="html">
+&lt;p&gt;“Abreak” is a subcommand of &lt;a href=&quot;https://github.com/samtools/htslib&quot;&gt;htscmd&lt;/a&gt; on &lt;a href=&quot;https://github.com/samtools/htslib/tree/lite&quot;&gt;the lite branch&lt;/a&gt;. It
+takes an assembly-to-reference alignment as input and counts the number of
+alignment break points. An earlier version was used in &lt;a href=&quot;http://bioinformatics.oxfordjournals.org/content/28/14/1838&quot;&gt;my fermi paper&lt;/a&gt;
+to measure the missassembly rate of human de novo assemblies. A typical output
+looks like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Number of unmapped contigs: 239
+Total length of unmapped contigs: 54588
+Number of alignments dropped due to excessive overlaps: 0
+Mapped contig bases: 2933399461
+Mapped N50: 6241
+Number of break points: 102146
+Number of Q10 break points longer than (0,100,200,500)bp: (28719,7206,4644,3222)
+Number of break points after patching gaps short than 500bp: 94298
+Number of Q10 break points longer than (0,100,200,500)bp after gap patching: (23326,5320,3369,2194)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here it gives the mapped contig bases, mapped N50 and number of break points
+with flanking sequences longer than 0, 100, 200 and 500bp.&lt;/p&gt;
+
+&lt;p&gt;Although &lt;a href=&quot;http://ccb.jhu.edu/gage_b/&quot;&gt;GAGE-B&lt;/a&gt; and &lt;a href=&quot;http://bioinf.spbau.ru/en/quast&quot;&gt;QUAST&lt;/a&gt; are more powerful, the use of
+MUMmer limits them to small genomes only. In contrast, “abreak” works with any
+aligners supporting chimeric alignment. When BWA-SW or BWA-MEM is used to map
+contigs, “abreak” can easily and efficiently work with mammal-sized assemblies.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
    <title>Random access to zlib compressed files</title>
-   <link href="http://lh3.github.io/blog/2014/07/05/random-access-to-zlib-compressed-files"/>
+   <link href="http://lh3.github.io/2014/07/05/random-access-to-zlib-compressed-files"/>
    <updated>2014-07-05T00:00:00-04:00</updated>
-   <id>http://lh3.github.io/blog/2014/07/05/random-access-to-zlib-compressed-files</id>
+   <id>http://lh3.github.io/2014/07/05/random-access-to-zlib-compressed-files</id>
    <content type="html">
 &lt;p&gt;&lt;a href=&quot;http://www.zlib.net&quot;&gt;Zlib&lt;/a&gt;/&lt;a href=&quot;http://www.gzip.org&quot;&gt;gzip&lt;/a&gt; is probably the most popular library/tool for general
 data compression. In zlib, there is an API &lt;code&gt;gzseek()&lt;/code&gt; which places the file
@@ -77,9 +156,9 @@ data. It is a proven technology scaled to TB of data.&lt;/p&gt;
  
  <entry>
    <title>My blog</title>
-   <link href="http://lh3.github.io/blog/2014/07/05/my-blog"/>
+   <link href="http://lh3.github.io/2014/07/05/my-blog"/>
    <updated>2014-07-05T00:00:00-04:00</updated>
-   <id>http://lh3.github.io/blog/2014/07/05/my-blog</id>
+   <id>http://lh3.github.io/2014/07/05/my-blog</id>
    <content type="html">
 &lt;p&gt;I have a &lt;a href=&quot;http://lh3lh3.users.sourceforge.net&quot;&gt;homepage&lt;/a&gt;. It is using a CSS template heavily modified from a
 theme from &lt;a href=&quot;http://en.wikipedia.org/wiki/Google_Page_Creator&quot;&gt;Google Pages&lt;/a&gt;, which has long been discontinued. This
