@@ -40,7 +40,7 @@ and reverse-reverse. It should be noted that a k-mer de Bruijn graph is
 equivalent to an overlap graph for k-mer reads with (k-1)-mer overlaps.
 It is a bidirected graph, too.
 
-The crical problem with FASTG is that it puts sequneces on arcs/edges. It is
+The critical problem with FASTG is that it puts sequneces on arcs/edges. It is
 unable to describe a simple topology such as `A->B; C->B; C->D` without adding a
 dummy node, which breaks the theoretical elegance of assembly graphs. Due to the
 historical confusion between vertices and edges, I will avoid using these
@@ -95,7 +95,7 @@ identical to SAM. Predefined tags include:
 ### Discussions
 
 1. If this format cannot encode your assembly, please let me know. Thank you.
-Suggestions on making GFA work would be appreciated more. :-)
+Suggestions on making GFA work would be appreciated even more. :-)
 
 2. It is unusual to uniquely label the two ends of a segment. [ABySS][abyss], [SGA][sga] and
 most other assemblers uniquely label a segment. In my view, end-labeling has a
