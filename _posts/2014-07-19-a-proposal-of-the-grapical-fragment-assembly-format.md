@@ -68,7 +68,7 @@ The following shows an assembly graph with seven segments in GFA:
     S  9 10  CGATGATA  *
     S 11 12  ATGA  *
     C  9 11  2  4M
-    
+
 If we name a segment with the two *ordered* integers, the example above is
 equivalent to a bidirected graph `1:2>->3:4; 5:6>->3:4; 5:6>-<7:8<->9:10` with
 `11:12` contained in `9:10`. The `H` line is the header. An `S` line describes a
@@ -85,12 +85,12 @@ a containment.
 For all lines, additional information is described with tags in a format
 identical to SAM. Predefined tags include:
 
-|Line|Tag|Type|Meaning|
-|:--:|:-:|:--:|:------|
-|H   |VN |Z   |Version number|
-|H   |QT |A   |Type of pseudo-quality. Valid values: `Q`, `D` or `K`|
-|S   |RC |i   |# reads assembled into the segment|
-|L/C |MQ |i   |Mapping quality of the overlap/containment|
+    Line  Tag  Type  Meaing
+    -----------------------------------------------------------------------
+     H    VN    Z    Version number
+     H    QT    A    Type of pseudo-quality. Valid values: `Q`, `D` or `K`
+     S    RC    i    # reads assembled into the segment
+    L/C   MQ    i    Mapping quality of the overlap/containment
 
 ### Discussions
 
