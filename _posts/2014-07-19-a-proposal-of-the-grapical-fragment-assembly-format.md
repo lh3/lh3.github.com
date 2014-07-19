@@ -55,20 +55,20 @@ practice, it is easier and more explicit to describe links between the ends of
 segments. Gene Myers took a similar approach in his string graph paper. Based on
 this observation, I *uniquely* label the 5'-end and the 3'-end of each segment.
 The following shows an assembly graph with seven segments in GFA:
-```
-H  VN:Z:1.0
-S  1  2  CGATGCAA  *
-L  2  3  5M
-S  3  4  TGCAAAGTAC  *
-L  3  6  *
-S  5  6  TGCAACGTATAGACTTGTCAC  *  RC:i:4
-L  6  8  1M1D2M1S
-S  7  8  GCATATA  *
-L  7  9  *
-S  9 10  CGATGATA  *
-S 11 12  ATGA  *
-C  9 11  2  4M
-```
+
+    H  VN:Z:1.0
+    S  1  2  CGATGCAA  *
+    L  2  3  5M
+    S  3  4  TGCAAAGTAC  *
+    L  3  6  *
+    S  5  6  TGCAACGTATAGACTTGTCAC  *  RC:i:4
+    L  6  8  1M1D2M1S
+    S  7  8  GCATATA  *
+    L  7  9  *
+    S  9 10  CGATGATA  *
+    S 11 12  ATGA  *
+    C  9 11  2  4M
+    
 If we name a segment with the two *ordered* integers, the example above is
 equivalent to a bidirected graph `1:2>->3:4; 5:6>->3:4; 5:6>-<7:8<->9:10` with
 `11:12` contained in `9:10`. The `H` line is the header. An `S` line describes a
