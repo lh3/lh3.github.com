@@ -19,9 +19,8 @@ assembly format again. I also feel the pressing necessity of standardization, so
 decided to give a try myself. This is the Graphical Fragment Assembly format, or
 GFA in abbreviation.
 
-In this long post, I will start from the theoretical basis of assembly graph,
-give an overview of the format, then describe the format and finally discuss the
-potential issues with the proposal.
+In this post, I will start from the theoretical basis of assembly graph,
+describe the format and finally discuss the potential issues with the proposal.
 
 I showed an earlier version of this format to Richard Durbin, Daniel Zerbino and
 Benedict Paten last night in Oxford. That version was a variant of FASTA. When I
@@ -52,9 +51,10 @@ connection between segments.
 
 Although we can describe an assembly graph with bidirected arcs, I find in
 practice, it is easier and more explicit to describe links between the ends of
-segments. Gene Myers took a similar approach in his string graph paper. Based on
-this observation, I *uniquely* label the 5'-end and the 3'-end of each segment.
-The following shows an assembly graph with seven segments in GFA:
+segments. [Gene Myers][gmyers] took a similar approach in his [string graph
+paper][stringg]. Based on this observation, I *uniquely* label the 5'-end and
+the 3'-end of each segment. The following shows an assembly graph with seven
+segments in GFA:
 
     H  VN:Z:1.0
     S  1  2  CGATGCAA  *
@@ -97,7 +97,7 @@ identical to SAM. Predefined tags include:
 1. If this format cannot encode your assembly, please let me know. Thank you.
 Suggestions on making GFA work would be appreciated more. :-)
 
-2. It is unusual to uniquely label the two ends of a segment. ABySS, SGA and
+2. It is unusual to uniquely label the two ends of a segment. [ABySS][abyss], [SGA][sga] and
 most other assemblers uniquely label a segment. In my view, end-labeling has a
 few advantages: a) it requires fewer operations for reverse-complementing and
 unambiguous merging; b) by representing a bidirected arc with `A+,B-`, we are
@@ -132,3 +132,7 @@ trimming and bubble popping if I have time.
 [pmelsted]: http://pmelsted.wordpress.com/2014/07/17/dear-assemblers-we-need-to-talk-together/
 [bigraph]: http://en.wikipedia.org/wiki/Bidirected_graph
 [asqg]: https://github.com/jts/sga/wiki/ASQG-Format
+[stringg]: http://bioinformatics.oxfordjournals.org/content/21/suppl_2/ii79.abstract
+[gmyers]: http://en.wikipedia.org/wiki/Eugene_Myers
+[abyss]: http://www.bcgsc.ca/platform/bioinfo/software/abyss
+[sga]: https://github.com/jts/sga
