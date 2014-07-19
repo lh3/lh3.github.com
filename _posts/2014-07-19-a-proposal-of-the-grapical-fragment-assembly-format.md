@@ -134,16 +134,16 @@ example above will look like (better or worse?):
 
     H  VN:Z:1.0
     S  1  CGATGCAA  *
-    L  1+ 2+  5M
+    L  1  2  ++  5M
     S  2  TGCAAAGTAC  *
-    L  3+ 2+  *
+    L  3  2  ++  *
     S  3  TGCAACGTATAGACTTGTCAC  *  RC:i:4
-    L  3+ 4-  1M1D2M1S
+    L  3  4  +-  1M1D2M1S
     S  4  GCATATA  *
-    L  4- 5+  *
+    L  4  5  -+  *
     S  5  CGATGATA  *
     S  6  ATGA  *
-    C  5+ 6+  2  4M
+    C  5  6  ++  2  4M
 
 [fastg]: http://fastg.sourceforge.net
 [adamtalk]: http://www.iscb.org/ismb-mm/media-ismb2014/talks
