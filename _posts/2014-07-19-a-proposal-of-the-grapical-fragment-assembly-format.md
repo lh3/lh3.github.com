@@ -127,6 +127,24 @@ trimming and bubble popping if I have time.
 
 7. Any other suggestions?
 
+### Update
+
+Considering to replace end-labeling with the more common segment-labeling. The
+example above will look like (better or worse?):
+
+    H  VN:Z:1.0
+    S  1  CGATGCAA  *
+    L  1+ 2+  5M
+    S  2  TGCAAAGTAC  *
+    L  3+ 2+  *
+    S  3  TGCAACGTATAGACTTGTCAC  *  RC:i:4
+    L  3+ 4-  1M1D2M1S
+    S  4  GCATATA  *
+    L  4- 5+  *
+    S  5  CGATGATA  *
+    S  6  ATGA  *
+    C  5+ 6+  2  4M
+
 [fastg]: http://fastg.sourceforge.net
 [adamtalk]: http://www.iscb.org/ismb-mm/media-ismb2014/talks
 [pmelsted]: http://pmelsted.wordpress.com/2014/07/17/dear-assemblers-we-need-to-talk-together/
