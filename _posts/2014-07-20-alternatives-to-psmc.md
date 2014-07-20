@@ -13,7 +13,7 @@ has been cited over 100 times so far. Whenever I see a PSMC plot in a paper, I
 feel a moment of joy both as a scientist and as a programmer.
 
 PSMC is okay, but now there are better models and implementations at least in
-theory. [MSMC][msmc], which has recently [published in Nature Genetics][msmc2],
+theory. [MSMC][msmc], which has recently been [published in Nature Genetics][msmc2],
 not only extends PSMC to multiple haplotypes, but also improves PSMC
 for a diploid genome. It precalculates transition matrices over long runs of
 homozygosity and becomes fast enough to perform whole-genome inference without
