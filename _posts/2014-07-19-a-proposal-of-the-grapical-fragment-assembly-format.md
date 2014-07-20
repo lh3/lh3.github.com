@@ -60,11 +60,11 @@ segments in GFA:
     S  1  2  CGATGCAA  *
     L  2  3  5M
     S  3  4  TGCAAAGTAC  *
-    L  3  6  *
+    L  3  6  0M
     S  5  6  TGCAACGTATAGACTTGTCAC  *  RC:i:4
     L  6  8  1M1D2M1S
     S  7  8  GCATATA  *
-    L  7  9  *
+    L  7  9  0M
     S  9 10  CGATGATA  *
     S 11 12  ATGA  *
     C  9 11  2  4M
@@ -80,7 +80,7 @@ end as the target/upper sequence. The CIGAR can describe symmetric overlaps
 (e.g. `1M1D2M1S`; heading `S` for clipping on the second sequence and tailing
 `S` on the first), or unaligned overlaps (e.g. `5S10I8D2S`; no `M` operators).
 It is related to but different from the CIGAR used in SAM. A `C` line represents
-a containment.
+a containment, which is only relevant to read-to-read overlaps.
 
 For all lines, additional information is described with tags in a format
 identical to SAM. Predefined tags include:
@@ -134,16 +134,16 @@ example above will look like (better or worse?):
 
     H  VN:Z:1.0
     S  1  CGATGCAA  *
-    L  1  2  ++  5M
+    L  1  +  2  +  5M
     S  2  TGCAAAGTAC  *
-    L  3  2  ++  *
+    L  3  +  2  +  *
     S  3  TGCAACGTATAGACTTGTCAC  *  RC:i:4
-    L  3  4  +-  1M1D2M1S
+    L  3  +  4  -  1M1D2M1S
     S  4  GCATATA  *
-    L  4  5  -+  *
+    L  4  -  5  +  *
     S  5  CGATGATA  *
     S  6  ATGA  *
-    C  5  6  ++  2  4M
+    C  5  +  6  +  2  4M
 
 [fastg]: http://fastg.sourceforge.net
 [adamtalk]: http://www.iscb.org/ismb-mm/media-ismb2014/talks
