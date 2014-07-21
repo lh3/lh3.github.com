@@ -91,6 +91,8 @@ identical to SAM. Predefined tags include:
      H    QT    A    Type of pseudo-quality. Valid values: `Q`, `D` or `K`
      S    RC    i    # reads assembled into the segment
     L/C   MQ    i    Mapping quality of the overlap/containment
+     L    NM    i    # mismatches/gaps
+     S    LN    i    Segment length
 
 ### Discussions
 
@@ -136,11 +138,11 @@ example above will look like (better or worse?):
     S  1  CGATGCAA  *
     L  1  +  2  +  5M
     S  2  TGCAAAGTAC  *
-    L  3  +  2  +  *
+    L  3  +  2  +  0M
     S  3  TGCAACGTATAGACTTGTCAC  *  RC:i:4
     L  3  +  4  -  1M1D2M1S
     S  4  GCATATA  *
-    L  4  -  5  +  *
+    L  4  -  5  +  0M
     S  5  CGATGATA  *
     S  6  ATGA  *
     C  5  +  6  +  2  4M
