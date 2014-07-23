@@ -37,12 +37,12 @@ Here is the graph from the previous post in the updated format:
 A little bit more formally, GFA consists of four types of lines indicated by
 the first letter at each line. The format of each line is:
 
-    Line  Fixed fields                             Comments
-	-------------------------------------------------------------
-	 H    N/A                                      Header
-	 S    segName,segSeq                           Segment
-	 L    segName1,segOri1,segName2,segOri2,CIGAR  Link
-	 C    segName1,segOri1,segName2,segOri2,CIGAR  Contained
+    Line  Fixed fields                                 Comments
+	---------------------------------------------------------------
+	 H    N/A                                          Header
+	 S    segName,segSeq                               Segment
+	 L    segName1,segOri1,segName2,segOri2,CIGAR      Link
+	 C    segName1,segOri1,segName2,segOri2,pos,CIGAR  Contained
 
 Here is a list of predefined tags:
 
