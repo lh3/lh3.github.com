@@ -55,13 +55,36 @@ Here is a list of predefined tags:
      L/C  NM    i    # mismatches/gaps
       S   LN    i    Segment length
 
-In the next step, I will write a standalone parser for GFA and clean up a few
-dirty corners in this process. I will also try to write a few converters for
-existing assembly formats by various assemblers and implement a few basic
-tools.  If you have any suggestions, please let me know. After all, I am not so
-experienced in de novo assemblies as most of the readers.
+Discussions and open issues:
 
-Finally, I should emphasize that the format has not been fixed at all. Please
-keep the comments coming. The discussions so far are very helpful to me. Thank
-you!
+1. How to describe complex overlaps with simple syntax. Currently, GFA uses a
+   CIGAR, but I think it is bit overcomplicated.
+
+2. Random access to GFA. I am not quite sure how this is useful in practice,
+   but it is worth thinking.
+
+3. Small bubbles. Although I said that a few others and I would prefer to
+   encode bubbles as explicit segments in the initial iteration, I know a few
+   would like a better representation.
+
+4. Where to keep the read-to-contig alignment. My preference is to keep them in
+   a separate BAM file.
+
+5. Where to keep the segment sequences. My preference is to keep them in GFA.
+   Nonetheless, we still allow to put a "*" at the sequence field. We can still
+   describe the topology without the sequence data.
+
+6. "Twin edges". A link can be represented in two directions. My preference is
+   to allow both directions. The parser should throw a warning or an error if
+   the two directions are inconsistent.
+
+In the next step, I will write a standalone parser for GFA and clean up a few
+dirty corners meanwhile. I will also try to write a few converters for existing
+assembly formats by various assemblers and implement a few basic tools. If you
+have any suggestions, please let me know. After all, I am not so experienced in
+de novo assemblies as most of the readers.
+
+Finally, I should emphasize that the format has not been fixed at all, far from
+it. Please keep the comments coming. The discussions so far are very helpful to
+me. Thank you!
 
