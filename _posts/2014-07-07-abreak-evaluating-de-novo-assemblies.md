@@ -7,7 +7,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-"Abreak" is a subcommand of [htscmd][htslib] on [the lite branch][lite]. It
+"Abreak" is a subcommand of [htsbox][htsbox], which is a little *toy* forked from on the lite branch of [htslib][htslib]. It
 takes an assembly-to-reference alignment as input and counts the number of
 alignment break points. An earlier version was used in [my fermi paper][fermi]
 to measure the missassembly rate of human de novo assemblies. A typical output
@@ -31,6 +31,15 @@ MUMmer limits them to small genomes only. In contrast, "abreak" works with any
 aligners supporting chimeric alignment. When BWA-SW or BWA-MEM is used to map
 contigs, "abreak" can easily and efficiently work with mammal-sized assemblies.
 
+**UPDATE on 11/24/2014**: changed links to htslib/htsbox. BTW, the results vary
+with mapping parameters. If contigs and references are very close to each
+other, it is recommended to use:
+
+    bwa mem -B9 -O16 -E1
+
+for mapping. The default works better when the divergence is high.
+
+[htsbox]: https://github.com/lh3/htsbox
 [htslib]: https://github.com/samtools/htslib
 [lite]: https://github.com/samtools/htslib/tree/lite
 [fermi]: http://bioinformatics.oxfordjournals.org/content/28/14/1838
