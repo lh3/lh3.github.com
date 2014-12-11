@@ -46,8 +46,8 @@ and gapExt=-1, based on a [recent paper][sc]. This setting turns out to be
 better for PacBio, too.
 
 The ONT mode of bwa-mem is largely comparable to [LAST][last], the mapper
-recommended by several groups. Given a same scoring system, they generate
-identical SW scores most of time. When they are different, LAST tends to be the
+recommended by several groups. Given the same scoring system, they generate
+identical SW scores most of time. When scores are different, LAST tends to be the
 winner - on this small fraction of alignments with different scores, bwa-mem is
 more likely to miss low-quality hits or fails to extend a partial alignment to
 the right place. For bacterial data, bwa-mem and LAST are also about the same
