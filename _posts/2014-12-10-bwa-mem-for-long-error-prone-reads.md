@@ -51,7 +51,7 @@ recommended by several groups. Given the same scoring system, the two mappers
 generate identical SW scores most of time. When scores are different, LAST
 tends to be the winner - on this small fraction of alignments with different
 scores, bwa-mem is more likely to miss low-quality hits or fails to extend a
-partial alignment to the right place. For bacterial data, bwa-mem and LAST are
+partial alignment to the right place (I need to walk through these examples to understand why this happens). For bacterial data, bwa-mem and LAST are
 also about the same in speed. For human PacBio reads, though, bwa-mem is times
 faster. It is more geared towards human data.
 
