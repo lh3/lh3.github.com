@@ -9,7 +9,7 @@ tags: []
 
 A recent paper published by [Phil Ashton et al][1] has triggered some
 discussions which subsequently moved to my domain: read mapping. Phil then
-asked me to clarify how the upcoming bwa-mem works with Oxford Nanopore (ONP)
+asked me to clarify how the upcoming bwa-mem works with Oxford Nanopore (ONT)
 reads. Here we go.
 
 Although the very first version of bwa-mem worked with PacBio reads (well, not
