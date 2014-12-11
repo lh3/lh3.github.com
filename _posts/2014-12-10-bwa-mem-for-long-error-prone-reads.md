@@ -32,27 +32,28 @@ reject seeds if the SW score is too small (threshold proportional to option
 these, bwa-mem also implements a gap patching heuristic whereby it tries to
 connect two colinear local hits with a global alignment even if the resulting
 alignment is not optimal. This heuristic helps to let alignment walk through
-low-quality regions and thus reduce fragmentation. Homolog.us is right in that
-bwa-mem could work well with PacBio reads.
+low-quality regions and thus reduce fragmentation. With these changes, bwa-mem
+works well for PacBio data.
 
-ONT reads pose new challenges due to its higher error rate. The intial
-one-direction (1D) reads have an error rate higher than 30%. The 2D reads is a
-little better, but still has more errors than PacBio for now. The PacBio mode
-does not work very well. This calls for improvements to bwa-mem. The
-ONT-specific changes are relatively simple. Firstly, we use shorter seed
+ONT reads pose new challenges due to its higher error rate. The intial release
+of one-direction (1D) reads have an error rate higher than 30%. The 2D reads is
+a little better, but still has more errors than PacBio for now. The PacBio mode
+is not quite suitable, which calls for further improvements to bwa-mem.
+
+The ONT-specific changes are relatively simple. Firstly, we use shorter seed
 lengths and more relaxed threshold `-W` as a consequence of higher error rate.
 Secondly, we modified the scoring matrix to match=1, mismatch=-1, gapOpen=-1
 and gapExt=-1, based on a [recent paper][sc]. This setting turns out to be
 better for PacBio, too.
 
 The ONT mode of bwa-mem is largely comparable to [LAST][last], the mapper
-recommended by several groups. Given the same scoring system, they generate
-identical SW scores most of time. When scores are different, LAST tends to be the
-winner - on this small fraction of alignments with different scores, bwa-mem is
-more likely to miss low-quality hits or fails to extend a partial alignment to
-the right place. For bacterial data, bwa-mem and LAST are also about the same
-in speed. For human PacBio reads, though, bwa-mem is times faster. It is more
-geared towards human data.
+recommended by several groups. Given the same scoring system, the two mappers
+generate identical SW scores most of time. When scores are different, LAST
+tends to be the winner - on this small fraction of alignments with different
+scores, bwa-mem is more likely to miss low-quality hits or fails to extend a
+partial alignment to the right place. For bacterial data, bwa-mem and LAST are
+also about the same in speed. For human PacBio reads, though, bwa-mem is times
+faster. It is more geared towards human data.
 
 LAST is probably the only mapper that works efficiently and accurately with
 query sequences ranged from 100bp to 100Mbp without much parameter tuning. This
