@@ -18,8 +18,8 @@ interest, which I am sharing here.
 
 When I looked at the HiSeq X10 alignment in samtools tview, my first impression
 is that the error rate is visually higher than the previous Illumina data I have
-seen. This might be the cause of the [2-channel system][ch2] (as is opposed to
-the previous 4-channel). However, a closer look at the base quality suggested I
+seen. ~~This might be the cause of the [2-channel system][ch2] (as is opposed to
+the previous 4-channel).~~ However, a closer look at the base quality suggested I
 might be wrong. The average base quality of these HiSeq X10 data is Q37.0 for
 reads mapped to chr11. This is compared favorably to NA12878 from [Platinum
 Genomes][pgen] (Q36.4) and the CHM1 data used in my paper (Q34.9).
