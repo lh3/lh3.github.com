@@ -39,23 +39,22 @@ for my purpose, but does give the answer: I can. With more google searches, I
 learned how to build a tiny image: to use statically linked binaries. I have put
 up relevant files in [lh3/bwa-docker][bd] at github. Briefly, to build and use
 it locally:
-```sh
-git clone https://github.com/lh3/bwa-docker.git
-cd bwa-docker
-docker build -t mybwa .
-docker run -v `pwd`:/tmp -w /tmp mybwa index MT.fa
-cat test.fq | docker run -iv `pwd`:/tmp -w /tmp mybwa mem MT.fa - > test.sam
-```
+
+	git clone https://github.com/lh3/bwa-docker.git
+	cd bwa-docker
+	docker build -t mybwa .
+	docker run -v `pwd`:/tmp -w /tmp mybwa index MT.fa
+	cat test.fq | docker run -iv `pwd`:/tmp -w /tmp mybwa mem MT.fa - > test.sam
+
 This creates test.sam in the `bwa-docker` directory. Yes, docker naturally
 reads from stdin and writes to stdout, though perhaps there are more efficient
 ways to pipe between docker containers.
 
 With files on github, I can also add [my image][bwa-dh] to [Docker Hub][dh] by
 allowing Docker Hub to access my github account. You can access the image with:
-```sh
-docker pull lh3lh3/bwa
-docker run -v `pwd`:/tmp -w /tmp lh3lh3/bwa index MT.fa
-```
+
+	docker pull lh3lh3/bwa
+	docker run -v `pwd`:/tmp -w /tmp lh3lh3/bwa index MT.fa
 
 Is the above the typical approach to creating images? Definitely not. This way,
 docker is no better than statically linked binaries. If you look at other
