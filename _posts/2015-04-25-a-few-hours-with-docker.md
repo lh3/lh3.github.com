@@ -7,7 +7,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-## Installing docker on Mac
+### Installing docker on Mac
 
 With all the buzz around [docker][docker], I finally decided to give it try.
 I first asked Broad sysadmins if there are machines set up for testing docker
@@ -21,7 +21,7 @@ terminal from Kitematic (hot key: command-shift-T), I have a fully functional
 `docker` command. You can in principle launch `docker` from other terminals,
 but you need to export the right environmental variables.
 
-## Trying prebuilt images
+### Trying prebuilt images
 
 I ran the [busybox image][busybox] successfully. I then tried ngseasy as it is
 supposed to be easily installed with `make all`. When I did that, it started to
@@ -31,7 +31,7 @@ image. I killed `make all` and deleted temporary files and the virtual machine.
 A 1.1GB pipeline seems too much for my small experiment (and I don't know if it
 keeps downloading more).
 
-## Building my own image
+### Building my own image
 
 Can I build a small image if I only want to install BWA in it? I asked myself.
 I then googled around and found [this post][tinyimage]. It is still too complex
@@ -65,7 +65,7 @@ of hundreds of MB in size in the first place. If you have two tools built upon
 different fat base images, you probably need to have both bases (is that
 correct?).
 
-## Preliminary thoughts
+### Preliminary thoughts
 
 Docker is a bless to complex systems such as the old Apache+MySQL+PHP combo,
 but is a curse to simple command line tools. For simple tools, it adds multiple
