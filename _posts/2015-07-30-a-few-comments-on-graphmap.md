@@ -26,9 +26,8 @@ gapOpen=0 and gapExt=-1, while LAST uses gapOpen=-1. Factor 1) may matter more
 if the authors are keeping all the fragmented local hits. If the authors are
 only looking at the best hit, then 2) should be the more important factor. In
 the latter case, we should be able to improve LAST consensus by using the same
-scoring system. It would be good if the authors try to understanding why LAST
-is not doing as well. In my experience, most of time when others' tools are
-much worse than mine, it is because I am not using the tools the right way.
+scoring system. It would be good if the authors try to understand why LAST
+is not doing as well.
 
 Note that BWA-MEM has a bug in alignment. It is unable to perform the simple
 edit-distance based alignment. I cannot evaluate the effect of scoring systems
@@ -40,7 +39,7 @@ I have tried GraphMap on 250 human PacBio reads. It took ~3000 CPU seconds to
 map them on the prebuilt index (i.e. time on indexing is excluded). The peak
 RAM is ~100GB. BWA-MEM took 26 CPU seconds with most of time spent on loading
 the BWA index. It seems that GraphMap is not quite ready for whole human genome
-mapping, which is very different from mapping for small genomes.
+mapping yet.
 
 ### Comment 3: issues with end-to-end mapping
 
