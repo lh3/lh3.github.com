@@ -21,7 +21,7 @@ SDUST/dustmasker. I haven't looked into the cause.
 I understand the basis of the SDUST algorithm, which is quite elegant, but I
 haven't fully understood all the implementation details. I was just literally
 translating the pseudocode in the paper to C, with occassional reference to the
-dustmasker source code. If you have any problems, please let me know.
+[dustmasker source code][dmsc]. If you have any problems, please let me know.
 
 [sdust]: https://github.com/lh3/minimap/blob/master/sdust.c
 [mdust]: ftp://occams.dfci.harvard.edu/pub/bio/tgi/software/seqclean/
@@ -30,3 +30,4 @@ dustmasker source code. If you have any problems, please let me know.
 [kdq]: https://github.com/lh3/minimap/blob/master/kdq.h
 [kseq]: https://github.com/lh3/minimap/blob/master/kseq.h
 [dm]: http://www.ncbi.nlm.nih.gov/IEB/ToolBox/CPP_DOC/lxr/source/src/app/dustmasker/
+[dmsc]: http://www.ncbi.nlm.nih.gov/IEB/ToolBox/CPP_DOC/lxr/source/src/algo/dustmask/symdust.cpp
