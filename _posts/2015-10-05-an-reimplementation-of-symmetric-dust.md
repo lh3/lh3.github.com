@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "An reimplementation of symmetric DUST"
+title: "A reimplementation of symmetric DUST"
 description: ""
 category: 
 tags: []
