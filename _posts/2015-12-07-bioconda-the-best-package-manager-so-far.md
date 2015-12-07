@@ -83,7 +83,7 @@ key, in my opinion.
 (PS: another concern is that conda is a commercial product of [Continuum
 Analytics][ca]. What if the company fails to make profit or decides to
 discontinue conda? I know conda is an open-source project, but not every
-open-source project can heathily grow on its own.)
+open-source project can healthly grow on its own.)
 
 ### My thoughts
 
@@ -108,7 +108,7 @@ free text. I have read through all of them and classified them into several
 categories. In the end, I [collected][rst] 233 non-duplicate replies that have
 answers to the related questions. The leading difficulty is installation
 problems (132/233; category 3), followed by insufficient computing resources
-(88/257; 7 and 8), lack of interoperability (72/233; category 5) and bad
+(88/233; 7 and 8), lack of interoperability (72/233; category 5) and bad
 documentations (69/233; category 6). Not surprisingly, software installation
 is less an issue to skilled researchers (27/62 for skill level 8 or above),
 but 44% is still a large percentage and the fraction of junior
