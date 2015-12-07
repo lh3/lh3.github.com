@@ -17,18 +17,16 @@ typically managed by the same group. [Bioconda][biocd] is a channel of conda
 focusing on bioinformatics software. The following shows how to install and
 use conda.
 
-```sh
-# Download the miniconda installation script for Python2
-wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
-# Install conda; it will ask a few questions, including the installation path
-sh Miniconda-latest-Linux-x86_64.sh
-. ~/.bashrc   # or relogin to get PATH updated
-# A few examples
-conda info
-conda search -c bioconda bwa
-conda install -c bioconda bwa
-conda list
-```
+    # Download the miniconda installation script for Python2
+    wget https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+    # Install conda; it will ask a few questions, including the installation path
+    sh Miniconda-latest-Linux-x86_64.sh
+    . ~/.bashrc   # or relogin to get PATH updated
+    # A few examples
+    conda info
+    conda search -c bioconda bwa
+    conda install -c bioconda bwa
+    conda list
 
 In this example, option `-c bioconda` specifies that the package comes from
 the bioconda channel; otherwise the default channel is used.
