@@ -80,6 +80,11 @@ developer to contribute to conda. Bioconda is currently maintained by several
 experienced developers, but we need more to push it further. Automation is the
 key, in my opinion.
 
+(PS: another concern is that conda is a commercial product of [Continuum
+Analytics][ca]. What if the company fails to make profit or decides to
+discontinue conda? I know conda is an open-source project, but not every
+open-source project can heathily grow on its own.)
+
 ### My thoughts
 
 I have tried a few package management systems such as [Linuxbrew][lbrew] and
@@ -93,6 +98,7 @@ it can be a success.
 [lbrew]: https://github.com/Homebrew/linuxbrew
 [gentoo]: https://wiki.gentoo.org/wiki/Project:Prefix
 [guix]: http://www.gnu.org/software/guix/
+[ca]: https://www.continuum.io
 
 ### Appendix: my summary of Loman's survey
 
