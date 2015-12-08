@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bioconda: the best bio-software package manager so far"
+title: "Bioconda: a capable bio-software package manager"
 description: ""
 category: 
 tags: []
