@@ -7,7 +7,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-## Introduction
+### Introduction
 
 Illumina Inc. released [NovaSeq][novaseq] earlier this year and provided sample
 data [at BaseSpace][nova-data] several months later. Different from the HiSeq
@@ -16,7 +16,7 @@ the NextSeq series, which also uses 2-color chemistry, [produced data of worse
 quality][nextseq-bad]. One naturally wonders if NovaSeq has a similar problem.
 This post might give you some hints.
 
-## Data and methods
+### Data and methods
 
 I am looking at three whole-genome Illumina runs for human sample NA12878,
 with data produced on HiSeq 2500, HiSeq X Ten and NovaSeq, respectively.
@@ -36,7 +36,7 @@ if 35% of high-quality bases at the site are different from the reference. This
 treatment is not perfect, but is easy to implement and often adequate unless we
 care about base quality well over Q40 (see also Results).
 
-## Results
+### Results
 
 The NovaSeq FASTQs only consist of four possible quality values: 2, 12, 23 and 37.
 The overall emQ for HiSeq 2500, HiSeq X Ten and NovaSeq is Q27, Q23 and
@@ -77,7 +77,7 @@ While this observation is certainly not ideal, it is not that bad as long as
 we rarely see two high-quality errors at the same site (dashed lines in panel
 A).
 
-## Discussions and conclusions
+### Discussions and conclusions
 
 The public NovaSeq data from BaseSpace is broadly comparable to HiSeq X Ten
 data in terms of empirical base quality. Like HiSeq X Ten, NovaSeq also
