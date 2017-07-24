@@ -44,13 +44,14 @@ Q24, respectively. As is [observed before][x10-qual], HiSeq X Ten has a higher
 empirical error rate than older HiSeq machines. NovaSeq is slightly better than
 HiSeq X Ten but not as good as HiSeq 2500 or the Platinum Genomes data.
 
-The solid black in panel A-C in the following figure shows emQ at each cycle
+The solid black in panel A-C in the following figure (open in a new tab if the
+labels are too small) shows emQ at each cycle:
 
 ![][img-novaseq]
 
 It is clear that emQ drops with cycles and drops even more on the second read.
-The black line is largely determined by the fraction of low-quality bases.
-It is related to the fraction of mappable reads. However, for variant calling,
+The black line is largely determined by the fraction of low-quality bases and
+affects the fraction of mappable reads. However, for variant calling,
 we usually ignore low-quality bases because they tend to be affected by
 systematic errors. In panel A-C, the four solid color lines indicate
 empirical base quality for high-quality A/C/G/T bases. Recall that all NovaSeq
