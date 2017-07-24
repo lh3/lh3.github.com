@@ -38,8 +38,8 @@ care about base quality well over Q40 (see also Results).
 
 ## Results
 
-The NovaSeq FASTQs only consist of four possible quality values: 2, 12, 23 and
-37. The overall emQ for HiSeq 2500, HiSeq X Ten and NovaSeq is Q27, Q23 and
+The NovaSeq FASTQs only consist of four possible quality values: 2, 12, 23 and 37.
+The overall emQ for HiSeq 2500, HiSeq X Ten and NovaSeq is Q27, Q23 and
 Q24, respectively. As is [observed before][x10-qual], HiSeq X Ten has a higher
 empirical error rate than older HiSeq machines. NovaSeq is slightly better than
 HiSeq X Ten but not as good as HiSeq 2500 or the Platinum Genomes data.
@@ -95,5 +95,5 @@ It is recommended to redo the analysis on your own data.
 [nova-data]: https://basespace.illumina.com/datacentral
 [2-color]: https://sequencing.qcfail.com/articles/illumina-2-colour-chemistry-can-overcall-high-confidence-g-bases/
 [nextseq-bad]: http://seqanswers.com/forums/showthread.php?t=40741
-[x10-qual]: http://lh3.github.io/2014/11/03/on-hiseq-x10-base-quality/
+[x10-qual]: http://lh3.github.io/2014/11/03/on-hiseq-x10-base-quality
 [img-novaseq]: http://lh3lh3.users.sourceforge.net/images/novaseq-qual.png
