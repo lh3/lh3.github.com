@@ -38,7 +38,8 @@ both DBGv(k|S) and DBGe(k-1|S) at the same time.
 In summary, the "De Bruijn graph" in "De Bruijn graph based assembler" is not
 the De Bruijn graph by mathematical definition. Assembly De Bruijn graphs are
 subgraphs. There are two different ways to induce such subgraphs, but in
-implementation, they often behave the same.
+implementation, they often behave the same. In DBG, are sequences on vertices
+or on edges? The correct answer is: depending on how you look at the graph.
 
 [dbg]: https://en.wikipedia.org/wiki/De_Bruijn_graph
 [line-graph]: https://en.wikipedia.org/wiki/Line_graph
