@@ -13,7 +13,7 @@ graph, or DBG(k) in brief, over the DNA alphabet uses *k*-mers at vertices. It
 has $4^k$ vertices and $4^{k+1}$ edges. DBG(k) has two interesting properties.
 First, DBG(k) is the [line graph][line-graph] of DBG(k-1). Intuitively, this
 means an edge in DBG(k-1) uniquely corresponds to a vertex in DBG(k) and that
-the edge adjacency of BDG(k-1) is precisely modeled by vertex adjacency of
+the edge adjacency of DBG(k-1) is precisely modeled by vertex adjacency of
 DBG(k). Second, DBG(k) is both [Eulerian][euler] and [Hamiltonian][hamilton].
 A Eulerian path in DBG(k-1) corresponds to a Hamiltonian path in DBG(k).
 
@@ -27,13 +27,13 @@ Alternatively, we can edge-induce a subgraph by keeping edges in R(k+1)
 together with [incident][incident] vertices. We denote this graph by DBGe(k|S).
 DBGe(k|S), cannot be considerd as an overlap graph because there may be no
 edges between two k-mers even if they have a (k-1)-mer overlap. To this end,
-DBGe(k|S) is a subgraph of DBGv(k|S). In fact, DBGv(k|S) is the line graph of
-DBGe(k-1|S).
+DBGe(k|S) is a subgraph of DBGv(k|S).
 
-In implementation, one common way to store a DBG is to keep a collection of
-*k*-mers. We traverse the graph by shifting a *k*-mer and probing its
-presence/absence in the collection. Such an algorithm actually implements both
-DBGv(k|S) and DBGe(k-1|S) at the same time.
+DBGv(k|S) is the line graph of DBGe(k-1|S). This property has an important
+implication. In implementation, one common way to store a DBG is to keep a
+collection of *k*-mers. We traverse the graph by shifting a *k*-mer and probing
+its presence/absence in the collection. Such an algorithm actually implements
+both DBGv(k|S) and DBGe(k-1|S) at the same time.
 
 In summary, the "De Bruijn graph" in "De Bruijn graph based assembler" is not
 the De Bruijn graph by mathematical definition. Assembly De Bruijn graphs are
