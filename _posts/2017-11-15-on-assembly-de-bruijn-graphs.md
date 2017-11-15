@@ -23,14 +23,14 @@ keeping vertices in S(k) together with edges connecting vertices in S(k). We
 denote this graph by DBGv(k|S).  DBGv(k|S) can be regarded as an overlap graph
 consisting of k-mers at vertices with (k-1)-mers overlaps.
 
-Alternatively, we can edge-induce a subgraph by keeping edges in R(k+1)
+Alternatively, we can edge-induce a subgraph by keeping edges in $S(k+1)$
 together with [incident][incident] vertices. We denote this graph by DBGe(k|S).
-DBGe(k|S), cannot be considerd as an overlap graph because there may be no
+DBGe(k|S) cannot be considerd as an overlap graph because there may be no
 edges between two k-mers even if they have a (k-1)-mer overlap. To this end,
 DBGe(k|S) is a subgraph of DBGv(k|S).
 
 DBGv(k|S) is the line graph of DBGe(k-1|S). This property has an important
-implication. In implementation, one common way to store a DBG is to keep a
+implication in implementation. One common way to store a DBG is to keep a
 collection of *k*-mers. We traverse the graph by shifting a *k*-mer and probing
 its presence/absence in the collection. Such an algorithm actually implements
 both DBGv(k|S) and DBGe(k-1|S) at the same time.
