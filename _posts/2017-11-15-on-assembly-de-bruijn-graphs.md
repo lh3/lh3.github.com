@@ -18,22 +18,21 @@ DBG(k). Second, DBG(k) is both [Eulerian][euler] and [Hamiltonian][hamilton].
 A Eulerian path in DBG(k-1) corresponds to a Hamiltonian path in DBG(k).
 
 Given a set of sequences *S*, let S(k) be the set of k-mers present in
-sequences in *S*. We can vertex-induce a subgraph from DBG(k) by keeping
-vertices in R(k) together with edges between kept vertices. We denote this
-graph by DBGv(k|S). Alternatively, we can edge-induce a subgraph by keeping
-edges in R(k+1) together with [incident][incident] vertices. We denote this
-graph by DBGe(k|S).
+sequences in *S*. We can [vertex-induce][induce] a subgraph from DBG(k) by
+keeping vertices in R(k) together with edges connecting vertices in R(k). We
+denote this graph by DBGv(k|S).  DBGv(k|S) can be regarded as an overlap graph
+consisting of k-mers at vertices with (k-1)-mers overlaps.
 
-DBGv(k|S) can be regarded as an overlap graph consisting of k-mers at vertices
-with (k-1)-mers overlaps. DBGe(k|S), however, cannot be considerd as an overlap
-graph because there may be no edges between two k-mers even if they have a
-(k-1)-mer overlap. To this end, DBGe(k|S) is a subgraph of DBGv(k|S). DBGv(k|S)
-is the line graph of DBGe(k-1|S). They have the same power on disambiguating
-repeats.
+Alternatively, we can edge-induce a subgraph by keeping edges in R(k+1)
+together with [incident][incident] vertices. We denote this graph by DBGe(k|S).
+DBGe(k|S), cannot be considerd as an overlap graph because there may be no
+edges between two k-mers even if they have a (k-1)-mer overlap. To this end,
+DBGe(k|S) is a subgraph of DBGv(k|S). DBGv(k|S) is the line graph of
+DBGe(k-1|S). They have the same power on disambiguating repeats.
 
 In summary, the "De Bruijn graph" in "De Bruijn graph based assembler" is not
 the De Bruijn graph by mathematical definition. Assembly De Bruijn graphs are
-subgraphs. In fact, there are even two related by different ways to construct
+subgraphs. In fact, there are even two related but different ways to construct
 an assembly De Bruijn graph; graph traversal is also different as a result. I
 have not implemented a DBG assembler myself. My *feeling* is the edge-induced
 DBGe(k|S) is more frequently used in practice.
@@ -43,3 +42,4 @@ DBGe(k|S) is more frequently used in practice.
 [euler]: https://en.wikipedia.org/wiki/Eulerian_path
 [hamilton]: https://en.wikipedia.org/wiki/Hamiltonian_path
 [incident]: https://en.wikipedia.org/wiki/Incidence_(graph)
+[induce]: https://en.wikipedia.org/wiki/Induced_subgraph
