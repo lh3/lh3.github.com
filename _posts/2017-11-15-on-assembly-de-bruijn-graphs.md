@@ -27,15 +27,18 @@ Alternatively, we can edge-induce a subgraph by keeping edges in R(k+1)
 together with [incident][incident] vertices. We denote this graph by DBGe(k|S).
 DBGe(k|S), cannot be considerd as an overlap graph because there may be no
 edges between two k-mers even if they have a (k-1)-mer overlap. To this end,
-DBGe(k|S) is a subgraph of DBGv(k|S). DBGv(k|S) is the line graph of
-DBGe(k-1|S). They have the same power on disambiguating repeats.
+DBGe(k|S) is a subgraph of DBGv(k|S). In fact, DBGv(k|S) is the line graph of
+DBGe(k-1|S).
+
+In implementation, one common way to store a DBG is to keep a collection of
+*k*-mers. We traverse the graph by shifting a *k*-mer and probing its
+presence/absence in the collection. Such an algorithm actually implements both
+DBGv(k|S) and DBGe(k-1|S) at the same time.
 
 In summary, the "De Bruijn graph" in "De Bruijn graph based assembler" is not
 the De Bruijn graph by mathematical definition. Assembly De Bruijn graphs are
-subgraphs. In fact, there are even two related but different ways to construct
-an assembly De Bruijn graph; graph traversal is also different as a result. I
-have not implemented a DBG assembler myself. My *feeling* is the edge-induced
-DBGe(k|S) is more frequently used in practice.
+subgraphs. There are two different ways to induce such subgraphs, but in
+implementation, they often behave the same.
 
 [dbg]: https://en.wikipedia.org/wiki/De_Bruijn_graph
 [line-graph]: https://en.wikipedia.org/wiki/Line_graph
