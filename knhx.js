@@ -569,7 +569,7 @@ function kn_plot_core(canvas, tree, conf)
 				var p = tree.node[i];
 				if (p.meta) {
 					var m = re.exec(p.meta);
-					if (m.length > 1) {
+					if (m != null) {
 						var l = ctx.measureText(conf.font, conf.fontsize, m[1]);
 						ctx.drawText(conf.font, conf.fontsize, p.x * real_x - conf.xskip + shift_x - l,
 									 p.y * real_y + shift_y + conf.fontsize * 1.33, m[1]);
