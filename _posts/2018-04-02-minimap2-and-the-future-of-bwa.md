@@ -72,7 +72,7 @@ improve minimap2.
 
 ### The future of bwa
 
-Knowing bwa-mem still has edges on some types of data, I will keep bwa alive.
+**Bwa will stay**.
 I am thinking to bring some minimap2 features to bwa-mem, such as fast
 alignment extension and global alignment. This will make code cleaner and fix a
 long-existing bug in bwa-mem: a tiny fraction of base-level alignment is
