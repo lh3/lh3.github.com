@@ -42,7 +42,7 @@ gaps and works with ultra-long reads that fail bwa-mem. Minimap2 also goes
 beyond a typical long-read mapper. It can achieve good full-genome alignment
 (see the minimap2 paper, section 3.4) and is used by [QUAST-LG][quast-lg].
 Minimap2 can also align high-quality cDNAs and noisy long RNA-seq reads
-(section 3.2). PacBio has [started to consider][tofu-us] minimap2 in their
+(section 3.2). PacBio has [started to consider][tofu-u2] minimap2 in their
 Iso-seq pipeline. The feature set and the code base of minimap2 are also fairly
 stable. **I see little reason to use bwa-mem for long reads in future**.
 
