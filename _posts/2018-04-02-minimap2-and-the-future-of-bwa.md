@@ -8,7 +8,7 @@ tags: []
 {% include JB/setup %}
 
 My minimap2 paper has been accepted for publication in Bioinformatics. You can
-find the latest LaTeX source at [at OverLeaf][overleaf] or in the [tex
+find the latest LaTeX source [at OverLeaf][overleaf] or in the [tex
 directory of minimap2][tex]. I am intentionally delaying the publication
 process for personal reasons. It will take a while for you to see the published
 version at Bioinformatics. I thought to write this blog post when the paper
@@ -66,7 +66,7 @@ apology.
 
 Generally, I still think minimap2 is a competitive short-read mapper and I will
 use it often in my research projects. However, given that the performance of
-minimap2 is not as consistent as bwa-mem given short reads of varying quality,
+minimap2 is not as consistent as bwa-mem for short reads of varying quality,
 bwa-mem is still better for production uses, at least before I find a way to
 improve minimap2.
 
