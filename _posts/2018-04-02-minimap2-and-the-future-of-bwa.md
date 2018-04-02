@@ -7,8 +7,6 @@ tags: []
 ---
 {% include JB/setup %}
 
-### Introduction
-
 My minimap2 paper has been accepted for publication in Bioinformatics. You can
 find the latest LaTeX source at [at OverLeaf][overleaf] or in the [tex
 directory of minimap2][tex]. I am intentionally delaying the publication
