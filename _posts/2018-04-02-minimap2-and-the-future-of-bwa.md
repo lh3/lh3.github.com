@@ -36,7 +36,7 @@ motivated me to develop minimap2.
 
 ### The status of minimap2
 
-For long reads, minimap2 is a much better mapper than bwa-mem in almost every
+For long reads, [minimap2][mm2] is a much better mapper than [bwa-mem][bwa] in almost every
 aspect: it is >50X faster, more accurate, gives better alignment at long
 gaps and works with ultra-long reads that fail bwa-mem. Minimap2 also goes
 beyond a typical long-read mapper. It can achieve good full-genome alignment
@@ -96,3 +96,5 @@ these won't happen soon, unfortunately.
 [quast-lg]: http://cab.spbu.ru/software/quast-lg/
 [tofu-u2]: https://github.com/PacificBiosciences/IsoSeq_SA3nUP/wiki/%5BBeta%5D-ToFU2:-running-and-installing-ToFU2
 [andrew]: https://blog.dnanexus.com/author/acarroll/
+[mm2]: https://github.com/lh3/minimap2
+[bwa]: https://github.com/lh3/bwa
