@@ -33,9 +33,9 @@ BAMs. I am also surprised by Figure 3a, where MPEG-G can compress qualities
 much more than sequences (green vs orange). On real data produced today,
 qualities are harder to compress because they don't follow a clear pattern. I
 suspect the authors are employing lossy compression, possibly with one of the
-algorithms developed by [a key contributor][voges] to MPEG-G.  Furthermore, the
+algorithms developed by [a contributor][voges] to MPEG-G.  Furthermore, the
 usability of a format is more than just compression ratio.  Encoding/decoding
-has to be performant. The preprint shows no evaluation. James Bonfield, the key
+has to be performant. The preprint shows no evaluation. James Bonfield, the
 developer behind the latest CRAM, [has similar concerns][jkb1] with their
 previous results.
 
@@ -50,7 +50,7 @@ free. Remember the [royalties][royalty] imposed by [H.264/MPEG-4 AVC][h264]?
 MPEG-G may be going down the same route. Key contributors [are applying for
 patents][jkb2] and may have financial interest in the format. Before the MPEG-G
 authors 1) open source the reference implementation and 2) make the format
-[royal-free][rf] like [AV1][av1], I recommend everyone to use BAM or CRAM.
+[royalty-free][rf] like [AV1][av1], I recommend everyone to use BAM or CRAM.
 
 ***Disclaimer***: I was the key contributor to BAM, the format that CRAM and
 MPEG-G aim to replace, and I am still a contributor to the SAM/BAM spec and its
