@@ -17,7 +17,7 @@ and using more advanced compression techniques, we can make alignments much
 more compressible. There have been many attempts to replace BAM with a better
 binary format, such as [DeeZ][deez], [Quip][quip], [cSRA][csra] (PPT),
 [GenComp][gencomp], [cSAM][csam], [Goby][goby] and [samcomp][samcomp] (see
-[Hosseini et al, (2016)][aln-review] for a more thorough review). The team
+[Hosseini et al (2016)][aln-review] for a more thorough review). The team
 maintaining the SAM spec finally adopted [CRAM][cram] as the future of
 alignment format. CRAM is much smaller than BAM and has a similar feature set.
 With the new codec implemented in [scramble][scramble], it is as fast as BAM in
@@ -54,7 +54,8 @@ authors 1) open source the reference implementation and 2) make the format
 
 ***Disclaimer***: I was the key contributor to BAM, the format that CRAM and
 MPEG-G aim to replace, and I am still a contributor to the SAM/BAM spec and its
-reference implementation.
+reference implementation. I have no competing financial interests in
+SAM/BAM/CRAM or its reference implementation htslib.
 
 [aln-review]: https://www.mdpi.com/2078-2489/7/4/56
 [deez]: https://www.ncbi.nlm.nih.gov/pubmed/25357237
