@@ -24,8 +24,8 @@ data with read() into an internal buffer and returns smaller data blocks on
 request. It may dramatically reduce the expensive read() system calls and is
 mostly the preferred choice.
 
-fread() is efficient. However, it only works with data streams ncoming from
-[file descriptors][fd]. More recent programming languages provide generic
+fread() is efficient. However, it only works with data streams coming from
+[file descriptors][fd], not from a zlib file handler for example. More recent programming languages provide generic
 buffered readers. Take Go's [Bufio][go-bufio] as an example. It demands a
 read() like function from the user code, and provides a buffered single-byte
 reader and an efficient line reader in return. The buffered functionalities are
@@ -42,7 +42,7 @@ the performance of FASTA/Q parsing.
 
 The [parser][kseqread] parses FASTA and FASTQ at the same time. It [looks
 for][L183] '@' or '&gt;' when necessary, and then [reads][L188] name and
-comment. To read sequences, the parser first [reads the first character][L194]
+comment. To read sequence, the parser first [reads the first character][L194]
 on a line. If the character is '+' or indicates a FASTA/Q header, the parser
 stops; if not, it [reads the rest of line][L197] into the sequence buffer.
 If the parser stops at a FASTA/Q header, it returns the sequence as a FASTA
@@ -54,6 +54,11 @@ returns an error if it reaches the end of file before reading enough quality,
 or the quality string turns out to be longer than sequence. Given a
 malformatted FASTA/Q file, the parser won't lead to memory violation except
 when there is not enough memory.
+
+A basic tip on fast file parsing: read by line or by chunk, not by byte. Even
+with a buffered reader, using fgetc() etc to read every byte is slow. In fact,
+it is possible to make the FASTA/Q parser faster by reading chunks of fixed
+size, but the current pasrser is fast enough for typical FASTA/Q.
 
 ### Hash table
 
