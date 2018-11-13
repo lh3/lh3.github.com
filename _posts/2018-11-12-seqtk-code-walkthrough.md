@@ -41,12 +41,12 @@ the performance of FASTA/Q parsing.
 ### FASTA/Q parser
 
 The [parser][kseqread] parses FASTA and FASTQ at the same time. It [looks
-for][L183] '@' or '&gt;' when necessary, and then [reads][L188] name and
+for][L183] '@' or '&gt;' if it hasn't been read, and then [reads][L188] name and
 comment. To read sequence, the parser first [reads the first character][L194]
 on a line. If the character is '+' or indicates a FASTA/Q header, the parser
 stops; if not, it [reads the rest of line][L197] into the sequence buffer.
 If the parser stops at a FASTA/Q header, it returns the sequence as a FASTA
-record and [indicates][L199] the header character has been read, such that it
+record and [indicates][L199] the header character has been read, such that the parser
 need not look for it for the next record. If the parser stops at '+', it
 [skips][L212] the rest of line and starts to [read quality strings][L214] line
 by line until the quality string is no shorter than the sequence. The parser
