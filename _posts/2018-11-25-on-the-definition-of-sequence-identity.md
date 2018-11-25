@@ -23,9 +23,9 @@ CCAGTGTGGCCGATGCCCGTGCTACGCATCGTTGCCTTGGTAAGC
 The classical way to find identity is to perform alignment first. If match=1,
 mismatch=-2, gapOpen=-2 and gapExt=-1, we get the following alignment:
 ```
-Ref+:  1 CCAGTGTGGCCGATaCCCcagGTtgGCTACGCATC-TTGCCTTGGTAAGC 49
-         |||||||||||||| |||   ||  |||||||||| ||||||||||||||
-Qry+:  1 CCAGTGTGGCCGATgCCC---GT--GCTACGCATCgTTGCCTTGGTAAGC 45
+Ref+:  1 CCAGTGTGGCCGATaCCCcagGTtgGC-ACGCATCGTTGCCTTGGTAAGC 49
+         |||||||||||||| |||   ||  || ||||||||||||||||||||||
+Qry+:  1 CCAGTGTGGCCGATgCCC---GT--GCtACGCATCGTTGCCTTGGTAAGC 45
 ```
 Here we have 43 matching bases, 1 mismatch, 5 deletions and 1 insertion to the
 first/Ref sequence. The CIGAR is `18M3D2M2D2M1I22M`.
