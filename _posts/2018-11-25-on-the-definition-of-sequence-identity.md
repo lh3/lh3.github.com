@@ -30,7 +30,7 @@ Qry+:  1 CCAGTGTGGCCGATgCCC---GT--GCTACGCATCgTTGCCTTGGTAAGC 45
 Here we have 43 matching bases, 1 mismatch, 5 deletions and 1 insertion to the
 first/Ref sequence. The CIGAR is `18M3D2M2D2M1I22M`.
 
-## Gap-excluded identity
+### Gap-excluded identity
 
 With this definition, we exclude all gapped columns from the alignment. The
 identity equals "#matches / (#matches + #mismatches)". In the example able, the
@@ -43,7 +43,7 @@ gap-excluded identity. The exact sentence in the [first chimpanzee genome
 paper][chimp-paper] is "Single-nucleotide substitutions occur at a mean rate of
 1.23% between copies of the human and chimpanzee genome".
 
-## BLAST identity
+### BLAST identity
 
 BLAST identity is defined as the number of matching bases over the number of
 alignment columns. In this example, there are 50 columns, so the identity is
@@ -65,7 +65,7 @@ alignment will have a BLAST identity around 70% and is likely to get filtered
 out. In evolution, an ALT insertion is created by one event. It should not be
 counted as 300 independent differences.
 
-## Gap-compressed identity
+### Gap-compressed identity
 
 At least for filtering, a better definition of sequence identity is the
 following: we count consecutive gaps as one difference. By compressing gaps in
@@ -84,7 +84,7 @@ perl -ane 'if(/NM:i:(\d+)/){$n=$1;$m=$g=$o=0;$m+=$1 while/(\d+)M/g;$g+=$1,++$o w
 where `$m` is the sum of `M` operations, `$g` the sum of `I` and `D` operations
 and `$o` the number of gap opens.
 
-## Effect of scoring
+### Effect of scoring
 
 Scoring affects alignment and thus sequence identity. For the same pair of
 sequences, if we change gapOpen=-4, we end up with a different alignment
