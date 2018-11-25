@@ -97,7 +97,7 @@ The BLAST identity is 83.7% and the gap-compressed identity is 89.1%. **Even if
 we stick with one definition, the identity can be different if we change the
 scoring.**
 
-## Concluding remarks
+### Concluding remarks
 
 The estimate of sequence identity varies with definitions and alignment
 scoring. When you see someone talking about "sequencing error rate" next time, 
