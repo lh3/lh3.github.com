@@ -7,7 +7,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-Sequence identity measures the similarity between two sequences. For sequencing
+Sequence identity is a way to measure the similarity between two sequences. For sequencing
 data, it is often thought as the opposite of sequencing error rate. When we say
 "the sequence divergence between two species is ABC" or "the sequencing error
 rate is XYZ", we assume everyone knows how to compute identity. In fact, there
