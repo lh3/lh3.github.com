@@ -28,7 +28,7 @@ reference. We can have the benefits of both linear and graphical
 representations.
 
 [Minigraph][minigraph] proves the above is more than just an idea; it is
-practically working at least to some extent. Along this line of work,
+practically working at least to some extent (constructing a graph from 15 human assemblies in an hour). Along this line of work,
 [GAF][gaf] is a first text format to describe sequence-to-graph mapping.
 The sister repo [gfatools][gfatools] implements a few utilities to work with
 rGFA. These are all connected by design.
