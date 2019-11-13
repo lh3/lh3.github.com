@@ -77,7 +77,7 @@ Qry+:  CCAGTGTGGCCGATgCCC-GT-GCTACGCATCgTTGCCTTGGTAAGC
 ```
 The identity is 43/(50-2-1)=91.5%. I have been using this definition for
 various tasks. The latest minimap2 at github outputs such identity at a new
-`ed:f` tag. There is a Perl one-liner for this as well:
+`de:f` tag. There is a Perl one-liner for this as well:
 ```
 perl -ane 'if(/NM:i:(\d+)/){$n=$1;$m=$g=$o=0;$m+=$1 while/(\d+)M/g;$g+=$1,++$o while/(\d+)[ID]/g;print(1-($n-$g+$o)/($m+$o),"\n")}'
 ```
