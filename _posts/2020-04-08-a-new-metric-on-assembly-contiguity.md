@@ -1,5 +1,6 @@
 ---
 layout: post
+mathjax: true
 title: "auN: a new metric to measure assembly contiguity"
 description: ""
 category: 
