@@ -33,7 +33,7 @@ good example:
 <img src="images/NGx_plot.png" width=480></img>
 -->
 
-![](images/NGx_plot.png =480x)
+![](http://lh3.github.io/images/NGx_plot.png)
 
 Notably, the NG50 (similar to N50) of several assemblers/settings are about the
 same around 300kb, but it is clear the black curve achieves better contiguity
