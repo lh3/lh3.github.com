@@ -29,7 +29,11 @@ the N*x* curve. The entire N*x* curve in fact gives us a better sense of
 contiguity. The following figure from a [NIBS][nibs] [workshop][ws] shows a
 good example:
 
+<!--
 <img src="images/NGx_plot.png" width=480></img>
+-->
+
+![](images/NGx_plot.png =480x)
 
 Notably, the NG50 (similar to N50) of several assemblers/settings are about the
 same around 300kb, but it is clear the black curve achieves better contiguity
