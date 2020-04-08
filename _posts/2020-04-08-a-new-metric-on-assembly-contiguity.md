@@ -58,6 +58,12 @@ summarizes contig contiguity with a single number, auN is a better choice than
 N50. Similarly we can define auNG and auNGA. I don't think auN will be widely
 used given the inertia on N50, but it is anyway fun to ponder new metrics.
 
+**Update**: Gregory Concepcion pointed out that the [GAGE benchmark][gage] was
+using the same metric to evaluate assemblies, though the authors were not
+interpreting it as area under the N*x* cure. Ivan Sovic and Jens-Uwe Ulrich
+have independently come up with auN as well.
+
 [n50]: https://en.wikipedia.org/wiki/N50,_L50,_and_related_statistics
 [nibs]: https://nbis.se/
 [ws]: https://nbisweden.github.io/workshop-genome_assembly/index
+[gage]: https://www.ncbi.nlm.nih.gov/pubmed/22147368
