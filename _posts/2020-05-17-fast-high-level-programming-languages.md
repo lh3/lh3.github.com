@@ -76,13 +76,13 @@ two columns for timing and memory footprint, depending on which list is loaded
 into memory.
 
 <table border="1">
-<tr><th>Language<th>t<sub>g2r</sub><th>M<sub>g2r</sub><th>t<sub>r2g</sub><td>M<sub>r2g</sub></tr>
-<tr><td>C         <td style="text-align:right">  5.5<td style="text-align:right"> 138.4<td style="text-align:right"> 10.7<td style="text-align:right"> 19.1</tr>
-<tr><td>Crystal   <td style="text-align:right">  9.0<td style="text-align:right"> 319.6<td style="text-align:right"> 17.6<td style="text-align:right"> 40.1</tr>
-<tr><td>Nim       <td style="text-align:right"> 16.3<td style="text-align:right"> 248.4<td style="text-align:right"> 26.1<td style="text-align:right"> 34.1</tr>
-<tr><td>Julia     <td style="text-align:right"> 25.9<td style="text-align:right"> 428.1<td style="text-align:right"> 63.5<td style="text-align:right">257.0</tr>
-<tr><td>Javascript<td style="text-align:right"> 75.4<td style="text-align:right">2219.9<td style="text-align:right"> 82.7<td style="text-align:right">316.8</tr>
-<tr><td>LuaJIT    <td style="text-align:right">174.1<td style="text-align:right">2668.0<td style="text-align:right">217.6<td style="text-align:right">364.6</tr>
+<tr><th>Language</th><th>t<sub>g2r</sub></th><th>M<sub>g2r</sub></th><th>t<sub>r2g</sub></th><th>M<sub>r2g</sub></th></tr>
+<tr><td>C         </td><td style="text-align:right">  5.5</td><td style="text-align:right"> 138.4</td><td style="text-align:right"> 10.7</td><td style="text-align:right"> 19.1</td></tr>
+<tr><td>Crystal   </td><td style="text-align:right">  9.0</td><td style="text-align:right"> 319.6</td><td style="text-align:right"> 17.6</td><td style="text-align:right"> 40.1</td></tr>
+<tr><td>Nim       </td><td style="text-align:right"> 16.3</td><td style="text-align:right"> 248.4</td><td style="text-align:right"> 26.1</td><td style="text-align:right"> 34.1</td></tr>
+<tr><td>Julia     </td><td style="text-align:right"> 25.9</td><td style="text-align:right"> 428.1</td><td style="text-align:right"> 63.5</td><td style="text-align:right">257.0</td></tr>
+<tr><td>Javascript</td><td style="text-align:right"> 75.4</td><td style="text-align:right">2219.9</td><td style="text-align:right"> 82.7</td><td style="text-align:right">316.8</td></tr>
+<tr><td>LuaJIT    </td><td style="text-align:right">174.1</td><td style="text-align:right">2668.0</td><td style="text-align:right">217.6</td><td style="text-align:right">364.6</td></tr>
 </table>
 
 The implementation of this algorithm is straightforward. It is mostly about
