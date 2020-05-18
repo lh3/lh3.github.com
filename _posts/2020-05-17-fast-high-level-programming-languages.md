@@ -7,7 +7,7 @@ tags: []
 ---
 {% include JB/setup %}
 
-## Background
+### Background
 
 Python and R are slow when they can't rely on functionality or libraries backed
 by C/C++. They are inefficient not only for certain algorithm development but
@@ -18,7 +18,7 @@ frustrating. I have always been searching for a [high-level language][hllang]
 that is fast and easy to use by biologists. This blog post reports some of my
 exploration. It is inconclusive but might still interest to you.
 
-## Design
+### Design
 
 Here I am implementing two tasks, FASTQ parsing and interval overlap query, in
 several languages including C, Python, Javascript, [LuaJIT][luajit],
@@ -28,13 +28,13 @@ and Javascript for a few years. I am equally new to Julia, Nim and Crystal.  My
 implementations in these languages may not be optimal. Please keep this
 important note in mind when reading the results.
 
-## Results
+### Results
 
 The source code and the full table are available at my [lh3/biofast][biofast]
 github repo. You can also found the machine setup, versions of libraries in
 use and some technical notes. I will only show part of the results here.
 
-### FASTQ parsing
+#### FASTQ parsing
 
 The following table shows the CPU time in seconds for parsing a gzip'd FASTQ
 (t<sub>gzip</sub>) or a plain FASTQ (t<sub>plain</sub>). We only count the
@@ -68,7 +68,7 @@ BioPython parser will take four and half hours, comparable to bwa-mem2
 multi-thread mapping. If you want to parse FASTQ but doesn't need other
 BioPython functionality, choose [PyFastx][pyfx] or mappy.
 
-### Interval overlap query
+#### Interval overlap query
 
 The following table shows the CPU time in seconds for computing the breadth of
 coverage of a list intervals compared against another interval list. There are
@@ -90,13 +90,13 @@ random access to large arrays. Javascript and LuaJIT are much slower here
 because I can't put objects in an array; I can only put references to objects
 in an array.
 
-## My take on fast high-level languages
+### My take on fast high-level languages
 
 The following is subjective and can be controversial, but I need to speak it
 out. Performance is not everything. Some subtle but important details are only
 apparent to those who write these programs.
 
-### Javascript and LuaJIT
+#### Javascript and LuaJIT
 
 These are two similar languages. They are old and were not designed with
 [Just-In-Time compilation][jit] (JIT) in mind. People later developed JIT
@@ -105,7 +105,7 @@ use, have few pitfalls and are pretty fast. Nonetheless, they are not the right
 languages for bioinformatics. If they were, they would have prevailed years
 ago.
 
-### Julia
+#### Julia
 
 Among the three more modern languages Julia, Nim and Crystal, Julia reached 1.0
 first. I think Julia could be a decent replacement of Matlab or R by the
@@ -124,7 +124,7 @@ responses from Julia supporters. Also importantly, the Julia developers do not
 value backward compatibility. There may be a python2-to-3 like transition in
 several years if they still hold their views by then. I wouldn't take the risk.
 
-### Nim
+#### Nim
 
 Nim reached its maturity in September 2019. Its syntax is similar to python on
 the surface, which is a plus. It is relatively easier to get descent
@@ -137,7 +137,7 @@ initial implementation was several times slower than the Javascript one, which
 is unexpected. Even in the current program, I still don't understand why the
 performance get much worse if I change by-reference to by-value in one instance.
 
-### Crystal
+#### Crystal
 
 Crystal is a pleasant surprise. On the second benchmark, I got a fast
 implementation on my first try. I did take a detour on FASTQ parsing when I
@@ -165,7 +165,7 @@ breaking changes in the past two years. This has given me some confidence. The
 Crystal devs also said 1.0 is coming "[in the near future][cr1.0]". I will look
 forward to that.
 
-## Conclusions
+### Conclusions
 
 A good high-level high-performance programming language would be a blessing to
 the field of bioinformatics. It could extend the reach of biologists, shorten
