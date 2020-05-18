@@ -44,16 +44,16 @@ parser in C.
 
 <table border="1">
 <tr><th>Language</th><th>Ext. Library</th><th>t<sub>gzip</sub></th><th>t<sub>plain</sub></th><th>Comments</th></tr>
-<tr><td>C         </td><td>         <td style="text-align:right">  9.8</td><td style="text-align:right">  1.4</td><td></td></tr>
-<tr><td>Crystal   </td><td>         <td style="text-align:right">  9.8</td><td style="text-align:right">  1.6</td><td></td></tr>
-<tr><td>Nim       </td><td>         <td style="text-align:right"> 12.3</td><td style="text-align:right">  4.0</td><td></td></tr>
-<tr><td>Python    </td><td>PyFastx  <td style="text-align:right"> 15.8</td><td style="text-align:right">  7.3</td><td></td></tr>
-<tr><td>Javascript</td><td>         <td style="text-align:right"> 17.5</td><td style="text-align:right">  9.4</td><td></td></tr>
-<tr><td>Julia     </td><td>         <td style="text-align:right"> 23.7</td><td style="text-align:right">  7.1</td><td></td></tr>
-<tr><td>Python    </td><td>BioPython<td style="text-align:right"> 37.9</td><td style="text-align:right"> 18.1</td><td>FastqGeneralIterator</td></tr>
-<tr><td>LuaJIT    </td><td>         <td style="text-align:right"> 41.5</td><td style="text-align:right"> 27.5</td><td></td></tr>
-<tr><td>Python    </td><td>         <td style="text-align:right"> 42.1</td><td style="text-align:right"> 19.4</td><td></td></tr>
-<tr><td>Python    </td><td>BioPython<td style="text-align:right">135.8</td><td style="text-align:right">107.1</td><td>SeqIO.parse</td></tr>
+<tr><td>C         </td><td>         </td><td style="text-align:right">  9.8</td><td style="text-align:right">  1.4</td><td></td> </tr>
+<tr><td>Crystal   </td><td>         </td><td style="text-align:right">  9.8</td><td style="text-align:right">  1.6</td><td></td> </tr>
+<tr><td>Nim       </td><td>         </td><td style="text-align:right"> 12.3</td><td style="text-align:right">  4.0</td><td></td> </tr>
+<tr><td>Python    </td><td>PyFastx  </td><td style="text-align:right"> 15.8</td><td style="text-align:right">  7.3</td><td></td> </tr>
+<tr><td>Javascript</td><td>         </td><td style="text-align:right"> 17.5</td><td style="text-align:right">  9.4</td><td></td> </tr>
+<tr><td>Julia     </td><td>         </td><td style="text-align:right"> 23.7</td><td style="text-align:right">  7.1</td><td></td> </tr>
+<tr><td>Python    </td><td>BioPython</td><td style="text-align:right"> 37.9</td><td style="text-align:right"> 18.1</td><td>FastqGeneralIterator</td> </tr>
+<tr><td>LuaJIT    </td><td>         </td><td style="text-align:right"> 41.5</td><td style="text-align:right"> 27.5</td><td></td> </tr>
+<tr><td>Python    </td><td>         </td><td style="text-align:right"> 42.1</td><td style="text-align:right"> 19.4</td><td></td> </tr>
+<tr><td>Python    </td><td>BioPython</td><td style="text-align:right">135.8</td><td style="text-align:right">107.1</td><td>SeqIO.parse</td> </tr>
 </table>
 
 This benchmark stresses on I/O and string processing. I replaced the low-level
