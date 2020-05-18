@@ -16,7 +16,7 @@ reach of biologists. Sometimes you may have a brilliant idea but can't deliver
 a fast implementation only because of the language in use. This can be
 frustrating. I have always been searching for a [high-level language][hllang]
 that is fast and easy to use by biologists. This blog post reports some of my
-exploration. It is inconclusive but might still interest to you.
+exploration. It is inconclusive but might still interest you.
 
 ### Design
 
@@ -59,8 +59,8 @@ parser in C.
 
 This benchmark stresses on I/O and string processing. I replaced the low-level
 I/O of several languages to achieve good performance. The code looks more like
-C than a high-level language, but at least I can get the job done without
-relying on C bindings.
+C than a high-level language, but at least these langauges give me the power
+without resorting to C.
 
 It is worth mentioning the default BioPython FASTQ parser is over 70 times
 slower on plain FASTQ and over 10 times slower on gzip'd FASTQ. Running the C
@@ -100,11 +100,11 @@ apparent to those who write these programs.
 #### Javascript and LuaJIT
 
 These are two similar languages. They are old and were not designed with
-[Just-In-Time compilation][jit] (JIT) in mind. People later developed JIT
+[Just-In-Time][jit] (JIT) compilation in mind. People later developed JIT
 compilers and made them much faster. I like the two languages. They are easy to
-use, have few pitfalls and are pretty fast. Nonetheless, they are not the right
-languages for bioinformatics. If they were, they would have prevailed years
-ago.
+use, have few performance pitfalls and are pretty fast. Nonetheless, they are
+not the right languages for bioinformatics. If they were, they would have
+prevailed years ago.
 
 #### Julia
 
@@ -112,7 +112,7 @@ Among the three more modern languages Julia, Nim and Crystal, Julia reached 1.0
 first. I think Julia could be a decent replacement of Matlab or R by the
 language itself. If you like the experience of Matlab or R, you may like Julia.
 It has builtin matrix support, 1-based coordinate system, friendly [REPL][repl]
-and an emphasis on plotting as well. Its differential equation solver might be
+and an emphasis on plotting as well. I heard its differential equation solver might be
 the best across all languages.
 
 I don't see Julia a good replacement of Python. Julia has a long startup time.
@@ -137,6 +137,8 @@ I need to pay extra attention to reference vs value. For the second task, my
 initial implementation was several times slower than the Javascript one, which
 is unexpected. Even in the current program, I still don't understand why the
 performance get much worse if I change by-reference to by-value in one instance.
+Nim supporters advised me to run a profiler. I am not sure biologists would
+enjoy that.
 
 #### Crystal
 
@@ -145,12 +147,13 @@ implementation on my first try. I did take a detour on FASTQ parsing when I
 initially tried to use Crystal's builtin buffered reader, but again I got
 C-like performance immediately after I started to manage buffers by myself.
 
-Crystal resembles Ruby a lot. It has a very similar syntax, including a
-class/module system familiar to modern programmers. Some elementary tutorials
+Crystal resembles Ruby a lot. It has very similar syntax, including a
+class/[mixin][mixin] system familiar to modern programmers. Some elementary tutorials
 on Ruby are even applicable to Crystal. I think building on top of successful
 languages is the right way to design a new language. Julia on the other hand
-feels radically different. Some of its key features haven't stood the test of
-time and may become frequent sources of bugs and performance traps.
+feels different from most mainstream languages like C++ and Python. Some of its
+key features haven't stood the test of time and may become frequent sources of
+bugs and performance traps.
 
 To implement fast programs, we need to care about reference vs value. Crystal
 is no different. The good thing about Crystal is that reference and value are
@@ -159,7 +162,7 @@ comfortable with Crystal.
 
 Crystal is not without problems. First, it is hard to install Crystal without
 the root permission. I am providing a portable installation binary package in
-[my own repo][portcr]. It alleviates the issue for now. Second, Crystal is
+[lh3/PortableCrystal][portcr]. It alleviates the issue for now. Second, Crystal is
 unstable. Each release introduces multiple breaking changes. Your code written
 today may not work later. Nonetheless, my program seems not affected by
 breaking changes in the past two years. This has given me some confidence. The
@@ -187,3 +190,4 @@ my opinion. I will see how Crystal turns out. It has potentials.
 [md]: https://en.wikipedia.org/wiki/Multiple_dispatch
 [portcr]: https://github.com/lh3/PortableCrystal
 [cr1.0]: https://crystal-lang.org/2020/03/03/towards-crystal-1.0.html
+[mixin]: https://en.wikipedia.org/wiki/Mixin
