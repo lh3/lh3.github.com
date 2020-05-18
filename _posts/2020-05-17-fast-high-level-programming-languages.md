@@ -42,7 +42,7 @@ number of sequences and compute the sum of lengths. Except the two BioPython
 implementations, all the others use an algorithm similar to my [kseq.h][kseq]
 parser in C.
 
-<table border="1" cellspacing="0">
+<table border="1" cellspacing="0" padding="2">
 <tr><th>Language</th><th>Ext. Library</th><th>t<sub>gzip</sub></th><th>t<sub>plain</sub></th><th>Comments</th></tr>
 <tr><td>C         </td><td>         </td><td style="text-align:right">  9.8</td><td style="text-align:right">  1.4</td><td></td> </tr>
 <tr><td>Crystal   </td><td>         </td><td style="text-align:right">  9.8</td><td style="text-align:right">  1.6</td><td></td> </tr>
@@ -54,7 +54,7 @@ parser in C.
 <tr><td>LuaJIT    </td><td>         </td><td style="text-align:right"> 41.5</td><td style="text-align:right"> 27.5</td><td></td> </tr>
 <tr><td>Python    </td><td>         </td><td style="text-align:right"> 42.1</td><td style="text-align:right"> 19.4</td><td></td> </tr>
 <tr><td>Python    </td><td>BioPython</td><td style="text-align:right">135.8</td><td style="text-align:right">107.1</td><td>SeqIO.parse</td> </tr>
-</table>
+</table><br/>
 
 This benchmark stresses on I/O and string processing. I replaced the low-level
 I/O of several languages to achieve good performance. The code looks more like
@@ -75,7 +75,7 @@ coverage of a list intervals compared against another interval list. There are
 two columns for timing and memory footprint, depending on which list is loaded
 into memory.
 
-<table border="1" cellspacing="0">
+<table border="1" cellspacing="0" padding="2">
 <tr><th>Language</th><th>t<sub>g2r</sub></th><th>M<sub>g2r</sub></th><th>t<sub>r2g</sub></th><th>M<sub>r2g</sub></th></tr>
 <tr><td>C         </td><td style="text-align:right">  5.5</td><td style="text-align:right"> 138.4</td><td style="text-align:right"> 10.7</td><td style="text-align:right"> 19.1</td></tr>
 <tr><td>Crystal   </td><td style="text-align:right">  9.0</td><td style="text-align:right"> 319.6</td><td style="text-align:right"> 17.6</td><td style="text-align:right"> 40.1</td></tr>
@@ -83,7 +83,7 @@ into memory.
 <tr><td>Julia     </td><td style="text-align:right"> 25.9</td><td style="text-align:right"> 428.1</td><td style="text-align:right"> 63.5</td><td style="text-align:right">257.0</td></tr>
 <tr><td>Javascript</td><td style="text-align:right"> 75.4</td><td style="text-align:right">2219.9</td><td style="text-align:right"> 82.7</td><td style="text-align:right">316.8</td></tr>
 <tr><td>LuaJIT    </td><td style="text-align:right">174.1</td><td style="text-align:right">2668.0</td><td style="text-align:right">217.6</td><td style="text-align:right">364.6</td></tr>
-</table>
+</table><br/>
 
 The implementation of this algorithm is straightforward. It is mostly about
 random access to large arrays. Javascript and LuaJIT are much slower here
