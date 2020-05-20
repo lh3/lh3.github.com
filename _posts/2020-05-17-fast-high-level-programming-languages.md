@@ -200,4 +200,4 @@ timing for fast implementations, measured by [hyperfine][hyperfine].
 [portcr]: https://github.com/lh3/PortableCrystal
 [cr1.0]: https://crystal-lang.org/2020/03/03/towards-crystal-1.0.html
 [mixin]: https://en.wikipedia.org/wiki/Mixin
-[hyperfire]: https://github.com/sharkdp/hyperfine
+[hyperfine]: https://github.com/sharkdp/hyperfine
