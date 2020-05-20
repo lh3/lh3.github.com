@@ -49,9 +49,9 @@ parser in C.
 <tr><td>Crystal   </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.5</td><td></td> </tr>
 <tr><td>Rust      </td><td>rust-bio </td><td style="text-align:right"> 10.6</td><td style="text-align:right">  2.9</td><td>4-line only</td> </tr>
 <tr><td>Nim       </td><td>         </td><td style="text-align:right"> 11.8</td><td style="text-align:right">  3.6</td><td></td> </tr>
-<tr><td>Python    </td><td>PyFastx  </td><td style="text-align:right"> 15.8</td><td style="text-align:right">  7.3</td><td></td> </tr>
+<tr><td>Python    </td><td>PyFastx  </td><td style="text-align:right"> 15.8</td><td style="text-align:right">  7.3</td><td>C binding</td> </tr>
 <tr><td>Javascript</td><td>         </td><td style="text-align:right"> 17.5</td><td style="text-align:right">  9.4</td><td>k8 dialect</td> </tr>
-<tr><td>Go        </td><td>         </td><td style="text-align:right"> 19.1</td><td style="text-align:right">  2.8</td><td></td> </tr>
+<tr><td>Go        </td><td>         </td><td style="text-align:right"> 19.1</td><td style="text-align:right">  2.8</td><td>4-line only</td> </tr>
 <tr><td>Julia     </td><td>         </td><td style="text-align:right"> 22.9</td><td style="text-align:right">  6.2</td><td></td> </tr>
 <tr><td>LuaJIT    </td><td>         </td><td style="text-align:right"> 28.6</td><td style="text-align:right"> 27.2</td><td></td> </tr>
 <tr><td>PyPy      </td><td>         </td><td style="text-align:right"> 28.9</td><td style="text-align:right"> 14.6</td><td></td> </tr>
