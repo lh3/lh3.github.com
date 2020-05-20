@@ -47,12 +47,14 @@ parser in C.
 <tr><th>Language</th><th>Ext. Library</th><th>t<sub>gzip</sub> (s)</th><th>t<sub>plain</sub> (s)</th><th>Comments</th></tr>
 <tr><td>C         </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.4</td><td></td> </tr>
 <tr><td>Crystal   </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.5</td><td></td> </tr>
+<tr><td>Rust      </td><td>rust-bio </td><td style="text-align:right"> 10.6</td><td style="text-align:right">  2.9</td><td>4-line only</td> </tr>
 <tr><td>Nim       </td><td>         </td><td style="text-align:right"> 11.8</td><td style="text-align:right">  3.6</td><td></td> </tr>
 <tr><td>Python    </td><td>PyFastx  </td><td style="text-align:right"> 15.8</td><td style="text-align:right">  7.3</td><td></td> </tr>
-<tr><td>Javascript</td><td>         </td><td style="text-align:right"> 17.5</td><td style="text-align:right">  9.4</td><td></td> </tr>
+<tr><td>Javascript</td><td>         </td><td style="text-align:right"> 17.5</td><td style="text-align:right">  9.4</td><td>k8 dialect</td> </tr>
 <tr><td>Go        </td><td>         </td><td style="text-align:right"> 19.1</td><td style="text-align:right">  2.8</td><td></td> </tr>
 <tr><td>Julia     </td><td>         </td><td style="text-align:right"> 22.9</td><td style="text-align:right">  6.2</td><td></td> </tr>
 <tr><td>LuaJIT    </td><td>         </td><td style="text-align:right"> 28.6</td><td style="text-align:right"> 27.2</td><td></td> </tr>
+<tr><td>PyPy      </td><td>         </td><td style="text-align:right"> 28.9</td><td style="text-align:right"> 14.6</td><td></td> </tr>
 <tr><td>Python    </td><td>BioPython</td><td style="text-align:right"> 37.9</td><td style="text-align:right"> 18.1</td><td>FastqGeneralIterator</td> </tr>
 <tr><td>Python    </td><td>         </td><td style="text-align:right"> 42.7</td><td style="text-align:right"> 19.1</td><td></td> </tr>
 <tr><td>Python    </td><td>BioPython</td><td style="text-align:right">135.8</td><td style="text-align:right">107.1</td><td>SeqIO.parse</td> </tr>
@@ -180,7 +182,9 @@ numerous python scripts by many folds. However, no languages are good enough in
 my opinion. I will see how Crystal turns out. It has potentials.
 
 **Update on 2020-05-19:** Added contributed Go implementations. More accurate
-timing for some fast implementations, measured by hyperfire.
+timing for fast implementations, measured by [hyperfine][hyperfine].
+
+**Update on 2020-05-20:** Added a contributed Rust implementation. Added PyPy.
 
 [julia]: https://en.wikipedia.org/wiki/Julia_(programming_language)
 [nim]: https://en.wikipedia.org/wiki/Nim_(programming_language)
@@ -196,3 +200,4 @@ timing for some fast implementations, measured by hyperfire.
 [portcr]: https://github.com/lh3/PortableCrystal
 [cr1.0]: https://crystal-lang.org/2020/03/03/towards-crystal-1.0.html
 [mixin]: https://en.wikipedia.org/wiki/Mixin
+[hyperfire]: https://github.com/sharkdp/hyperfine
