@@ -45,15 +45,16 @@ parser in C.
 <style> .extable td,th { padding: 4px; } </style>
 <table border="1" class="extable">
 <tr><th>Language</th><th>Ext. Library</th><th>t<sub>gzip</sub> (s)</th><th>t<sub>plain</sub> (s)</th><th>Comments</th></tr>
-<tr><td>C         </td><td>         </td><td style="text-align:right">  9.8</td><td style="text-align:right">  1.4</td><td></td> </tr>
-<tr><td>Crystal   </td><td>         </td><td style="text-align:right">  9.8</td><td style="text-align:right">  1.6</td><td></td> </tr>
-<tr><td>Nim       </td><td>         </td><td style="text-align:right"> 12.3</td><td style="text-align:right">  4.0</td><td></td> </tr>
+<tr><td>C         </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.4</td><td></td> </tr>
+<tr><td>Crystal   </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.5</td><td></td> </tr>
+<tr><td>Nim       </td><td>         </td><td style="text-align:right"> 11.8</td><td style="text-align:right">  3.6</td><td></td> </tr>
 <tr><td>Python    </td><td>PyFastx  </td><td style="text-align:right"> 15.8</td><td style="text-align:right">  7.3</td><td></td> </tr>
 <tr><td>Javascript</td><td>         </td><td style="text-align:right"> 17.5</td><td style="text-align:right">  9.4</td><td></td> </tr>
-<tr><td>Julia     </td><td>         </td><td style="text-align:right"> 23.7</td><td style="text-align:right">  7.1</td><td></td> </tr>
+<tr><td>Go        </td><td>         </td><td style="text-align:right"> 19.1</td><td style="text-align:right">  2.8</td><td></td> </tr>
+<tr><td>Julia     </td><td>         </td><td style="text-align:right"> 22.9</td><td style="text-align:right">  6.2</td><td></td> </tr>
+<tr><td>LuaJIT    </td><td>         </td><td style="text-align:right"> 28.6</td><td style="text-align:right"> 27.2</td><td></td> </tr>
 <tr><td>Python    </td><td>BioPython</td><td style="text-align:right"> 37.9</td><td style="text-align:right"> 18.1</td><td>FastqGeneralIterator</td> </tr>
-<tr><td>LuaJIT    </td><td>         </td><td style="text-align:right"> 41.5</td><td style="text-align:right"> 27.5</td><td></td> </tr>
-<tr><td>Python    </td><td>         </td><td style="text-align:right"> 42.1</td><td style="text-align:right"> 19.4</td><td></td> </tr>
+<tr><td>Python    </td><td>         </td><td style="text-align:right"> 42.7</td><td style="text-align:right"> 19.1</td><td></td> </tr>
 <tr><td>Python    </td><td>BioPython</td><td style="text-align:right">135.8</td><td style="text-align:right">107.1</td><td>SeqIO.parse</td> </tr>
 </table>
 
@@ -78,11 +79,12 @@ into memory.
 
 <table border="1" class="extable">
 <tr><th>Language</th><th>t<sub>g2r</sub> (s)</th><th>M<sub>g2r</sub> (Mb)</th><th>t<sub>r2g</sub> (s)</th><th>M<sub>r2g</sub> (Mb)</th></tr>
-<tr><td>C         </td><td style="text-align:right">  5.5</td><td style="text-align:right"> 138.4</td><td style="text-align:right"> 10.7</td><td style="text-align:right"> 19.1</td></tr>
-<tr><td>Crystal   </td><td style="text-align:right">  9.0</td><td style="text-align:right"> 319.6</td><td style="text-align:right"> 17.6</td><td style="text-align:right"> 40.1</td></tr>
-<tr><td>Nim       </td><td style="text-align:right"> 16.3</td><td style="text-align:right"> 248.4</td><td style="text-align:right"> 26.1</td><td style="text-align:right"> 34.1</td></tr>
-<tr><td>Julia     </td><td style="text-align:right"> 25.9</td><td style="text-align:right"> 428.1</td><td style="text-align:right"> 63.5</td><td style="text-align:right">257.0</td></tr>
-<tr><td>Javascript</td><td style="text-align:right"> 75.4</td><td style="text-align:right">2219.9</td><td style="text-align:right"> 82.7</td><td style="text-align:right">316.8</td></tr>
+<tr><td>C         </td><td style="text-align:right">  5.2</td><td style="text-align:right"> 138.4</td><td style="text-align:right"> 10.7</td><td style="text-align:right"> 19.1</td></tr>
+<tr><td>Crystal   </td><td style="text-align:right">  9.0</td><td style="text-align:right"> 319.6</td><td style="text-align:right"> 17.4</td><td style="text-align:right"> 40.1</td></tr>
+<tr><td>Nim       </td><td style="text-align:right"> 16.6</td><td style="text-align:right"> 248.4</td><td style="text-align:right"> 26.0</td><td style="text-align:right"> 34.1</td></tr>
+<tr><td>Julia     </td><td style="text-align:right"> 25.9</td><td style="text-align:right"> 428.1</td><td style="text-align:right"> 63.0</td><td style="text-align:right">257.0</td></tr>
+<tr><td>Go        </td><td style="text-align:right"> 34.0</td><td style="text-align:right"> 318.9</td><td style="text-align:right"> 21.8</td><td style="text-align:right"> 47.3</td></tr>
+<tr><td>Javascript</td><td style="text-align:right"> 76.4</td><td style="text-align:right">2219.9</td><td style="text-align:right"> 80.0</td><td style="text-align:right">316.8</td></tr>
 <tr><td>LuaJIT    </td><td style="text-align:right">174.1</td><td style="text-align:right">2668.0</td><td style="text-align:right">217.6</td><td style="text-align:right">364.6</td></tr>
 </table>
 
@@ -176,6 +178,9 @@ the field of bioinformatics. It could extend the reach of biologists, shorten
 the development time for experienced programmers and save the running time of
 numerous python scripts by many folds. However, no languages are good enough in
 my opinion. I will see how Crystal turns out. It has potentials.
+
+**Update on 2020-05-19:** Added contributed Go implementations. More accurate
+timing for some fast implementations, measured by hyperfire.
 
 [julia]: https://en.wikipedia.org/wiki/Julia_(programming_language)
 [nim]: https://en.wikipedia.org/wiki/Nim_(programming_language)
