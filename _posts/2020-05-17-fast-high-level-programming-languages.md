@@ -183,6 +183,15 @@ the development time for experienced programmers and save the running time of
 numerous python scripts by many folds. However, no languages are good enough in
 my opinion. I will see how Crystal turns out. It has potentials.
 
+### Anecdote
+
+Someone posted this blog post to [Hacker New][hn], [Crystal
+subreddit][redditcr], and [Julia discourse][jldis]. The reaction from many
+Julia supporters is just as I expected: they blame me for falling into traps
+set by Julia and ignore that my first Nim/Crystal attempts are far more
+successful. That said, I owe a debt of gratitude to [Kenta Sato][bicycle1885]
+for improving my Julia implementation. I geniunely appreciate.
+
 **Update on 2020-05-19:** Added contributed Go implementations. More accurate
 timing for fast implementations, measured by [hyperfine][hyperfine].
 
@@ -212,3 +221,7 @@ zlib on CentOS7. Added Python bedcov implementation. It is slow.
 [memchr]: http://man7.org/linux/man-pages/man3/memchr.3.html
 [fastjl]: https://github.com/lh3/biofast/pull/7
 [jlzlib]: https://github.com/JuliaPackaging/Yggdrasil/pull/1051
+[redditcr]: https://www.reddit.com/r/crystal_programming/comments/gm2dps/crystal_in_bioinformatics_comparison_fast/
+[hn]: https://news.ycombinator.com/item?id=23229657
+[jldis]: https://discourse.julialang.org/t/lhe-biofast-benchmark-fastq-parsing-julia-nim-crystal-python/39747
+[bicycle1885]: https://github.com/bicycle1885
