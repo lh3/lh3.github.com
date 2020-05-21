@@ -47,12 +47,12 @@ parser in C.
 <tr><th>Language</th><th>Ext. Library</th><th>t<sub>gzip</sub> (s)</th><th>t<sub>plain</sub> (s)</th><th>Comments</th></tr>
 <tr><td>C         </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.4</td><td></td> </tr>
 <tr><td>Crystal   </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.5</td><td></td> </tr>
+<tr><td>Nim       </td><td>         </td><td style="text-align:right"> 10.5</td><td style="text-align:right">  2.3</td><td></td> </tr>
 <tr><td>Rust      </td><td>rust-bio </td><td style="text-align:right"> 10.6</td><td style="text-align:right">  2.9</td><td>4-line only</td> </tr>
-<tr><td>Nim       </td><td>         </td><td style="text-align:right"> 11.8</td><td style="text-align:right">  3.6</td><td></td> </tr>
+<tr><td>Julia     </td><td>         </td><td style="text-align:right"> 11.2</td><td style="text-align:right">  2.9</td><td></td> </tr>
 <tr><td>Python    </td><td>PyFastx  </td><td style="text-align:right"> 15.8</td><td style="text-align:right">  7.3</td><td>C binding</td> </tr>
 <tr><td>Javascript</td><td>         </td><td style="text-align:right"> 17.5</td><td style="text-align:right">  9.4</td><td>k8 dialect</td> </tr>
 <tr><td>Go        </td><td>         </td><td style="text-align:right"> 19.1</td><td style="text-align:right">  2.8</td><td>4-line only</td> </tr>
-<tr><td>Julia     </td><td>         </td><td style="text-align:right"> 22.9</td><td style="text-align:right">  6.2</td><td></td> </tr>
 <tr><td>LuaJIT    </td><td>         </td><td style="text-align:right"> 28.6</td><td style="text-align:right"> 27.2</td><td></td> </tr>
 <tr><td>PyPy      </td><td>         </td><td style="text-align:right"> 28.9</td><td style="text-align:right"> 14.6</td><td></td> </tr>
 <tr><td>Python    </td><td>BioPython</td><td style="text-align:right"> 37.9</td><td style="text-align:right"> 18.1</td><td>FastqGeneralIterator</td> </tr>
@@ -88,6 +88,8 @@ into memory.
 <tr><td>Go        </td><td style="text-align:right"> 34.0</td><td style="text-align:right"> 318.9</td><td style="text-align:right"> 21.8</td><td style="text-align:right"> 47.3</td></tr>
 <tr><td>Javascript</td><td style="text-align:right"> 76.4</td><td style="text-align:right">2219.9</td><td style="text-align:right"> 80.0</td><td style="text-align:right">316.8</td></tr>
 <tr><td>LuaJIT    </td><td style="text-align:right">174.1</td><td style="text-align:right">2668.0</td><td style="text-align:right">217.6</td><td style="text-align:right">364.6</td></tr>
+<tr><td>PyPy      </td><td style="text-align:right">17332.9</td><td style="text-align:right">1594.3</td><td style="text-align:right">5481.2</td><td style="text-align:right">256.8</td></tr>
+<tr><td>Python      </td><td style="text-align:right">&gt;33770.4</td><td style="text-align:right">2317.6</td><td style="text-align:right">&gt;20722.0</td><td style="text-align:right">313.7</td></tr>
 </table>
 
 The implementation of this algorithm is straightforward. It is mostly about
@@ -186,6 +188,12 @@ timing for fast implementations, measured by [hyperfine][hyperfine].
 
 **Update on 2020-05-20:** Added a contributed Rust implementation. Added PyPy.
 
+**Update on 2020-05-21:** Faster Nim and Julia with [memchr][memchr]. Faster
+Julia by adjusting [three additional lines][fastjl]. For gzip'd input,
+Julia-1.4.1 is slow due to [a misconfiguration][jlzlib] on the Julia end. The
+numbers shown in the table are acquired by forcing Julia to use the system
+zlib on CentOS7. Added Python bedcov implementation. It is slow.
+
 [julia]: https://en.wikipedia.org/wiki/Julia_(programming_language)
 [nim]: https://en.wikipedia.org/wiki/Nim_(programming_language)
 [crystal]: https://en.wikipedia.org/wiki/Crystal_(programming_language)
@@ -201,3 +209,6 @@ timing for fast implementations, measured by [hyperfine][hyperfine].
 [cr1.0]: https://crystal-lang.org/2020/03/03/towards-crystal-1.0.html
 [mixin]: https://en.wikipedia.org/wiki/Mixin
 [hyperfine]: https://github.com/sharkdp/hyperfine
+[memchr]: http://man7.org/linux/man-pages/man3/memchr.3.html
+[fastjl]: https://github.com/lh3/biofast/pull/7
+[jlzlib]: https://github.com/JuliaPackaging/Yggdrasil/pull/1051
