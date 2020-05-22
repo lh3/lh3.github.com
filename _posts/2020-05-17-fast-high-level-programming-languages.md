@@ -187,10 +187,9 @@ my opinion. I will see how Crystal turns out. It has potentials.
 
 Someone posted this blog post to [Hacker New][hn], [Crystal
 subreddit][redditcr], and [Julia discourse][jldis]. The reaction from many
-Julia supporters is just as I expected: they blame me for falling into traps
-set by Julia and ignore that my first Nim/Crystal attempts are far more
-successful. That said, I owe a debt of gratitude to [Kenta Sato][bicycle1885]
-for improving my Julia implementation. I geniunely appreciate.
+Julia supporters is just as I expected. That said, I owe a debt of gratitude to
+[Kenta Sato][bicycle1885] for improving my Julia implementation. I geniunely
+appreciate.
 
 **Update on 2020-05-19:** Added contributed Go implementations. More accurate
 timing for fast implementations, measured by [hyperfine][hyperfine].
