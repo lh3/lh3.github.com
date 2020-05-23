@@ -45,10 +45,10 @@ parser in C.
 <style> .extable td,th { padding: 4px; } </style>
 <table border="1" class="extable">
 <tr><th>Language</th><th>Ext. Library</th><th>t<sub>gzip</sub> (s)</th><th>t<sub>plain</sub> (s)</th><th>Comments</th></tr>
-<tr><td>C         </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.4</td><td></td> </tr>
+<tr><td>Rust      </td><td>needletail</td><td style="text-align:right"> 9.3</td><td style="text-align:right">  0.8</td><td>mostly 4-line</td> </tr>
+<tr><td>C         </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.4</td><td>multi-line fasta/q</td> </tr>
 <tr><td>Crystal   </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.5</td><td></td> </tr>
 <tr><td>Nim       </td><td>         </td><td style="text-align:right"> 10.5</td><td style="text-align:right">  2.3</td><td></td> </tr>
-<tr><td>Rust      </td><td>rust-bio </td><td style="text-align:right"> 10.6</td><td style="text-align:right">  2.9</td><td>4-line only</td> </tr>
 <tr><td>Julia     </td><td>         </td><td style="text-align:right"> 11.2</td><td style="text-align:right">  2.9</td><td></td> </tr>
 <tr><td>Python    </td><td>PyFastx  </td><td style="text-align:right"> 15.8</td><td style="text-align:right">  7.3</td><td>C binding</td> </tr>
 <tr><td>Javascript</td><td>         </td><td style="text-align:right"> 17.5</td><td style="text-align:right">  9.4</td><td>k8 dialect</td> </tr>
@@ -201,6 +201,8 @@ Julia by adjusting [three additional lines][fastjl]. For gzip'd input,
 Julia-1.4.1 is slow due to [a misconfiguration][jlzlib] on the Julia end. The
 numbers shown in the table are acquired by forcing Julia to use the system
 zlib on CentOS7. Added Python bedcov implementation. It is slow.
+
+**Update on 2020-05-23:** Added a faster contributed Rust implementation.
 
 [julia]: https://en.wikipedia.org/wiki/Julia_(programming_language)
 [nim]: https://en.wikipedia.org/wiki/Nim_(programming_language)
