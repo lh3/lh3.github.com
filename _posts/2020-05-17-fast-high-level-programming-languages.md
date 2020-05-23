@@ -38,25 +38,25 @@ use and some technical notes. I will only show part of the results here.
 
 The following table shows the CPU time in seconds for parsing a gzip'd FASTQ
 (t<sub>gzip</sub>) or a plain FASTQ (t<sub>plain</sub>). We only count the
-number of sequences and compute the sum of lengths. Those parsing multi-line
+number of sequences and compute the sum of lengths. Those seamlessly parsing multi-line
 FASTA/FASTQ all use an algorithm similar to my [kseq.h][kseq] parser in C.
 
 <style> .extable td,th { padding: 4px; } </style>
 <table border="1" class="extable">
 <tr><th>Language</th><th>Ext. Library</th><th>t<sub>gzip</sub> (s)</th><th>t<sub>plain</sub> (s)</th><th>Comments</th></tr>
-<tr><td>Rust      </td><td>needletail</td><td style="text-align:right"> 9.3</td><td style="text-align:right">  0.8</td><td>mostly 4-line</td> </tr>
+<tr><td>Rust      </td><td>needletail</td><td style="text-align:right"> 9.3</td><td style="text-align:right">  0.8</td><td>multi-line fasta/mostly 4-line fastq</td> </tr>
 <tr><td>C         </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.4</td><td>multi-line fasta/q</td> </tr>
 <tr><td>Crystal   </td><td>         </td><td style="text-align:right">  9.7</td><td style="text-align:right">  1.5</td><td>multi-line fasta/q</td> </tr>
 <tr><td>Nim       </td><td>         </td><td style="text-align:right"> 10.5</td><td style="text-align:right">  2.3</td><td>multi-line fasta/q</td> </tr>
 <tr><td>Julia     </td><td>         </td><td style="text-align:right"> 11.2</td><td style="text-align:right">  2.9</td><td>multi-line fasta/q</td> </tr>
 <tr><td>Python    </td><td>PyFastx  </td><td style="text-align:right"> 15.8</td><td style="text-align:right">  7.3</td><td>C binding</td> </tr>
-<tr><td>Javascript</td><td>         </td><td style="text-align:right"> 17.5</td><td style="text-align:right">  9.4</td><td>k8 dialect</td> </tr>
-<tr><td>Go        </td><td>         </td><td style="text-align:right"> 19.1</td><td style="text-align:right">  2.8</td><td>4-line only</td> </tr>
+<tr><td>Javascript</td><td>         </td><td style="text-align:right"> 17.5</td><td style="text-align:right">  9.4</td><td>multi-line fasta/q; k8 dialect</td> </tr>
+<tr><td>Go        </td><td>         </td><td style="text-align:right"> 19.1</td><td style="text-align:right">  2.8</td><td>4-line fastq only</td> </tr>
 <tr><td>LuaJIT    </td><td>         </td><td style="text-align:right"> 28.6</td><td style="text-align:right"> 27.2</td><td>multi-line fasta/q</td> </tr>
 <tr><td>PyPy      </td><td>         </td><td style="text-align:right"> 28.9</td><td style="text-align:right"> 14.6</td><td>multi-line fasta/q</td> </tr>
-<tr><td>Python    </td><td>BioPython</td><td style="text-align:right"> 37.9</td><td style="text-align:right"> 18.1</td><td>FastqGeneralIterator</td> </tr>
+<tr><td>Python    </td><td>BioPython</td><td style="text-align:right"> 37.9</td><td style="text-align:right"> 18.1</td><td>multi-line fastq; FastqGeneralIterator</td> </tr>
 <tr><td>Python    </td><td>         </td><td style="text-align:right"> 42.7</td><td style="text-align:right"> 19.1</td><td>multi-line fasta/q</td> </tr>
-<tr><td>Python    </td><td>BioPython</td><td style="text-align:right">135.8</td><td style="text-align:right">107.1</td><td>SeqIO.parse</td> </tr>
+<tr><td>Python    </td><td>BioPython</td><td style="text-align:right">135.8</td><td style="text-align:right">107.1</td><td>multi-line fastq; SeqIO.parse</td> </tr>
 </table>
 
 This benchmark stresses on I/O and string processing. I replaced the low-level
