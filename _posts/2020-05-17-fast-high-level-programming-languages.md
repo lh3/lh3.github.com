@@ -81,7 +81,7 @@ into memory.
 <table border="1" class="extable">
 <tr><th>Language</th><th>t<sub>g2r</sub> (s)</th><th>M<sub>g2r</sub> (Mb)</th><th>t<sub>r2g</sub> (s)</th><th>M<sub>r2g</sub> (Mb)</th></tr>
 <tr><td>C         </td><td style="text-align:right">  5.2</td><td style="text-align:right"> 138.4</td><td style="text-align:right"> 10.7</td><td style="text-align:right"> 19.1</td></tr>
-<tr><td>Crystal   </td><td style="text-align:right">  9.0</td><td style="text-align:right"> 319.6</td><td style="text-align:right"> 17.4</td><td style="text-align:right"> 40.1</td></tr>
+<tr><td>Crystal   </td><td style="text-align:right">  8.8</td><td style="text-align:right"> 319.6</td><td style="text-align:right"> 14.8</td><td style="text-align:right"> 40.1</td></tr>
 <tr><td>Nim       </td><td style="text-align:right"> 16.6</td><td style="text-align:right"> 248.4</td><td style="text-align:right"> 26.0</td><td style="text-align:right"> 34.1</td></tr>
 <tr><td>Julia     </td><td style="text-align:right"> 25.9</td><td style="text-align:right"> 428.1</td><td style="text-align:right"> 63.0</td><td style="text-align:right">257.0</td></tr>
 <tr><td>Go        </td><td style="text-align:right"> 34.0</td><td style="text-align:right"> 318.9</td><td style="text-align:right"> 21.8</td><td style="text-align:right"> 47.3</td></tr>
