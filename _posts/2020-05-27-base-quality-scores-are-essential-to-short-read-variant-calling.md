@@ -8,17 +8,17 @@ tags: []
 {% include JB/setup %}
 
 In [an earlier post][old-post] a few days ago, I said "discarding base quality
-dramatically reduces variant calling accuracy" but without evidence. This
+dramatically reduces variant calling accuracy". I didn't provide evidence. This
 certainly doesn't sound persuasive. In this post, I will show an experiement to
 support my claim.
 
 I downloaded high-coverage short reads for sample HG002 [from GIAB
-ftp][giab-data], converted to unsorted FASTQ with samtools collate, mapped
-them to hs37d5 (for compatibility with GIAB) with bwa-mem, called variants with
+ftp][giab-data], converted to unsorted FASTQ with [samtools collate][st-collate], mapped
+them to [hs37d5][hs37d5] (for compatibility with GIAB) with bwa-mem, called variants with
 GATK v4 and compared the calls to the [GIAB truth v4.1][giab41]. I then
 estimated the false negative rate (FNR=1-sensitivity) and false discovery rate
 (FDR=1-precision) with [RTG's vcfeval][rtg]. I optionally applied the hard
-filters in [my earlier paper][hapdip]. For "no quality", I set all base quality
+filters proposed in [my earlier paper][hapdip]. For "no quality", I set all base quality
 to Q25 which corresponds to the average empirical error rate of this dataset.
 
 <style> .extable td,th { padding: 4px; } </style>
@@ -67,3 +67,5 @@ Several comments:
 [giab41]: https://ftp-trace.ncbi.nlm.nih.gov/giab/ftp/data/AshkenazimTrio/analysis/NIST_v4.1_SmallVariantDraftBenchmark_12182019/GRCh37/
 [hifiasm]: https://github.com/chhylp123/hifiasm
 [dipcall]: https://github.com/lh3/dipcall
+[hs37d5]: https://ftp-trace.ncbi.nlm.nih.gov/1000genomes/ftp/technical/reference/phase2_reference_assembly_sequence/
+[st-collate]: http://www.htslib.org/doc/samtools-collate.html
