@@ -25,7 +25,7 @@ that represents these complex regions better.
 
 ## How?
 
-Most assembly problems are caused by repeats or homologous regions. When an
+Most assembly problems are caused by repetitive or homologous regions. When an
 assembler cannot resolve such a region, it either creates an assembly gap or
 forces through the region with a misassembly. To probe these issues, we can
 align a multi-copy gene to the assembly and see if it remains multi-copy.
@@ -38,7 +38,7 @@ is considered to be single-copy (SC) if it has only one hit; otherwise it is
 considered multi-copy (MC). We do the same for the assembly and then compute
 the fraction of missing multi-copy gene as
 
-> **MMC** = \|{NotMCinASM} &#x2229; {MCinREF}\| / \|{MCinREF}\|
+> **MMC** = 1 - \|{MCinASM} &#x2229; {MCinREF}\| / \|{MCinREF}\|
 
 In the ideal case of a perfect
 assembly, %MMC should be zero. A higher fraction suggests more
