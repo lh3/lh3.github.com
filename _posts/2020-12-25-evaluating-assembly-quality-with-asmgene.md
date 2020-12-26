@@ -38,7 +38,7 @@ is considered to be single-copy (SC) if it has only one hit; otherwise it is
 considered multi-copy (MC). We do the same for the assembly and then compute
 the fraction of missing multi-copy gene as
 
-> **MMC** = |{NotMCinASM} &#x2229; {MCinREF}| / |{MCinREF}|
+> **MMC** = \|{NotMCinASM} &#x2229; {MCinREF}\| / \|{MCinREF}\|
 
 In the ideal case of a perfect
 assembly, %MMC should be zero. A higher fraction suggests more
