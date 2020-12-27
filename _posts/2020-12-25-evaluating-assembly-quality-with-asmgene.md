@@ -75,7 +75,7 @@ based on the reference.
 ## Collapsed misassemblies in long-read assemblies
 
 The following figure shows the level of collapsed genes in [various CHM13
-assemblies][CHM13-asm], taking the T2T CHM13 as the reference:
+assemblies][CHM13-asm], taking [Ensembl genes][cdna] as input and the T2T CHM13 as the reference:
 
 ![](http://www.liheng.org/images/asmgene/CHM13.jpg)
 
@@ -112,3 +112,4 @@ assemblers.
 [chm13-t2t]: https://github.com/nanopore-wgs-consortium/CHM13
 [CHM13-asm]: https://github.com/lh3/pubLRasm#chm13-homozygous-human
 [HG00733-asm]: https://github.com/lh3/pubLRasm#hg00733-heterozygous-human
+[cdna]: ftp://ftp.ensembl.org/pub/release-102/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz
