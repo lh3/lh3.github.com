@@ -112,4 +112,4 @@ assemblers.
 [chm13-t2t]: https://github.com/nanopore-wgs-consortium/CHM13
 [CHM13-asm]: https://github.com/lh3/pubLRasm#chm13-homozygous-human
 [HG00733-asm]: https://github.com/lh3/pubLRasm#hg00733-heterozygous-human
-[cdna]: ftp://ftp.ensembl.org/pub/release-102/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz
+[cdna]: http://ftp.ensembl.org/pub/release-102/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz
