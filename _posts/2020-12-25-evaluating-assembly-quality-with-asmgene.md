@@ -14,18 +14,18 @@ compute N50. It is much harder to evaluate the correctness. We typically
 identify misassemblies by aligning contigs to a reference genome. However, it
 is tricky to interpret the results. In case of human, there are thousands of
 structural variations (SVs) between the reference and the sample being
-assembled. Alignment-based evaluation often regards these SVs as misassemblies.
+assembled. Alignment-based evaluation often mistakes these SVs as misassemblies.
 For example, [QUAST][quast] identifies >10,000 "misassemblies" in the [T2T
 assembly][chm13-t2t] when compared to GRCh38. We can't reliably tell
-misassemblies from SVs and then overestimate misassemblies. The second problem
+misassemblies from SVs which leads to overestimated misassembly rate. A second problem
 with reference-based alignment is that most alignment differences come from
-complex regions such as centromeres and subtelomeres. It fails evaluate to gene
-regions we are mostly interested in and on the contrary penalizes an assembly
+complex regions such as centromeres and subtelomeres. It fails to evaluate gene
+regions we are mostly interested in; on the contrary it penalizes an assembly
 that represents these complex regions better.
 
 ## How?
 
-Most assembly problems are caused by repetitive or homologous regions. When an
+Most assembly problems are caused by repetitive or paralogous regions. When an
 assembler cannot resolve such a region, it either creates an assembly gap or
 forces through the region with a misassembly. To probe these issues, we can
 align a multi-copy gene to the assembly and see if it remains multi-copy.
@@ -82,10 +82,13 @@ assemblies][CHM13-asm], taking the T2T CHM13 as the reference:
 Because the reference and the assemblies all come from the same sample, 
 a perfect assembly should have no collapsed genes. Hifiasm and HiCanu
 are close to that mark. However, some assemblers may miss up to 70% of
-multi-copy genes. These missing copies often leave misassemblies in long
-contigs and may also introduce assembly gaps. The following figure shows the
-level of collapsed genes in [HG00733 assemblies][HG00733-asm], again with CHM13
-as the reference:
+multi-copy genes. We had a closer look at missing genes. As is expected, they
+either fall into assembly gaps or leave a misassembly in a long contig. If you
+want to study a gene family, such assembly problems will ruin your day.
+
+CHM13 is a homozygous cell line. The following figure shows the
+level of collapsed genes in diploid [HG00733 assemblies][HG00733-asm], again
+with CHM13 as the reference:
 
 ![](http://www.liheng.org/images/asmgene/HG00733.jpg)
 
