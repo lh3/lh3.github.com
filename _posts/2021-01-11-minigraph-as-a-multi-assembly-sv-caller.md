@@ -50,7 +50,7 @@ to immune systems (e.g. many HLA/KIR genes) or under rapid evolution in the
 primate or human lineage (e.g. AMY\* and NBPF\* genes).  [My last blog
 post][collapse] mentioned 10% genes that have multiple copies in CHM13 are
 single-copy in GRCh38. These genes mostly come from the "Partial-repeat" bar,
-too. With short reads, we can observe transposon insertion break points and
+too. With short reads, we can observe signals of transposon insertions and
 copy number changes and with long reads, we can call VNTRs, but only with
 multi-assembly callers like minigraph, we can have the access to the near full
 spectrum of SVs, with the exception of centromeric repeats.
