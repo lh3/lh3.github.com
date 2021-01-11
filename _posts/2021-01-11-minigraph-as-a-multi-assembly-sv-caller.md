@@ -32,9 +32,9 @@ we wouldn't be able to easily represent duplications with and without L1.
 
 The solution to the problems in existing SV callers is multi-sequence alignment
 (MSA) which minigraph approximates. MSA naturally alleviates imprecise
-breakpoints (because MSA effectively groups similar events first) and fully
-represents nested events (because unlike mapping against a reference genome,
-MSA also aligns inserted sequences). The following figure shows the subgraphs
+breakpoints because MSA effectively groups similar events first; MSA also fully
+represents nested events because unlike mapping against a reference genome,
+MSA also aligns inserted sequences. The following figure shows the subgraphs
 around four genes. SVs like these will fail most existing SV callers and can't
 be represented in VCF.
 
@@ -50,7 +50,10 @@ to immune systems (e.g. many HLA/KIR genes) or under rapid evolution in the
 primate or human lineage (e.g. AMY\* and NBPF\* genes).  [My last blog
 post][collapse] mentioned 10% genes that have multiple copies in CHM13 are
 single-copy in GRCh38. These genes mostly come from the "Partial-repeat" bar,
-too.
+too. With short reads, we can observe transposon insertion break points and
+copy number changes and with long reads, we can call VNTRs, but only with
+multi-assembly callers like minigraph, we can have the access to the near full
+spectrum of SVs, with the exception of centromeric repeats.
 
 ![](http://www.liheng.org/images/minigraph/plot.jpg)
 
