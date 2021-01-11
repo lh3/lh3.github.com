@@ -40,10 +40,10 @@ be represented in VCF.
 
 ![](http://www.liheng.org/images/minigraph/examples.jpg)
 
-How much do these complex SVs matter? Not a lot by count. In the left plot
+Are there many complex SVs? Not a lot by count. In the left plot
 below, all examples come from blue and green areas on the "Partial-repeat" bar.
-There are only several hundred of them. However, these complex SVs are often
-resulted from long segmental duplications and affect a much larger fraction of
+There are only several hundred of them. However, these complex SVs often reside
+in long segmental duplications and affect a much larger fraction of
 genomes in comparison to transposon insertions (the "Partial-repeat" bar on the
 right plot). Genes in these loci, a few hundred of them, are frequently related
 to immune systems (e.g. many HLA/KIR genes) or under rapid evolution in the
@@ -60,7 +60,7 @@ spectrum of SVs, with the exception of centromeric repeats.
 Minigraph is a fast and powerful multi-assembly SV caller. Although the calling
 is graph based, you can ignore the graph structure and focus on SVs only. I
 have just added a [new section in README][callsv] that explains how to use
-minigraph to call SVs. It is worth nothing that at complex loci, minigraph
+minigraph to call SVs. It is worth noting that at complex loci, minigraph
 subgraphs, including examples above, are often suboptimal. Please read the
 [Limitations section][limit] if you want to explore the minigraph approach.
 
