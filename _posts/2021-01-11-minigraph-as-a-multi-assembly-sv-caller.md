@@ -30,11 +30,11 @@ heuristically group nearby events. This is particularly problematic around
 inside a long segmental duplication. If we only see the reference coordinate,
 we wouldn't be able to easily represent duplications with and without L1.
 
-The solution to the problems in existing SV callers is multi-sequence alignment
+The solution to these problems is multi-sequence alignment
 (MSA) which minigraph approximates. MSA naturally alleviates imprecise
 breakpoints because MSA effectively groups similar events first; MSA also fully
 represents nested events because unlike mapping against a reference genome,
-MSA also aligns inserted sequences. The following figure shows the subgraphs
+MSA aligns inserted sequences not in the reference. The following figure shows the subgraphs
 around four genes. SVs like these will fail most existing SV callers and can't
 be represented in VCF.
 
