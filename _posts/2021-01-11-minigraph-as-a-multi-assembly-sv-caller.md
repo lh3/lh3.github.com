@@ -8,11 +8,11 @@ tags: []
 {% include JB/setup %}
 
 Honestly, I didn't know what [minigraph][minigraph] would be good for when I
-was writing the code. When I was writing the [paper][mgpaper], I posed
-minigraph as a fast caller for structural variations (SVs). However, beyond
+was writing the code. When I was writing the [paper][mgpaper], I pitched
+minigraph as a fast caller for structural variations (SVs). However, except
 performance and convenience, minigraph is not that special. In fact, in the
 paper, minigraph is not as good as read-based SV callers because it randomly
-misses one parental copy given that most assemblies in the paper are collapsed.
+misses one parental allele when most assemblies in the paper are not phased.
 
 My exploration took a turn when one anonymous reviewer asked me to check the
 [LPA gene][LPA]. It was not in the graph because the gene was [collapsed or
@@ -23,7 +23,7 @@ realized what minigraph is truly good for: complex SVs.
 
 With the current SV calling pipelines, we typically map reads or an assembly
 against a reference genome, call SVs and then merge pairwise SV calls into a
-multi-sample call set. This sounds simple but doesn't work well in practice.
+multi-sample call set. This sounds simple but doesn't work well for complex events.
 First, the position of an SV may be shifted by small variants. We have to
 heuristically group nearby events. This is particularly problematic around
 [VNTRs][VNTR]. Second, there are nested SVs: for example, an L1 insertion
@@ -47,10 +47,10 @@ resulted from long segmental duplications and affect a much larger fraction of
 genomes in comparison to transposon insertions (the "Partial-repeat" bar on the
 right plot). Genes in these loci, a few hundred of them, are frequently related
 to immune systems (e.g. many HLA/KIR genes) or under rapid evolution in the
-primate or human lineage (e.g. AMY\* and NBPF\* genes).  My last [plot
+primate or human lineage (e.g. AMY\* and NBPF\* genes).  [My last blog
 post][collapse] mentioned 10% genes that have multiple copies in CHM13 are
-single-copy in GRCh38. These genes under copy-number changes mostly come from
-the "Partial-repeat" bar, too.
+single-copy in GRCh38. These genes mostly come from the "Partial-repeat" bar,
+too.
 
 ![](http://www.liheng.org/images/minigraph/plot.jpg)
 
@@ -69,4 +69,4 @@ subgraphs, including examples above, are often suboptimal. Please read the
 [collapse]: http://lh3.github.io/2020/12/25/evaluating-assembly-quality-with-asmgene
 [VNTR]: https://en.wikipedia.org/wiki/Variable_number_tandem_repeat
 [callsv]: https://github.com/lh3/minigraph#callsv
-[limit]: https://github.com/lh3/minigraph#limitations
+[limit]: https://github.com/lh3/minigraph#limit
