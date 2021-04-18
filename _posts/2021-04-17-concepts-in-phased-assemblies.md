@@ -75,7 +75,7 @@ chromosome is fully phased and assembled without gaps.
 <tr><td>Resolved </td><td>Yes      </td><td>Yes      </td><td>Long </td><td>Few      </td><td>Few       </td></tr>
 </table>
 
-![](http://www.liheng.org/images/asmconcepts/phased-asm-flow.png)
+<img src="http://www.liheng.org/images/asmconcepts/phased-asm-flow.png" alt="drawing" width="500"/>
 
 [contig]: https://www.genome.gov/genetics-glossary/Contig
 [haplotig]: https://www.ncbi.nlm.nih.gov/books/NBK44482/
