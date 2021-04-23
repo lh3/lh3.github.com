@@ -42,8 +42,9 @@ Types of phased assemblies.
   assembly.
 
 * Primary assembly: a complete assembly with long stretches of phased blocks.
-  The concept has been [used by GRC][grc-def]. Falcon-unzip is perhaps the
-  first to produce such assemblies.
+  The concept has been [used by GRC][grc-def]. BAC-to-BAC assemblies can all be
+  regarded as primary assemblies. Falcon-unzip is perhaps the first to produce
+  such assemblies for whole-genome shotgun data.
 
 * Alternate assembly: an incomplete assembly consisting of haplotigs in
   heterozygous regions. An alternate assembly always accompanies a primary
