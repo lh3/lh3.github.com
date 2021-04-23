@@ -84,5 +84,5 @@ chromosome is fully phased and assembled without gaps.
 [hamming]: https://pubmed.ncbi.nlm.nih.gov/29101320/
 [yak]: https://github.com/lh3/yak
 [grc-def]: https://www.ncbi.nlm.nih.gov/grc/help/definitions/
-[t2]: https://github.com/nanopore-wgs-consortium/CHM13
+[t2t]: https://github.com/nanopore-wgs-consortium/CHM13
 [scontig]: https://en.wiktionary.org/wiki/supercontig
