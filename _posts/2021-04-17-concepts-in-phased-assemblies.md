@@ -16,6 +16,10 @@ Concepts in phased assembly:
   assembly gaps of typically inexact sizes. A scaffold is also called a
   [supercontig][scontig], though this terminology is rarely used nowadays.
 
+* Assembly: a set of contigs or scaffolds. In the following, I will say an
+  assembly is *haploid complete* or simply *complete* if it is supposed to
+  represent a haploid genome in full.
+
 * [Haplotig][haplotig]: a contig that comes from the same haplotype. In an
   unphased assembly, a contig may join alleles from different parental
   haplotypes in a diploid or polyploid genome.
@@ -36,10 +40,9 @@ Concepts in phased assembly:
 Types of phased assemblies. 
 
 * Collapsed assembly: a complete assembly with parental alleles randomly
-  switching in a contig. Here, an assembly is *complete* if it fully represents
-  a haploid genome. Most conventional assemblers produce collapsed assemblies.
-  A collapsed assembly is also called a squashed assembly or a conensus
-  assembly.
+  switching in a contig. Most conventional assemblers produce collapsed
+  assemblies. A collapsed assembly is also called a squashed assembly or a
+  conensus assembly.
 
 * Primary assembly: a complete assembly with long stretches of phased blocks.
   The concept has been [used by GRC][grc-def]. BAC-to-BAC assemblies can all be
