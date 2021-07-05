@@ -47,8 +47,8 @@ in an option) is more likely to cause confusion.
 
 * I try to avoid long options for basic settings because long options are
 harder to remember and take longer to type. At least for basic use cases, I
-expect a user to type a command line most of time, not to copy-paste an
-excessively long command line in his/her note book. Human-first.
+expect a user to type a command line, not to copy-paste an excessively long
+command line in his/her note book. Human-first.
 
 * Accept the standard input (aka stdin) as much as possible. This will help to
 connect different tools together. Note that certain applications may save a lot
@@ -71,7 +71,8 @@ Backward compatibility is essential to the long-term stability of a
 command-line tool.
 
 The above are just general directions for you to think about. Even myself
-doesn't strictly follow them.
+doesn't strictly follow them. If interested, you can google "cli best practice"
+to see others' take on the topic.
 
 [tweet]: https://twitter.com/vsbuffalo/status/1411771531407990784
 [wiki]: https://en.wikipedia.org/wiki/Command-line_interface
