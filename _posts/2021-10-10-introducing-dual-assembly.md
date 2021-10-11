@@ -14,7 +14,7 @@ contigs in a dual assembly may have occasional switches between parental haploty
 I called such an assembly as partially phased assembly in an [earlier post][phased-asm] but
 decided to coin a new term in our [new hifiasm preprint][new-ha] for clarity.
 
-Why dual assembly?
+_Why dual assembly?_
 
 **A primary or collapsed assembly only represents one haploid genome.**
 It is okay and may be preferred if we want to construct the reference genome of a new species.
@@ -45,7 +45,7 @@ The primary/alternate assembly pair can also be produced with long reads only.
 However, the alternate assembly is often too fragmented.
 It misses one haplotype in the example below.
 
-**I recommend to produce a dual assembly for the calling of structural variations.**
+**I recommend to produce a dual assembly for the calling of structural variations,** if you only have long reads.
 As of now, only hifiasm and [peregrine][peregrine] can do such assembly for PacBio HiFi data only
 but I expect more assemlers to support such assembly for more data types.
 
