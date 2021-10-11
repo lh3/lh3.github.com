@@ -49,7 +49,7 @@ It misses one haplotype in the example below.
 As of now, only hifiasm and [peregrine][peregrine] can do such assembly for PacBio HiFi data only
 but I expect more assemlers to support such assembly for more data types.
 
-<img src="http://www.liheng.org/images/GTF2IRD2-igv.png" alt="drawing" width="500"/>
+<img src="http://www.liheng.org/images/GTF2IRD2-igv.png" alt="drawing" width="700"/>
 
 [phased-asm]: http://lh3.github.io/2021/04/17/concepts-in-phased-assemblies
 [new-ha]: https://arxiv.org/abs/2109.04785
