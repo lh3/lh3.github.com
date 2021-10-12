@@ -38,7 +38,7 @@ when we cannot obtain enough DNA or don't have access to parental samples.
 The need of more data is particularly problematic for clinical samples.
 
 **A dual asembly can be produced with long reads only.**
-It is a weaker version of haplotype-resolved assembly but is alomst as powerful for variant calling purposes.
+It is a weaker version of haplotype-resolved assembly but is almost as powerful for variant calling purposes.
 In the figure below, the dual assembly (the top two tracks)
 also correctly resolves both haplotypes.
 The primary/alternate assembly pair can also be produced with long reads only.
