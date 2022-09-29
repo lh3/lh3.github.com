@@ -17,7 +17,7 @@ Backward compatibility here means users can upgrade and run a tool without
 changing the command lines they used in the past. This implies we should not
 remove or change the meaning of an existing option. It is ok to add new
 options. Backward compatibility, in my opinion, is the most important factor in
-CLI design and outweigh all the following points.
+CLI design and outweighs all the following points.
 
 #### 2. Human-first: command lines are meant for a human to type
 
@@ -48,7 +48,7 @@ to support a single dash `-` for standard input/output, but this is not that
 important in unix as we can use `/dev/stdin` or `/dev/stdout` as long as the
 tool supports file streaming.
 
-A corallary of this suggestion is not to guess the input/output file formats by
+A corallary is not to guess the input/output file formats by
 file extensions because data streams do not have file extensions. We may use
 [named pipe][named-pipe] but it is awkward.
 
@@ -72,7 +72,7 @@ is usually not bufferred and is more useful for logging and debugging.
 
 This is a minor point. The unix/GNU getopt convention allows both short options
 and long options with multiple variations (see [this article][unix-cli] for
-details). Most unix tools, except gcc, follow this convention and the standard
+details). Most unix tools, except gcc, follow this convention. The standard
 libraries in many languages also support it. A tool adopting different
 behaviors will increase the chance of misuses. Some may argue the unix
 convention is confusing but breaking the convention is worse.
