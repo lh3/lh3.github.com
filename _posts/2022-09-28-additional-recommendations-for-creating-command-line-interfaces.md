@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Additional suggestions for creating command line interfaces"
+title: "A few suggestions for creating command line interfaces"
 description: ""
 category: 
 tags: []
