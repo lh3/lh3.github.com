@@ -1,5 +1,6 @@
 ---
 layout: post
+mathjax: true
 title: "Random open syncmers"
 description: ""
 category: 
