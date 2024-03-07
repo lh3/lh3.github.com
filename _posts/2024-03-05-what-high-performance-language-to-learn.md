@@ -56,8 +56,7 @@ Nevertheless, I want to note that mastering C from scratch might not be easier.
 Although C looks simpler, getting the best out of C without frequent [segmentation fault][segfault] may take years of practice.
 Modern C++ is a very different language from C.
 It is a behemoth with a myriad of modern features and decades of legacy packed in one of the most complex languages.
-Mastering the entire C++ means mastering C and the C++ specific features.
-That is a lot of work.
+Mastering C++ takes more efforts.
 
 ### Other contenders
 
