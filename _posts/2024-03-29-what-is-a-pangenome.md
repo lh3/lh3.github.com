@@ -29,8 +29,7 @@ because these short reads cannot be well assembled.
 Historically, the term "pangenome" was first coined by [by Sigaux][first] in
 2000 for a purpose distinct from current uses. [Victor Tetz's
 definition][origin0] is fairly close to the modern definition except that it is
-applied to all living organisms. These definitions are rarely documented
-nowadays.
+applied to all living organisms. These definitions are rarely cited nowadays.
 
 [comp-review]: https://pubmed.ncbi.nlm.nih.gov/27769991/
 [first]: https://pubmed.ncbi.nlm.nih.gov/11261250/
