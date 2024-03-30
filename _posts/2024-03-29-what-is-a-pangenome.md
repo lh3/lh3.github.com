@@ -8,7 +8,7 @@ tags: []
 {% include JB/setup %}
 
 Historically, the term "pan-genome" (or more often "pangenome" in recent
-literature) was first coined by [by Sigaux][first] in
+literature) was first coined [by Sigaux][first] in
 2000 for a purpose distinct from current uses. [Victor Tetz's
 definition][origin0] is fairly close to the modern definition except that it is
 applied to all living organisms. These definitions are rarely cited nowadays.
@@ -25,7 +25,7 @@ When the concept of pangenome was ported to eukaryotic genomes where
 protein-coding genes are sparse, pangenome initially referred to the
 non-redundant set of genomic sequences in a species. This is a good definition
 in the narrow sense. However, the scope of pangenome has been broadened in
-recent literature partly because, I guess, there is no better wording to describe a set of genomes.
+recent literature partly because, I guess, there is no better word to describe a set of genomes.
 In my talks, I often cite the definition in a [review paper
 in 2018][comp-review] (with slight modifications): **a pangenome refers to a
 collection of well assembled genomes in a clade to be analyzed together.** Determining the
