@@ -30,6 +30,7 @@ Historically, the term "pangenome" was first coined by [by Sigaux][first] in
 2000 for a purpose distinct from current uses. [Victor Tetz's
 definition][origin0] is fairly close to the modern definition except that it is
 applied to all living organisms. These definitions are rarely cited nowadays.
+The [pan-genome wiki page][wiki] currently focuses on bacterial pangenomes.
 
 [comp-review]: https://pubmed.ncbi.nlm.nih.gov/27769991/
 [first]: https://pubmed.ncbi.nlm.nih.gov/11261250/
@@ -38,3 +39,4 @@ applied to all living organisms. These definitions are rarely cited nowadays.
 [rr]: https://en.wikipedia.org/wiki/Rino_Rappuoli
 [pm-search]: https://pubmed.ncbi.nlm.nih.gov/?term=%22pangenome%22+OR+%22pan-genome%22%5Btiab%5D&filter=years.1982-2005
 [origin0]: https://pubmed.ncbi.nlm.nih.gov/15990697/
+[wiki]: https://en.wikipedia.org/wiki/Pan-genome
