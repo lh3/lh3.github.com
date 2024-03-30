@@ -25,7 +25,8 @@ When the concept of pangenome was ported to eukaryotic genomes where
 protein-coding genes are sparse, pangenome initially referred to the
 non-redundant set of genomic sequences in a species. This is a good definition
 in the narrow sense. However, the scope of pangenome has been broadened in
-recent literature. In my talks, I often cite the definition in a [review paper
+recent literature partly because, I guess, there is no better wording to describe a set of genomes.
+In my talks, I often cite the definition in a [review paper
 in 2018][comp-review] (with slight modifications): **a pangenome refers to a
 collection of well assembled genomes in a clade to be analyzed together.** Determining the
 non-redundant genes or genomic sequences is one type of pangenome analysis but other
