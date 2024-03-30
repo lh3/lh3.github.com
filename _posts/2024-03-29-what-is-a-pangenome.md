@@ -13,7 +13,7 @@ literature) was first coined by [by Sigaux][first] in
 definition][origin0] is fairly close to the modern definition except that it is
 applied to all living organisms. These definitions are rarely cited nowadays.
 
-In microbiome research, a pangenome refers to the non-redundant set of genes in a bacterial species.
+**In microbiome research, a pangenome refers to the non-redundant set of genes in a bacterial species.**
 This definition is commonly attributed to two papers ([Medini et al,
 2005][origin1]; [Tettelin et al, 2005][origin2]), both with [Rino Rappuoli][rr]
 as the corresponding author. In practice, most widely used tools for
