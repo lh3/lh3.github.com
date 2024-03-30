@@ -28,7 +28,7 @@ in the narrow sense. However, the scope of pangenome has been broadened in
 recent literature partly because, I guess, there is no better word to describe a set of genomes.
 In my talks, I often cite the definition in a [review paper
 in 2018][comp-review] (with slight modifications): **a pangenome refers to a
-collection of well assembled genomes in a clade to be analyzed together.** Determining the
+collection of well assembled genomes in a clade (typically a species) to be analyzed together.** Determining the
 non-redundant genes or genomic sequences is one type of pangenome analysis but other
 types of joint analyses such as indexing and storage also count. Notably, we do
 not consider short reads from the 1000 Genomes Project as pangenome data
