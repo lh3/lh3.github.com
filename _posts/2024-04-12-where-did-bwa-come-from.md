@@ -18,11 +18,11 @@ that it was faster than [MAQ][maq] and SOAP by over an order of magnitude.
 Honestly, I thought it was too good to be real (sorry, Tak-Wah!). Tak-Wah
 mentioned BWT but did not describe the algorithm. I was curious about how that
 works and found his [BWT-SW paper][bwt-sw] published earlier that year.
-I learned the basic of BWT/FM-index from the BWT-SW paper. For people who are
-familiar with the data structure, FM-index only gives exact matches. I came up
-with the backtracking idea independently to allow mismatches and gaps.
+I learned the basic of BWT/FM-index from the BWT-SW paper. FM-index only gives
+exact matches. I came up with the backtracking idea independently to allow
+mismatches and gaps.
 
-I then started to implement BWA in late May 2008. Realizing efficient BWT
+I started to implement BWA in late May 2008. Realizing efficient BWT
 construction is challenging, I adapted the BWT-SW implementation which remains
 in BWA. It took me another 2-3 months to get a decent prototype working for
 single-end reads. That version was over ten times faster than MAQ &mdash; Tak-Wah
