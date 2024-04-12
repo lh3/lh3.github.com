@@ -9,7 +9,7 @@ tags: []
 
 My blog posts are often motivated by casual conversations with other
 scientists. This blog post is an example. Someone asked me how I thought of
-[BWA][bwa] in the first place. The short answer is: I didn't; I learned from
+using a compression algorithm for alignment in [BWA][bwa]. The short answer is: I didn't; I learned from
 [Tak-Wah Lam][tklam].
 
 Here is the longer story. On a 1000G conference call in April 2008, as I
