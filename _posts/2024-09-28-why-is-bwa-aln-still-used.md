@@ -10,7 +10,7 @@ tags: []
 
 [BWA][bwa] implements three algorithms: [bwa-aln][bwa-aln], [bwa-sw][bwa-sw] and [bwa-mem][bwa-mem].
 Although bwa-aln is the oldest, it remains a popular choice for ancient DNA (aDNA) data.
-Is it because researchers working on aDNA are too slow to change? Not quite.
+Is it because researchers working on aDNA are too lazy to change? Not quite.
 The following plot from [Dolenz et al (2024)][Dolenz] shows the mismatch rate as a function of read length for reads
 mapped with mapping quality (mapQ) 25 or higher.
 
@@ -36,8 +36,8 @@ Bwa-mem catches up for 75-100bp reads.
 It exceeds bwa-aln for longer reads &mdash; this is how bwa-mem overtakes bwa-aln for modern 150bp reads.
 **In practice, it is probably better to align shorter reads with bwa-aln and longer reads with bwa-mem**.
 
-To explain the bowtie2 curve, we first need to understand why we use mapQ25 as a cutoff.
-Suppose a read has a single best hit with $n$ mismatches and bwa-aln is tuned to find hits with up to $m$ mismatches.
+To explain the bowtie2 curve, we first need to understand why we often use mapQ25 as a cutoff.
+Suppose a read has a single best hit with $n$ mismatches and bwa-aln is configured to find hits with up to $m$ mismatches.
 Bwa-aln outputs a mapQ of
 1) 37 if $n<m$ and there are no hits with $n+1$ mismatches,
 2) $23-10\log_{10}N$ if $n<m$ and there are $N$ hits with $n+1$ mismatches, or
