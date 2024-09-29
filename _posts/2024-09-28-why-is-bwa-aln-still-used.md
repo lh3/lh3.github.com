@@ -14,7 +14,7 @@ Is it because researchers working on aDNA are too slow to change? Not quite.
 The following plot from [Dolenz et al (2024)][Dolenz] shows the mismatch rate as a function of read length for reads
 mapped with mapping quality (mapQ) 25 or higher.
 
-<img src="https://i.ibb.co/Jv4BQYD/Screenshot-2024-09-28-at-20-26-09.png" width="100%"/>
+<img src="https://i.ibb.co/Jv4BQYD/Screenshot-2024-09-28-at-20-26-09.png" width="60%"/>
 
 This plot suggests for reads shorter than 60bp,
 bwa-aln is more sensitive to mutations or sequencing/deamination errors than bwa-mem and bowtie2.
