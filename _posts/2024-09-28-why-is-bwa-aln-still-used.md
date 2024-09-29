@@ -40,8 +40,8 @@ To explain the bowtie2 curve, we first need to understand why we use mapQ25 as a
 Suppose a read has a single best hit with $n$ mismatches and bwa-aln is tuned to find hits with up to $m$ mismatches.
 Bwa-aln outputs
 1) 37 if $n<m$ and there are no hits with $n+1$ mismatches,
-2) $\max\{0,23-10\log_{10}N\}$ if $n<m$ and there are $N$ hits with $n+1$ mismatches, or
-3) 25 if $`n=m`$.
+2) $23-10\log_{10}N$ if $n<m$ and there are $N$ hits with $n+1$ mismatches, or
+3) 25 if $n=m$.
 This is where mapQ25 comes from.
 It **overfits the bwa-aln heuristic**.
 
