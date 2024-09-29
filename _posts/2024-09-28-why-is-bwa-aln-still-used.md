@@ -18,7 +18,7 @@ mapped with mapping quality (mapQ) 25 or higher.
 
 This plot suggests for reads shorter than 60bp,
 bwa-aln is more sensitive to mutations or sequencing/deamination errors than bwa-mem and bowtie2.
-Given that aDNA reads are short.
+Given that aDNA reads are short,
 the higher sensitivity at the short end will help to alleviate reference biases and improve variant calling.
 This is why bwa-aln is still used for aDNA data.
 
@@ -42,7 +42,8 @@ Bwa-aln outputs
 1) 37 if $n<m$ and there are no hits with $n+1$ mismatches,
 2) $23-10\log_{10}N$ if $n<m$ and there are $N$ hits with $n+1$ mismatches, or
 3) 25 if $n=m$.
-This is where mapQ25 comes from.
+Putting these together, bwa-aln outputs a mapQ of 25 or higher if doesn't see alignments with $n+1$ mismatches.
+This is where the mapQ25 threshold comes from.
 It **overfits the bwa-aln heuristic**.
 
 Notably, when $n<m$, the bwa-aln mapQ is independent of $n$.
