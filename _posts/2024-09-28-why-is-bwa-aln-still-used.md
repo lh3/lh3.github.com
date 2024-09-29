@@ -8,8 +8,8 @@ tags: []
 ---
 {% include JB/setup %}
 
-[BWA][bwa] implements three algorithms: bwa-aln, bwa-sw and bwa-mem.
-Although bwa-aln is the earliest, it remains a popular choice for ancient DNA (aDNA) data.
+[BWA][bwa] implements three algorithms: [bwa-aln][bwa-aln], [bwa-sw][bwa-sw] and [bwa-mem][bwa-mem].
+Although bwa-aln is the oldest, it remains a popular choice for ancient DNA (aDNA) data.
 Is it because researchers working on aDNA are too slow to change? Not quite.
 The following plot from [Dolenz et al (2024)][Dolenz] shows the mismatch rate as a function of read length for reads
 mapped with mapping quality (mapQ) 25 or higher.
@@ -18,8 +18,8 @@ mapped with mapping quality (mapQ) 25 or higher.
 
 This plot suggests for reads shorter than 60bp,
 bwa-aln is more sensitive to mutations or sequencing/deamination errors than bwa-mem and bowtie2.
-aDNA reads are short.
-The higher sensitivity at the short end will help to alleviate reference biases and improve variant calling.
+Given that aDNA reads are short.
+the higher sensitivity at the short end will help to alleviate reference biases and improve variant calling.
 This is why bwa-aln is still used for aDNA data.
 
 **The observation has a direct algorithmic explanation**.
@@ -68,3 +68,6 @@ Well, aDNA read alignment is not a solved problem.
 [bwa]: https://github.com/lh3/bwa
 [Dolenz]: https://academic.oup.com/bioinformatics/article/40/7/btae436/7705522
 [bowtie2-mapq]: http://biofinysics.blogspot.com/2014/05/how-does-bowtie2-assign-mapq-scores.html
+[bwa-aln]: https://pubmed.ncbi.nlm.nih.gov/19451168/
+[bwa-sw]: https://pubmed.ncbi.nlm.nih.gov/20080505/
+[bwa-mem]: https://arxiv.org/abs/1303.3997
