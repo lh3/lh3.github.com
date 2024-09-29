@@ -1,5 +1,6 @@
 ---
 layout: post
+mathjax: true
 title: "Why is bwa-aln used for ancient DNA reads?"
 description: ""
 category: 
