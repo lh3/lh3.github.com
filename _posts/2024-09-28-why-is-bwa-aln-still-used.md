@@ -26,7 +26,7 @@ This is why bwa-aln is still used for aDNA data.
 Suppose the true alignment of a 32bp read has one mismatch at position 12 and another mismatch at position 22 on the read.
 With the default setting, bwa-mem will miss this alignment as it requires at least a 19-mer exact match.
 In theory, we can find the true alignment if we reduce the minimum seed length to 11.
-However, each 11-mer occurs 1430 times ($=2\times3\times10^9/4^11$) on average in the human genome.
+However, each 11-mer occurs 1430 times ($=2\times3\times10^9/4^{11}$) on average in the human genome.
 Bwa-mem will become impractically slow if it extends each occurrence to find the best hit.
 Bwa-aln on the other hand does not use exact seeds and can guarantee to find the true alignment.
 It is better for short reads.
@@ -39,14 +39,14 @@ It exceeds bwa-aln for longer reads &mdash; this is how bwa-mem overtakes bwa-al
 To explain the bowtie2 curve, we first need to understand why we use mapQ25 as a cutoff.
 Suppose a read has a single best hit with $n$ mismatches and bwa-aln is tuned to find hits with up to $m$ mismatches.
 Bwa-aln outputs
-1) 37 if $`n<m`$ and there are no hits with $n+1$ mismatches,
-2) $`\max\{0,23-10\log_{10}N\}`$ if $`n<m`$ and there are $N$ hits with $n+1$ mismatches, or
+1) 37 if $n<m$ and there are no hits with $n+1$ mismatches,
+2) $\max\{0,23-10\log_{10}N\}$ if $n<m$ and there are $N$ hits with $n+1$ mismatches, or
 3) 25 if $`n=m`$.
 This is where mapQ25 comes from.
 It **overfits the bwa-aln heuristic**.
 
-Notably, when $`n<m`$, the bwa-aln mapQ is independent of $n$.
-A single real SNP on the read does not cause reference bias if $`n<m`$.
+Notably, when $n<m$, the bwa-aln mapQ is independent of $n$.
+A single real SNP on the read does not cause reference bias if $n<m$.
 Bowtie2 is different.
 As is explained in [this blog post][bowtie2-mapq], the bowtie2 mapQ estimator strongly depends on $n$.
 A read mapped with more mismatches has lower mapQ.
