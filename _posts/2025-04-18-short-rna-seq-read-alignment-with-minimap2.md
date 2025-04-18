@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Short RNA seq read alignment with minimap2"
+title: "Short RNA-seq read alignment with minimap2"
 description: ""
 category: 
 tags: []
