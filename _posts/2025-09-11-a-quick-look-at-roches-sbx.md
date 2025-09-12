@@ -45,12 +45,12 @@ This is comparable to the Illumina NovaSeq results from [Baid et al (2020)][ns-d
 The two technologies are also similar when we look at recurrent errors supported by two or more Q30+ bases (orange and light blue curves).
 Roche further demonstrated similar SNP and indel calling accuracy to NovaSeq during the webinar.
 
-**Overall, I am really impressed by the quality of SBX-D as well as its throughput.**
+**Overall, I am really impressed by the quality of SBX-D especially given its throughput.**
 Nevertheless, I believe the decision to always choose the longer strand is questionable.
 This will leave a trap for many current analyses including all pileup-based ones.
 While DeepVariant can learn the pattern and GATK can be tuned, they are only part of the ecosystem.
 I have seen sequencing technologies that produced data of special structures or features,
-but successful ones more often look like ordinary data.
+but successful ones more often generate "ordinary" data.
 In case of SBX-D, the basecaller doesn't distinguish good from bad bases based on raw signals.
 I suspect it is possible to use raw signals to generate accurate duplex consensus
 such that we can analyze SBX-D data the same way as typical short reads.
