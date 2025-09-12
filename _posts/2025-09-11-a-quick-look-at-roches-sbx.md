@@ -15,7 +15,7 @@ as it contains a lot more information than this blog post.
 
 ![][fig]
 
-Roche released duplex SBX (SBX-D) data produced in one hour by multiplexing seven human samples together.
+Roche released duplex SBX (SBX-D) data **produced in one hour by multiplexing seven human samples together**.
 These are single-end reads, averaging ~241bp in length.
 The purple line in Fig. (a) shows the fraction of reads beyond a certain length.
 We can see more than 95% of reads are longer than 150bp but less than 10% are longer than 350bp.
