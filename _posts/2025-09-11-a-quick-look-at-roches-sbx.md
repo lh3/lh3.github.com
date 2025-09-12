@@ -45,7 +45,7 @@ This is comparable to the Illumina NovaSeq results from [Baid et al (2020)][ns-d
 The two technologies are also similar when we look at recurrent errors supported by two or more Q30+ bases (orange and light blue curves).
 Roche further demonstrated similar SNP and indel calling accuracy to NovaSeq during the webinar.
 
-**Overall, I am really impressed by the quality of SBX-D along with its throughput.**
+**Overall, I am really impressed by the quality of SBX-D as well as its throughput.**
 Nevertheless, I believe the decision to always choose the longer strand is questionable.
 This will leave a trap for many current analyses including all pileup-based ones.
 While DeepVariant can learn the pattern and GATK can be tuned, they are only part of the ecosystem.
