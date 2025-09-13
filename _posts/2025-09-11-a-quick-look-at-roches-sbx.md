@@ -81,7 +81,9 @@ If this is true (I need to modify the code to find exact numbers),
 the strategy above may increase the overall base quality (the red line in Fig. b) by 3 points.
 
 Another question is how to encode base quality in homopolymer runs.
-I don't know but we might be able to get hints from Oxford Nanopore and PacBio data as they have the same problem.
+A conservative strategy is to lower the base quality for the entire homopolymer/STR run if there is conflicting evidence.
+Given that SBX errors are rare and mostly random, this should not affect the power too much.
+They could also learn from Oxford Nanopore and PacBio who have the same problem.
 
 [sbx]: https://sequencing.roche.com/us/en/article-listing/sequencing-platform-technologies.html
 [mapchk]: https://github.com/lh3/htsbox/blob/lite/mapchk.c
