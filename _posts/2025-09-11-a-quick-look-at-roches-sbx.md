@@ -34,7 +34,7 @@ It might be clearer to draw the curve from the 3'-ends of all reads.
 Sequencing errors in SBX-D reads are primarily due to 1bp insertions.
 This results from an interesting decision to always choose bases from the longer strand when the two strands disagree.
 In this case, the SBX-D basecaller assigns a quality score of 5 to the extra base(s).
-In a homopolymer run, only the last base(s) are lowered to 5 but the rest of the bases still receive quality 39.
+In a homopolymer run, only the first or last base(s) are lowered to 5 but the rest of the bases still receive quality 39.
 This quality assignment caused [my previous tool][mapchk] to report a low empirical quality.
 I had to modify the source code for SBX-D.
 
@@ -47,7 +47,7 @@ Roche further demonstrated similar SNP and indel calling accuracy to NovaSeq dur
 
 **Overall, I am really impressed by the quality of SBX-D especially given its throughput.**
 Nevertheless, I believe the decision to always choose the longer strand is questionable.
-This will leave a trap for many current analyses including all pileup-based ones.
+This will set a trap for many current analyses including all pileup-based ones.
 While DeepVariant can learn the pattern and GATK can be tuned, they are only part of the ecosystem.
 I have seen sequencing technologies that produced data of special structures or features,
 but successful ones more often generate "ordinary" data.
@@ -60,6 +60,28 @@ This would be ideal for everyone.
 If SBX were priced similarly to NovaSeq, many would not bother to adapt their tools and workflows just for SBX;
 if SBX were much cheaper, we might see a shift in tool development towards SBX.
 We will see.
+
+**PS:** Based on how base quality is estimated, we can infer the SBX basecaller gives Q22 to all simplex bases.
+It is not using raw signals to distinguish good and bad bases.
+When the duplex consensus tool does not know which strand to trust,
+choosing the longer strand is a *simpler* bet,
+as we can't easily attach base quality to deleted bases.
+This is why the vast majority of errors are Q5 insertions.
+However, a simple decision is not necessarily a good decision as I explained above.
+
+If I were to design simplex and duplex base calling,
+I would use a simple machine-learning model to classify each simplex base to low or high quality.
+If we see conflicting single-strand sequences during the duplex consensus step,
+choose a high-quality base over a low-quality base.
+When it is a tie, use a second machine-learning model
+based on first/second strand and two nearby bases to make the best choice.
+This will greatly reduce 1bp Q5 insertions, making SBX data more compatible with existing tools.
+Furthermore, the numbers at my hand suggest the majority of errors come from Q5 bases.
+If this is true (I need to modify the code to find exact numbers),
+the strategy above may increase the overall base quality (the red line in Fig. b) by 3 points.
+
+Another question is how to encode base quality in homopolymer runs.
+I don't know but we might be able to get hints from Oxford Nanopore and PacBio data as they have the same problem.
 
 [sbx]: https://sequencing.roche.com/us/en/article-listing/sequencing-platform-technologies.html
 [mapchk]: https://github.com/lh3/htsbox/blob/lite/mapchk.c
