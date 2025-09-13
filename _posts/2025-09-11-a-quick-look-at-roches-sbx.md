@@ -61,6 +61,8 @@ If SBX were priced similarly to NovaSeq, many would not bother to adapt their to
 if SBX were much cheaper, we might see a shift in tool development towards SBX.
 We will see.
 
+<hr/>
+
 **PS:** Based on how base quality is estimated, we can infer the SBX basecaller gives Q22 to all simplex bases.
 It is not using raw signals to distinguish good and bad bases.
 When the duplex consensus tool does not know which strand to trust,
@@ -84,6 +86,11 @@ Another question is how to encode base quality in homopolymer runs.
 A conservative strategy is to lower the base quality for the entire homopolymer/STR run if there is conflicting evidence.
 Given that SBX errors are rare and mostly random, this should not affect the power too much.
 They could also learn from Oxford Nanopore and PacBio who have the same problem.
+
+I guess with the strategy above, the variant calling accuracy will probably stay the same as the numbers shown at the webinar.
+Nonetheless, the cleaner and more "ordinary" reads will make SBX more compatible
+with generic variant callers and other workflows.
+That would be a huge selling point in my opinion.
 
 [sbx]: https://sequencing.roche.com/us/en/article-listing/sequencing-platform-technologies.html
 [mapchk]: https://github.com/lh3/htsbox/blob/lite/mapchk.c
