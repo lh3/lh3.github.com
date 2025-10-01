@@ -7,9 +7,9 @@ tags: []
 ---
 {% include JB/setup %}
 
-Those who inspect SVs often have probably noticed many SVs fall in LCRs or tandem repeats and they are challenging to call.
+Those who inspect SVs often have probably noticed many SVs fall in low-complexity regions (LCRs) or tandem repeats and they are challenging to call.
 How many and how challenging? I could not find a good answer in the literature, so
-decided to work with Qian (Alvin) Qin to measure by ourselves.
+I decided to work with Qian (Alvin) Qin to measure by ourselves.
 
 To start with, we need to identify LCRs in the human genome.
 This turned out to be a non-trivial problem.
@@ -28,8 +28,8 @@ that each of these tools employs its own empirical model.
 It is difficult to interpret the differences between tools.
 Furthermore, the tandem repeating finding tools ignore LCRs without clear tandem pattern.
 Some of these tools, such as TRF and ULTRA, are also resource demanding.
-TRF may even fall into a near dead loop if option "-l" is not large enough, but a large "-l" consumes a lot of memory.
-We are not happy with existing tools, so decided to develop our own.
+TRF may even fall into a near dead loop if option "-l" is not large enough, but a large "-l" consumes more than 10GB of memory.
+Unhappy with current tools, we decided to develop our own.
 
 This is [longdust][ld].
 During its development, we realized that longdust, TRF and ULTRA can have large overlaps
