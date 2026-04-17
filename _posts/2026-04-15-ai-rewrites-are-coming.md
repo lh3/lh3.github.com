@@ -29,8 +29,8 @@ agents could port a small tool in hours or one of medium complexity (e.g.
 minimap2) in days, probably tens of times faster than porting by hand. This is
 happening.
 
-***Legally speaking,*** permission for rewriting is governed by the
-software license. Maintainers of *open-source* projects can't stop others from
+***Legally speaking,*** **permission for rewriting is governed by the software
+license.** Maintainers of *open-source* projects can't stop others from
 rewriting their work, no matter whether they like the action or not. One
 defensive strategy is to fight fire with fire: preemptively rewrite your own
 tool in Rust by yourself such that another Rust rewrite by a third party would
@@ -46,7 +46,7 @@ come up with guidelines and common practices on tool rewriting to advance this
 field in a friendly manner. After all, there are humans behind the code.
 **Empathy matters more than technical benefit or legal correctness.**
 
-Finally, I always welcome forks and rewrites of my tools whether I am involved
+Finally, **I always welcome forks and rewrites of my tools** whether I am involved
 or not. If you want to rewrite my tools with AI, please feel free to do so.
 
 [dep-hell]: https://en.wikipedia.org/wiki/Dependency_hell
