@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The AI rewrite dilemma"
+title: "The AI Rewrite Dilemma"
 description: ""
 category: 
 tags: []
@@ -58,7 +58,7 @@ or not. If you want to rewrite my tools with AI, please feel free to do so.
 * [pachterlab/edgePython][edgepython] in Python: based on [edgeR][edger] in R, explained in [this blog post][edgepy-blog]
 * [seqeralabs/RustQC][RustQC] in Rust: based on multiple tools in C, R and Python, explained in [this blog post][rustqc-blog]
 * [fulcrumgenomics/fgumi][fgumi] in Rust: based on part of [fgbio][fgbio] in Scala, explained in [this blog post][fgumi-blog]
-* [Huang-lab/fastVEP][fastvep] in Rust: based on [Ensembl VEP][vep] in Perl and [Nirvana][nirvana] in C# (unmaintained). Preprint [at bioRxiv][fastVEP-pp]
+* [Huang-lab/fastVEP][fastvep] in Rust: based on [VEP][vep] in Perl and [Nirvana][nirvana] in C# (unmaintained). Preprint [at bioRxiv][fastVEP-pp]
 * [COMBINE-lab/sshash-rs][sshash-rs] in Rust: based on [sshash][sshash] in C++
 * [huangnengCSU/rust-fastqtl][rust-fastqtl] in Rust: based on [fastqtl][fastqtl] in C++ (unmaintained)
 * [Huang-lab/RastQC][rastqc] in Rust: drop-in replacement of [FastQC][fastqc] in Java
