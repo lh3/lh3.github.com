@@ -27,7 +27,7 @@ agents such as [Claude Code][claude-code] and [Codex][codex] have transformed
 code translation.** Since last December, a developer familiar with these
 agents could port a small tool in hours or one of medium complexity (e.g.
 minimap2) in days, probably tens of times faster than porting by hand. This is
-happening.
+happening and is likely to accelerate.
 
 ***Legally speaking,*** **permission for rewriting is governed by the software
 license.** Maintainers of *open-source* projects can't stop others from
@@ -60,7 +60,7 @@ or not. If you want to rewrite my tools with AI, please feel free to do so.
 * [fulcrumgenomics/fgumi][fgumi] in Rust: based on part of [fgbio][fgbio] in Scala, explained in [this blog post][fgumi-blog]
 * [Huang-lab/fastVEP][fastvep] in Rust: based on [VEP][vep] in Perl and [Nirvana][nirvana] in C# (unmaintained). Preprint [at bioRxiv][fastVEP-pp]
 * [COMBINE-lab/sshash-rs][sshash-rs] in Rust: based on [sshash][sshash] in C++
-* [huangnengCSU/rust-fastqtl][rust-fastqtl] in Rust: based on [fastqtl][fastqtl] in C++ (unmaintained)
+* [huangnengCSU/rust-fastqtl][rust-fastqtl] in Rust: based on a [fork of fastqtl][fastqtl] in C++ (unmaintained)
 * [Huang-lab/RastQC][rastqc] in Rust: drop-in replacement of [FastQC][fastqc] in Java
 * [henriksson-lab][henriksson-lab]: multiple projects including minimap2 in C,
   BLAST in C++, HMMER in C, MUSCLE in C++, DIAMOND in C++, SKESA in C++, Kraken2 in C++, FastQC in Java, Prokka in Perl
