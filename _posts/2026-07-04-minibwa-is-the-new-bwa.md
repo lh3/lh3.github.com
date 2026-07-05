@@ -9,24 +9,23 @@ tags: []
 
 Preprinted [in 2013][bwa-mem], [bwa-mem][bwa] is a popular mapper for 100+ bp short reads.
 It is often the first choice in variant calling pipelines for human data.
-However, bwa-mem is the performance and the cost bottleneck.
+However, bwa-mem has increasingly become the performance and the cost bottleneck when the upstream/downstream get optimized.
 This led to multiple forks, including [bwa-mem2][bwa-mem2], [bwa-meme][bwa-meme], [Sentieon bwa][sentieon] and [Parabricks bwa][parabrick],
 which produce identical or near identical output to the original bwa-mem.
 
 These forks are limited by the outdated design of bwa-mem unfortunately.
 Notably, although bwa-mem chains seeds, its chaining algorithm is inferior to the more recent minimap2 algorithm.
 Bwa-mem also extends individual seeds instead of patching gaps between seeds like minimap2.
-This affects alignment through long gaps.
-The lack of dual affine-gap penalty makes it worse.
+This impairs alignment through long gaps, a problem further exacerbated by the lack of a dual affine-gap penalty.
 Another hidden cost behind bwa-mem forks is the increased code complexity when they try to match the bwa-mem algorithms exactly.
 For example, bwa-mem2 doubles the lines of code of bwa-mem; bwa-meme further doubles bwa-mem2.
 The much larger code base reduces the maintainability in the long term.
-**These limtations can only be addressed by revamping the design of bwa-mem.**
+**These limitations can only be addressed by revamping the design of bwa-mem.**
 
 [Minibwa][mb] is a fresh start without the baggage of backward compatibility.
 Combining the advantages of bwa-mem and minimap2, it works for long reads and finds much more long gaps in >500bp SBX reads than bwa-mem.
-With better engineering and parameter tuing, minibwa is also a few times as fast as bwa-mem.
-Aliging 30X human reads in 50 minutes over 32 CPU threads, it may be faster than other upstream/downstream tools if you are not careful.
+With better engineering and parameter tuning, minibwa is also a few times as fast as bwa-mem.
+Aligning 30X human reads in 50 minutes over 32 CPU threads, it might outpace other upstream/downstream tools if you are not careful.
 In terms of mapping accuracy, minibwa competes with bwa-mem on simulated read mapping and real-world variant calling.
 Andrew Carroll has kindly [confirmed][ac-eval] the performance of minibwa independently on multiple non-human datasets.
 
@@ -34,7 +33,7 @@ Andrew Carroll has kindly [confirmed][ac-eval] the performance of minibwa indepe
 I am still committed to fixing critical bugs in the original bwa-mem but future development will focus on minibwa only.
 If you can accept occasional differences in alignment, I encourage you to try minibwa.
 It natively supports bisulfite sequencing data, is much faster and more sensitive to long gaps which will become common with upcoming SBX reads.
-As to future plans, I consider minibwa is fast enough in that further performance boost may not greatly speed up overall pipelines.
+Regarding future development, minibwa is currently fast enough that further performance optimizations would yield diminishing returns for overall pipelines.
 The next major change will be the support of alternate contigs, the only bwa-mem feature missing from minibwa.
 
 [mb]: https://github.com/lh3/minibwa
